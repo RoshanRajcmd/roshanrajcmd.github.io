@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2b4c24b5.css",
+    "main.js": "/static/js/main.e9290e78.js",
+    "static/js/453.01f0a10c.chunk.js": "/static/js/453.01f0a10c.chunk.js",
+    "static/media/background-music.mp3": "/static/media/background-music.e9bcf4e550c5c89ca556.mp3",
+    "static/media/resume.pdf": "/static/media/resume.d7c6cbd689a2cfae3449.pdf",
+    "static/media/clippy.gif": "/static/media/clippy.d08220853fb62abf4494.gif",
+    "index.html": "/index.html",
+    "main.2b4c24b5.css.map": "/static/css/main.2b4c24b5.css.map",
+    "main.e9290e78.js.map": "/static/js/main.e9290e78.js.map",
+    "453.01f0a10c.chunk.js.map": "/static/js/453.01f0a10c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2b4c24b5.css",
+    "static/js/main.e9290e78.js"
+  ]
+}
