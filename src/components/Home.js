@@ -13,7 +13,7 @@ const sections = ['Work', 'About', 'Contact', 'FAQ'];
 
 const Home = () => {
     const sectionRefs = useRef({});
-    const [darkMode, setDarkMode] = useState(true);
+    const [darkMode, setDarkMode] = useState(false);
     const [musicPlaying, setMusicPlaying] = useState(false);
     const [chibbiMessage, setChibbiMessage] = useState('');
 
@@ -135,11 +135,14 @@ const Home = () => {
                 </p>
             </footer>
 
-            <div className="fixed bottom-5 right-5 flex flex-col items-end">
-                {/* The message box on top */}
+            <div className="fixed bottom-5 right-1 flex flex-col items-end">
+                {/* The message bubble on top */}
                 {chibbiMessage && (
-                    <div className="bg-gray-200 text-black px-4 py-2 rounded-md mb-1 max-w-xs text-sm shadow-lg">
-                        <p>{chibbiMessage}</p>
+                    <div className="relative pr-14 max-w-xs">
+                        <div className="bg-gray-200 text-black px-4 py-2 rounded-2xl shadow-lg text-sm relative z-10"
+                            style={{ borderBottomRightRadius: 0 }}>
+                            <p>{chibbiMessage}</p>
+                        </div>
                     </div>
                 )}
                 {/* The chibbi on bottom */}
