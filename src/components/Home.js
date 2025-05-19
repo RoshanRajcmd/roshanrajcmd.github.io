@@ -18,7 +18,16 @@ const Home = () => {
     const audioRef = useRef(null);
 
     const scrollToSection = (section) => {
-        sectionRefs.current[section]?.scrollIntoView({ behavior: 'smooth' });
+        const element = sectionRefs.current[section];
+        if (element) {
+            //Top of the <body> relative to the viewport
+            const bodyRect = document.body.getBoundingClientRect().top;
+            //Top of the target section relative to the viewport
+            const elementRect = element.getBoundingClientRect().top;
+            //80 is the offset height of navbar or custom offset
+            const offsetPosition = elementRect - bodyRect - 80;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
     };
 
     const toggleTheme = () => {
@@ -43,14 +52,16 @@ const Home = () => {
         <div className={darkMode ? 'dark bg-black text-white' : 'bg-white text-black'}>
             <nav className="fixed w-full top-0 z-50 bg-opacity-80 backdrop-blur p-4 flex justify-between items-center">
                 <div className="space-x-4">
-                    {sections.map((sec) => (
-                        <button key={sec} onClick={() => scrollToSection(sec)}>{sec}</button>
-                    ))}
                     <a href={resumeFile} download>
                         <button>Download Resume</button>
                     </a>
                 </div>
-                <div className="space-x-2 flex items-center">
+                <div className="space-x-4">
+                    {sections.map((sec) => (
+                        <button key={sec} onClick={() => scrollToSection(sec)}>{sec}</button>
+                    ))}
+                </div>
+                <div className="space-x-4 items-center">
                     <button onClick={toggleMusic}>
                         {musicPlaying ? <FaVolumeUp /> : <FaVolumeMute />}
                     </button>
