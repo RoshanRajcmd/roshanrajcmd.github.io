@@ -71,15 +71,15 @@ const Home = () => {
 
     return (
         <div className={darkMode ? 'dark bg-black text-white' : 'bg-white text-black'}>
-            <nav className="fixed w-full top-7 inset-x-0">
+            <nav className="fixed w-full top-7 inset-x-0 z-50">
                 <div
                     id="navbar"
-                    className={`shrink-0 bg-transparent py-2 lg:flex self-start items-center justify-between max-w-7xl mx-auto rounded-full bg-opacity-80 backdrop-blur transition-all duration-300
+                    className={`flex flex-row flex-wrap items-center justify-between max-w-7xl mx-auto rounded-full bg-opacity-80 backdrop-blur transition-all duration-300 py-2 bg-transparent
                         ${scrolled ? 'px-24' : 'px-4'}
                     `}
                 >
                     {/* Download Resume */}
-                    <div className="shrink-0 bg-transparent px-4 py-2 rounded-full transition-shadow duration-300 hover:shadow-[0_0_20px_5px_rgba(230,190,10,0.8)]">
+                    <div className="flex flex-row flex-wrap bg-transparent px-4 py-2 rounded-full transition-shadow duration-300 hover:shadow-[0_0_20px_5px_rgba(230,190,10,0.8)]">
                         <a className="flex items-center gap-2" href={resumeFile} download>
                             <IoMdDownload className="w-5 h-5" />
                             <button className="text-sm font-semibold">Resume</button>
@@ -87,14 +87,19 @@ const Home = () => {
                     </div>
 
                     {/* Sections */}
-                    <div className="content-center">
+                    <div className="flex flex-row flex-wrap content-center justify-center flex-1">
                         {sections.map((sec) => (
-                            <button className="bg-transparent px-4 py-2 rounded-full transition-shadow duration-300 hover:shadow-[0_0_20px_5px_rgba(230,190,10,0.8)]" key={sec} onClick={() => scrollToSection(sec)}>{sec}</button>
+                            <button
+                                className="bg-transparent px-4 py-2 rounded-full transition-shadow duration-300 hover:shadow-[0_0_20px_5px_rgba(230,190,10,0.8)]"
+                                key={sec}
+                                onClick={() => scrollToSection(sec)}
+                            >
+                                {sec}
+                            </button>
                         ))}
                     </div>
 
-                    {/* Theme and Music */}
-                    <div className="space-x-4 items-center">
+                    <div className="flex flex-row space-x-4 items-center">
                         <button onClick={toggleMusic}>
                             {musicPlaying ? <FaVolumeUp className="w-5 h-5" /> : <FaVolumeMute className="w-5 h-5" />}
                         </button>
