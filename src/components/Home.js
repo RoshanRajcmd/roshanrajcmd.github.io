@@ -7,6 +7,7 @@ import { IoMdDownload } from "react-icons/io";
 import chibbiGif from '../assets/chibbi.gif';
 import musicFile from '../assets/background-music.mp3';
 import resumeFile from '../assets/resume.pdf';
+import silentChibbi from '../assets/silent_chibbi.png';
 
 const sections = ['Work', 'About', 'Contact', 'FAQ'];
 
@@ -16,6 +17,8 @@ const Home = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [musicPlaying, setMusicPlaying] = useState(false);
     const [chibbiMessage, setChibbiMessage] = useState('');
+    const [silentChibbiMode, setSilentChibbiMode] = useState(false);
+
 
     const audioRef = useRef(null);
 
@@ -33,10 +36,13 @@ const Home = () => {
     };
 
     const toggleTheme = () => {
-        if (!darkMode)
-            setChibbiMessage('Bravo six going dark🔦');
-        else
-            setChibbiMessage("...")
+        //if only chibbi is not in silent mode
+        if (!silentChibbiMode) {
+            if (!darkMode)
+                setChibbiMessage('Bravo six going dark🔦');
+            else
+                setChibbiMessage("...")
+        }
         setDarkMode((prev) => !prev);
         setTimeout(() => setChibbiMessage(''), 2000);
     };
@@ -146,7 +152,14 @@ const Home = () => {
                     </div>
                 )}
                 {/* The chibbi on bottom */}
-                <img src={chibbiGif} alt="Chibbi" className="size-28" />
+                <img
+                    src={silentChibbiMode ? silentChibbi : chibbiGif}
+                    alt="Chibbi"
+                    className="size-28 cursor-pointer"
+                    onClick={() => {
+                        setSilentChibbiMode((prev) => !prev);
+                    }}
+                />
             </div>
         </div >
     );
