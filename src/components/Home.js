@@ -3,7 +3,7 @@ import { IoIosSunny } from "react-icons/io";
 import { IoMdMoon } from "react-icons/io";
 import { FaVolumeMute } from "react-icons/fa";
 import { FaVolumeUp } from "react-icons/fa";
-import clippyGif from '../assets/clippy.gif';
+import chibbiGif from '../assets/chibbi.gif';
 import musicFile from '../assets/background-music.mp3';
 import resumeFile from '../assets/resume.pdf';
 
@@ -13,7 +13,7 @@ const Home = () => {
     const sectionRefs = useRef({});
     const [darkMode, setDarkMode] = useState(false);
     const [musicPlaying, setMusicPlaying] = useState(false);
-    const [clippyMessage, setClippyMessage] = useState('');
+    const [chibbiMessage, setChibbiMessage] = useState('');
 
     const audioRef = useRef(null);
 
@@ -31,9 +31,12 @@ const Home = () => {
     };
 
     const toggleTheme = () => {
+        if (!darkMode)
+            setChibbiMessage('Bravo six going dark🔦');
+        else
+            setChibbiMessage("...")
         setDarkMode((prev) => !prev);
-        setClippyMessage('You just toggled the theme! Stylish choice ✨');
-        setTimeout(() => setClippyMessage(''), 4000);
+        setTimeout(() => setChibbiMessage(''), 2000);
     };
 
     const toggleMusic = () => {
@@ -95,15 +98,17 @@ const Home = () => {
                 </p>
             </footer>
 
-            <div className="fixed bottom-4 right-4 flex items-end space-x-2">
-                <img src={clippyGif} alt="Clippy" className="w-24 h-24" />
-                {clippyMessage && (
-                    <div className="bg-gray-200 text-black p-2 rounded shadow max-w-xs">
-                        {clippyMessage}
+            <div className="fixed bottom-5 right-5 flex flex-col items-end">
+                {/* The message box on top */}
+                {chibbiMessage && (
+                    <div className="bg-gray-200 text-black px-4 py-2 rounded-md mb-1 max-w-xs text-sm shadow-lg">
+                        <p>{chibbiMessage}</p>
                     </div>
                 )}
+                {/* The chibbi on bottom */}
+                <img src={chibbiGif} alt="Chibbi" className="size-28" />
             </div>
-        </div>
+        </div >
     );
 };
 
