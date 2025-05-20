@@ -78,12 +78,13 @@ const Home = () => {
             />
             <audio ref={audioRef} loop src={musicFile} />
 
-            <main className="pt-24 space-y-20 px-8">
+            <main className="pt-24 container mx-auto px-2 sm:px-8">
                 {sections.map((sec) => (
                     <section
                         key={sec}
                         ref={(el) => (sectionRefs.current[sec] = el)}
-                        className="min-h-screen"
+                        className="min-h-[80vh]"
+                    //[screen]
                     >
                         <h2 className="text-4xl font-bold mb-4">{sec}</h2>
                         <p>Content for {sec} section goes here...</p>
