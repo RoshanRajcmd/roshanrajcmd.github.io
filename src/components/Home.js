@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react';
 import musicFile from '../assets/background-music.mp3';
+import { IoIosChatbubbles } from "react-icons/io";
+import { MdOutlineCancel } from "react-icons/md";
 import Navbar from './Navbar';
+import ChatBox from './ChatBox';
 
 const sections = ['Work', 'About', 'Contact', 'FAQ'];
 
@@ -98,25 +101,15 @@ const Home = () => {
                 </p>
             </footer>
 
-            <div className="fixed bottom-5 right-1 flex flex-col items-end">
+            <div className="fixed bottom-2 right-2 flex flex-col items-end">
                 {/* The message bubble on top */}
-                {isOpen && (
-                    <div className="w-72 h-96 bg-wite border border-gray-300 rounded-lg mb-2 shadow-lg flex flex-col">
-                        <div className="bg bg-blue-600 text-white p-3 font-semibold rounded-t-lg"
-                            style={{ borderBottomRightRadius: 0 }}>
-                            Chat
-                        </div>
-                        <div className="flex-1 p-3 overflow-y-auto">
-                            <p>Hello! How can I help you?</p>
-                        </div>
-                    </div>
-                )}
+                {isOpen && <ChatBox />}
                 {/* The chibbi on bottom */}
                 <button className="size-28 cursor-pointer"
                     onClick={toggleChat}
                     aria-label="Toggle Chat"
                 >
-                    {isOpen ? 'Ⓧ' : '💬'}
+                    {isOpen ? <MdOutlineCancel className="size-10" /> : <IoIosChatbubbles className="size-10" />}
                 </button>
             </div>
         </div >
