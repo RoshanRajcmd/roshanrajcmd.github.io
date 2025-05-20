@@ -4,10 +4,8 @@ import { IoMdMoon } from "react-icons/io";
 import { FaVolumeMute } from "react-icons/fa";
 import { FaVolumeUp } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
-import chibbiGif from '../assets/chibbi.gif';
 import musicFile from '../assets/background-music.mp3';
 import resumeFile from '../assets/resume.pdf';
-import silentChibbi from '../assets/silent_chibbi.png';
 
 const sections = ['Work', 'About', 'Contact', 'FAQ'];
 
@@ -16,9 +14,7 @@ const Home = () => {
     const sectionRefs = useRef({});
     const [darkMode, setDarkMode] = useState(false);
     const [musicPlaying, setMusicPlaying] = useState(false);
-    const [chibbiMessage, setChibbiMessage] = useState('');
-    const [silentChibbiMode, setSilentChibbiMode] = useState(false);
-
+    const [isOpen, setIsChatOpen] = useState(false);
 
     const audioRef = useRef(null);
 
@@ -36,15 +32,7 @@ const Home = () => {
     };
 
     const toggleTheme = () => {
-        //if only chibbi is not in silent mode
-        if (!silentChibbiMode) {
-            if (!darkMode)
-                setChibbiMessage('Bravo six going dark🔦');
-            else
-                setChibbiMessage("...")
-        }
         setDarkMode((prev) => !prev);
-        setTimeout(() => setChibbiMessage(''), 2000);
     };
 
     const toggleMusic = () => {
@@ -58,6 +46,10 @@ const Home = () => {
         }
         setMusicPlaying((prev) => !prev);
     };
+
+    const toggleChat = () => {
+        setIsChatOpen(prev => !prev);
+    }
 
     // State to track scroll position
     const [scrolled, setScrolled] = useState(false);
@@ -143,23 +135,24 @@ const Home = () => {
 
             <div className="fixed bottom-5 right-1 flex flex-col items-end">
                 {/* The message bubble on top */}
-                {chibbiMessage && (
-                    <div className="relative pr-14 max-w-xs">
-                        <div className="bg-gray-200 text-black px-4 py-2 rounded-2xl shadow-lg text-sm relative z-10"
+                {isOpen && (
+                    <div className="w-72 h-96 bg-wite border border-gray-300 rounded-lg mb-2 shadow-lg flex flex-col">
+                        <div className="bg bg-blue-600 text-white p-3 font-semibold rounded-t-lg"
                             style={{ borderBottomRightRadius: 0 }}>
-                            <p>{chibbiMessage}</p>
+                            Chat
+                        </div>
+                        <div className="flex-1 p-3 overflow-y-auto">
+                            <p>Hello! How can I help you?</p>
                         </div>
                     </div>
                 )}
                 {/* The chibbi on bottom */}
-                <img
-                    src={silentChibbiMode ? silentChibbi : chibbiGif}
-                    alt="Chibbi"
-                    className="size-28 cursor-pointer"
-                    onClick={() => {
-                        setSilentChibbiMode((prev) => !prev);
-                    }}
-                />
+                <button className="size-28 cursor-pointer"
+                    onClick={toggleChat}
+                    aria-label="Toggle Chat"
+                >
+                    {isOpen ? 'Ⓧ' : '💬'}
+                </button>
             </div>
         </div >
     );
