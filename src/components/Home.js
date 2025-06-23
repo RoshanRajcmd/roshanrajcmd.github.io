@@ -91,16 +91,23 @@ const Home = () => {
             <audio ref={audioRef} loop src={musicFile} />
 
             <main className="pt-24 container mx-auto px-2 sm:px-8">
-                {sections.map((sec) => {
+                {sections.map((sec, idx) => {
                     const SectionComponent = sectionComponents[sec];
                     return (
-                        <section
-                            key={sec}
-                            ref={(el) => (sectionRefs.current[sec] = el)}
-                            className="flex flex-col"
-                        >
-                            <SectionComponent />
-                        </section>
+                        <React.Fragment key={sec}>
+                            {idx !== 0 && (
+                                <>
+                                    <hr className="my-12 border-t-2 border-gray-300 dark:border-gray-700" />
+                                    <div className="mb-8" />
+                                </>
+                            )}
+                            <section
+                                ref={(el) => (sectionRefs.current[sec] = el)}
+                                className="flex flex-col"
+                            >
+                                <SectionComponent />
+                            </section>
+                        </React.Fragment>
                     );
                 })}
             </main >

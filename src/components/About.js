@@ -24,40 +24,40 @@ const About = () => (
                 </div>
                 <h2 className=" text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About Me</h2>
                 <p className=" text-base font-normal leading-normal pb-3 pt-1 px-4">
-                    I am a software developer with 53 years of experience in building web and mobile applications. I specialize in full-stack development and have a strong understanding
+                    I am a software developer with 3+ years of experience in building web and mobile applications. I specialize in full-stack development and have a strong understanding
                     of software engineering principles. My goal is to create impactful and user-friendly applications that solve real-world problems.
                 </p>
-                <h2 className="  text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Skills</h2>
+                <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Skills</h2>
                 <div className="flex gap-3 p-3 flex-wrap pr-4">
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">Java</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">Java</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">SpringBoot</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">SpringBoot</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">React.js</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">React.js</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">Python</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">Python</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">Django</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">Django</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">Docker</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">Docker</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">AWS</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">AWS</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">SQL</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">SQL</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">Git</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">Git</p>
                     </div>
-                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg   pl-4 pr-4">
-                        <p className="  text-sm font-medium leading-normal">REST APIs</p>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">REST APIs</p>
                     </div>
                 </div>
             </div>
