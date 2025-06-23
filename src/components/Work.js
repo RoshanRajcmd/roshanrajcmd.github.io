@@ -8,17 +8,17 @@ const Work = () => {
             <h2 className="text-4xl font-bold mb-4">Work</h2>
             <p>Content for Work section goes here...</p>
         </div>
-        <h2 className="text-[#141414] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Projects</h2>
+        <h2 className="  text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Projects</h2>
         <div className="p-4">
             <div className="flex items-stretch justify-between gap-4 rounded-lg">
                 <div className="flex flex-[2_2_0px] flex-col gap-4">
                     <div className="flex flex-col gap-1">
                         <p className="text-neutral-500 text-sm font-normal leading-normal">Featured Project</p>
-                        <p className="text-[#141414] text-base font-bold leading-tight">E-commerce Platform</p>
+                        <p className="  text-base font-bold leading-tight">E-commerce Platform</p>
                         <p className="text-neutral-500 text-sm font-normal leading-normal">A full-featured e-commerce platform built with React, Node.js, and a SQL database.</p>
                     </div>
                     <button
-                        className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#ededed] text-[#141414] text-sm font-medium leading-normal w-fit"
+                        className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse text-sm font-medium leading-normal w-fit"
                     >
                         <span className="truncate">View Project</span>
                     </button>
@@ -33,11 +33,11 @@ const Work = () => {
                 <div className="flex flex-[2_2_0px] flex-col gap-4">
                     <div className="flex flex-col gap-1">
                         <p className="text-neutral-500 text-sm font-normal leading-normal">Featured Project</p>
-                        <p className="text-[#141414] text-base font-bold leading-tight">Mobile Task Manager</p>
+                        <p className="  text-base font-bold leading-tight">Mobile Task Manager</p>
                         <p className="text-neutral-500 text-sm font-normal leading-normal">A mobile application for managing tasks and projects, built with React Native.</p>
                     </div>
                     <button
-                        className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#ededed] text-[#141414] text-sm font-medium leading-normal w-fit"
+                        className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse text-sm font-medium leading-normal w-fit"
                     >
                         <span className="truncate">View Project</span>
                     </button>
