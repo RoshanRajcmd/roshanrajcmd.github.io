@@ -105,7 +105,7 @@ const Home = () => {
                                 ref={(el) => (sectionRefs.current[sec] = el)}
                                 className="flex flex-col"
                             >
-                                <SectionComponent />
+                                <SectionComponent darkMode={darkMode} />
                             </section>
                         </React.Fragment>
                     );
