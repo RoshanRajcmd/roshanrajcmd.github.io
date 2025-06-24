@@ -49,7 +49,7 @@ const FAQ = ({ darkMode }) => (
                     answer: "I am fluent in English, Hindi, and Tamil. I also N5 certified in Japanese."
                 },
                 {
-                    question: "Tea or Coffee?",
+                    question: "Chai or Coffee?",
                     answer: "☕️ Coffee :)"
                 }
             ].map((item, idx) => (
