@@ -147,6 +147,11 @@ const Home = () => {
                         </div>
                     </a>
                 </div>
+                <div>
+                    <span className="text-xs text-gray-400">
+                        &copy; {new Date().getFullYear()} Roshan Raj
+                    </span>
+                </div>
             </footer>
 
             <div className="fixed bottom-2 right-2 flex flex-col items-end">
