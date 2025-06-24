@@ -3,7 +3,7 @@ import ProfileImg from '../assets/Profile_1.png';
 
 const About = () => (
     <div>
-        <h2 className="justify-center text-4xl font-bold mb-4">About</h2>
+        <h2 className="justify-center text-4xl font-bold mb-4">About Me</h2>
         <div className="px-40 flex flex-1 justify-center py-5">
             <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
                 <div className="flex p-4 @container">
@@ -22,9 +22,9 @@ const About = () => (
                         </div>
                     </div>
                 </div>
-                <h2 className=" text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About Me</h2>
+                <h2 className=" text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">A Jack of All Trades</h2>
                 <p className=" text-base font-normal leading-normal pb-3 pt-1 px-4">
-                    I am a software developer with 3+ years of experience in building web and mobile applications. I specialize in full-stack development and have a strong understanding
+                    I am a software developer with 3+ years of experience in building web and desktop applications. I specialize in full-stack development and have a strong understanding
                     of software engineering principles. My goal is to create impactful and user-friendly applications that solve real-world problems.
                 </p>
                 <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Skills</h2>
@@ -42,10 +42,10 @@ const About = () => (
                         <p className="text-sm font-medium leading-normal">Python</p>
                     </div>
                     <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
-                        <p className="text-sm font-medium leading-normal">Django</p>
+                        <p className="text-sm font-medium leading-normal">Flask</p>
                     </div>
                     <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
-                        <p className="text-sm font-medium leading-normal">Docker</p>
+                        <p className="text-sm font-medium leading-normal">Docker & K8</p>
                     </div>
                     <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
                         <p className="text-sm font-medium leading-normal">AWS</p>
@@ -58,6 +58,15 @@ const About = () => (
                     </div>
                     <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
                         <p className="text-sm font-medium leading-normal">REST APIs</p>
+                    </div>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">Selenium</p>
+                    </div>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">CI/CD tools</p>
+                    </div>
+                    <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
+                        <p className="text-sm font-medium leading-normal">And more...</p>
                     </div>
                 </div>
             </div>
