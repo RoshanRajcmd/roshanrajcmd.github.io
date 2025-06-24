@@ -29,10 +29,6 @@ const FAQ = ({ darkMode }) => (
                     answer: "I usually respond within 24-48 hours. If you have an urgent request, please mention it in your message."
                 },
                 {
-                    question: "What technologies do you specialize in?",
-                    answer: "I specialize in Java, SpringBoot, React, AWS and modern application development tools. Check out my About Me section for more details."
-                },
-                {
                     question: "Will you be able to work unfamiliar technologies?",
                     answer: "Yes, I see it as an opportunity to learn and adapt to different tech stack. I believe in continuous learning and growth."
                 },
