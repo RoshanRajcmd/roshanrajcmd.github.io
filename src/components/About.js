@@ -75,7 +75,7 @@ const About = () => {
                                 className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414] cursor-pointer"
                                 onClick={() => setShowMore((prev) => !prev)}
                             >
-                                <p className="text-sm font-semibold leading-normal flex items-center gap-1">
+                                <p className="text-sm font-bold leading-normal flex items-center gap-1">
                                     {showMore ? (
                                         <>
                                             Show less <MdExpandLess />
