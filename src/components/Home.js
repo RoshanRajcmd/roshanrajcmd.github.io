@@ -273,22 +273,32 @@ function StarBurst() {
 
 // Add SlotMachine animation component
 function SlotMachine() {
-    const emojis = [
-        '🚀', '💡', '🎨', '🦄', '🔥', '🌟', '💻', '🎵', '📚', '🧠', '🌈', '⚡', '🍀', '🎲', '🧩', '🕹️', '🎉', '🥇', '🛠️', '🧑‍💻'
-    ];
+    const emojis = React.useMemo(() => [
+        '🚀', '💡', '🎨', '🦄', '🔥', '🌟', '💻', '🎵', '📚', '🧠', '⚡', '🍀', '🧩', '🕹️', '🎉', '🥇', '🛠️', '🧑‍💻'
+    ], []);
     const [slots, setSlots] = useState(['', '', '']);
     const [spinning, setSpinning] = useState(true);
+    const [showGift, setShowGift] = useState(false);
+    const [giftStarHover, setGiftStarHover] = useState(false);
+    const clover = '🍀';
+    // Determine if this page load is a 'lucky' one (increase chance: 1 in 2)
+    const luckyPage = React.useMemo(() => Math.floor(Math.random() * 2) === 0, []);
 
     React.useEffect(() => {
         let interval;
         let count = 0;
         setSpinning(true);
         interval = setInterval(() => {
-            setSlots([
-                emojis[Math.floor(Math.random() * emojis.length)],
-                emojis[Math.floor(Math.random() * emojis.length)],
-                emojis[Math.floor(Math.random() * emojis.length)]
-            ]);
+            // If lucky page, force 3 clovers at the end
+            if (count > 15 && luckyPage) {
+                setSlots([clover, clover, clover]);
+            } else {
+                setSlots([
+                    emojis[Math.floor(Math.random() * emojis.length)],
+                    emojis[Math.floor(Math.random() * emojis.length)],
+                    emojis[Math.floor(Math.random() * emojis.length)]
+                ]);
+            }
             count++;
             if (count > 15) { // spin for a short while
                 clearInterval(interval);
@@ -296,19 +306,69 @@ function SlotMachine() {
             }
         }, 80);
         return () => clearInterval(interval);
-    }, []);
+    }, [emojis, luckyPage]);
+
+    React.useEffect(() => {
+        if (slots[0] === clover && slots[1] === clover && slots[2] === clover && !spinning) {
+            setShowGift(true);
+        }
+    }, [slots, spinning]);
 
     return (
-        <div className="mt-8 flex justify-center items-center gap-2">
-            {slots.map((emoji, i) => (
-                <span
-                    key={i}
-                    className={`text-5xl md:text-6xl transition-transform duration-300 ${spinning ? 'animate-spin-slot' : ''}`}
-                    style={{ display: 'inline-block' }}
-                >
-                    {emoji}
-                </span>
-            ))}
+        <div className="flex flex-col items-center">
+            <div className="mt-8 flex justify-center items-center gap-2">
+                {slots.map((emoji, i) => (
+                    <span
+                        key={i}
+                        className={`text-5xl md:text-6xl transition-transform duration-300 ${spinning ? 'animate-spin-slot' : ''}`}
+                        style={{ display: 'inline-block' }}
+                    >
+                        {emoji}
+                    </span>
+                ))}
+            </div>
+            <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center">
+                Try your luck! If you get 3 clovers, a special gift appears. (1 in 5 chance per page load)
+            </div>
+            {showGift && (
+                <div className="mt-6 flex flex-col items-center">
+                    <button
+                        className="relative bg-gradient-to-r from-green-400 to-green-600 text-white px-6 py-3 rounded-xl shadow-lg font-bold text-lg transition-transform duration-200 hover:scale-105 focus:outline-none"
+                        onMouseEnter={() => setGiftStarHover(true)}
+                        onMouseLeave={() => setGiftStarHover(false)}
+                    >
+                        {giftStarHover && <GiftStarBurst />}
+                        🎁 Claim Your Gift
+                    </button>
+                </div>
+            )}
+        </div>
+    );
+}
+
+// Star burst for the gift button
+function GiftStarBurst() {
+    return (
+        <div className="pointer-events-none absolute inset-0 flex justify-center items-center z-10">
+            {[...Array(8)].map((_, i) => {
+                const angle = (i / 8) * 2 * Math.PI;
+                const distance = 40 + Math.random() * 10;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                return (
+                    <span
+                        key={i}
+                        className="absolute text-yellow-300 text-2xl animate-star-burst"
+                        style={{
+                            left: `calc(50% + ${x}px)`,
+                            top: `calc(50% + ${y}px)`,
+                            animationDelay: `${Math.random() * 0.2}s`,
+                        }}
+                    >
+                        ★
+                    </span>
+                );
+            })}
         </div>
     );
 }
