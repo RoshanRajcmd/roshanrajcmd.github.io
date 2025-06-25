@@ -1,12 +1,9 @@
 import React, { useRef, useState } from 'react';
 import musicFile from '../assets/background-music.mp3';
-import { IoIosChatbubbles } from "react-icons/io";
-import { MdOutlineCancel } from "react-icons/md";
 import { FaGithubSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { IoMailUnread } from "react-icons/io5";
 import Navbar from './Navbar';
-import ChatBox from './ChatBox';
 import Work from './Work';
 import About from './About';
 import FAQ from './FAQ';
@@ -18,7 +15,6 @@ const Home = () => {
     const sectionRefs = useRef({});
     const [darkMode, setDarkMode] = useState(false);
     const [musicPlaying, setMusicPlaying] = useState(false);
-    const [isOpen, setIsChatOpen] = useState(false);
     const [showHearts, setShowHearts] = useState(false);
 
     const audioRef = useRef(null);
@@ -52,10 +48,6 @@ const Home = () => {
         }
         setMusicPlaying((prev) => !prev);
     };
-
-    const toggleChat = () => {
-        setIsChatOpen(prev => !prev);
-    }
 
     const handleHeartBurst = () => {
         setShowHearts(true);
@@ -178,18 +170,6 @@ const Home = () => {
                     </span>
                 </div>
             </footer>
-
-            <div className="fixed bottom-2 right-2 flex flex-col items-end">
-                {/* The message bubble on top */}
-                {isOpen && <ChatBox />}
-                {/* The chibbi on bottom */}
-                <button className="size-28 cursor-pointer"
-                    onClick={toggleChat}
-                    aria-label="Toggle Chat"
-                >
-                    {isOpen ? <MdOutlineCancel className="size-10" /> : <IoIosChatbubbles className="size-10" />}
-                </button>
-            </div>
         </div >
     );
 };
