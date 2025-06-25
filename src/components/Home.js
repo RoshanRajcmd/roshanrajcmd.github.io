@@ -3,6 +3,7 @@ import musicFile from '../assets/background-music.mp3';
 import { FaGithubSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { IoMailUnread } from "react-icons/io5";
+import { FaArrowUp } from "react-icons/fa";
 import Navbar from './Navbar';
 import Work from './Work';
 import About from './About';
@@ -126,7 +127,7 @@ const Home = () => {
                                 fontFamily: '"Departure Mono", "JetBrains Mono", "Helena Zhang", monospace'
                             }}
                         >
-                            You could have been anywhere on the internet, yet you're here. Thanks for visiting!
+                            You could have been anywhere on the internet, yet you're here. Thanks for visiting❤️!
                         </p>
                     </button>
                 </div>
@@ -170,6 +171,16 @@ const Home = () => {
                     </span>
                 </div>
             </footer>
+            {/* Scroll to Top Button */}
+            <div className="fixed bottom-8 right-8 z-40">
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className={`rounded-full p-3 shadow-lg shadow-black transition-all duration-300 transform ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-white text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-white'}`}
+                    aria-label="Scroll to top"
+                >
+                    <FaArrowUp className="w-5 h-5" />
+                </button>
+            </div>
         </div >
     );
 };
