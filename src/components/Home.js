@@ -19,8 +19,10 @@ const Home = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [musicPlaying, setMusicPlaying] = useState(false);
     const [isOpen, setIsChatOpen] = useState(false);
+    const [showHearts, setShowHearts] = useState(false);
 
     const audioRef = useRef(null);
+    const heartBtnRef = useRef(null);
 
     const scrollToSection = (section) => {
         const element = sectionRefs.current[section];
@@ -53,6 +55,11 @@ const Home = () => {
 
     const toggleChat = () => {
         setIsChatOpen(prev => !prev);
+    }
+
+    const handleHeartBurst = () => {
+        setShowHearts(true);
+        setTimeout(() => setShowHearts(false), 1200);
     }
 
     // State to track scroll position
@@ -113,7 +120,25 @@ const Home = () => {
             </main >
 
             <footer className="p-8 text-center">
-                <div className="flex justify-center items-center gap-2 text-sm text-gray-500">
+                <HeartBurst show={showHearts} originRef={heartBtnRef} />
+                <div className="flex justify-center">
+                    <button
+                        ref={heartBtnRef}
+                        type="button"
+                        onClick={handleHeartBurst}
+                        className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform active:scale-95 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`}
+                        style={{ position: 'relative', zIndex: 1 }}
+                    >
+                        <p
+                            style={{
+                                fontFamily: '"Departure Mono", "JetBrains Mono", "Helena Zhang", monospace'
+                            }}
+                        >
+                            You could have been anywhere on the internet, yet you're here. Thanks for visiting!
+                        </p>
+                    </button>
+                </div>
+                <div className="flex justify-center items-center gap-2 text-sm text-gray-500 mt-6">
                     Connect with me:
                     <a
                         href="https://github.com/roshanrajcmd"
@@ -168,5 +193,47 @@ const Home = () => {
         </div >
     );
 };
+
+function HeartBurst({ show, originRef }) {
+    const [positions, setPositions] = useState([]);
+    React.useEffect(() => {
+        if (show && originRef?.current) {
+            const rect = originRef.current.getBoundingClientRect();
+            setPositions(
+                Array.from({ length: 18 }).map(() => {
+                    const angle = Math.random() * 2 * Math.PI;
+                    const distance = 80 + Math.random() * 80;
+                    return {
+                        x: rect.left + rect.width / 2 + Math.cos(angle) * 10,
+                        y: rect.top + rect.height / 2 + Math.sin(angle) * 10,
+                        dx: Math.cos(angle) * distance,
+                        dy: Math.sin(angle) * distance,
+                        delay: Math.random() * 0.2,
+                    };
+                })
+            );
+        }
+    }, [show, originRef]);
+    if (!show) return null;
+    return (
+        <>
+            {positions.map((pos, i) => (
+                <span
+                    key={i}
+                    className="fixed text-3xl pointer-events-none animate-heart-burst"
+                    style={{
+                        left: pos.x,
+                        top: pos.y,
+                        '--dx': `${pos.dx}px`,
+                        '--dy': `${pos.dy}px`,
+                        animationDelay: `${pos.delay}s`,
+                    }}
+                >
+                    ❤️
+                </span>
+            ))}
+        </>
+    );
+}
 
 export default Home;
