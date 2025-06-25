@@ -16,7 +16,7 @@ const Work = () => {
                             <p className="text-neutral-500 text-sm font-normal leading-normal">A full-featured e-commerce platform built with React, Node.js, and a SQL database.</p>
                         </div>
                         <button
-                            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse text-sm font-medium leading-normal w-fit bg-[#ededed] text-[#141414]"
+                            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse text-sm font-medium leading-normal w-fit bg-[#ededed] text-[#141414] transition-transform duration-200 hover:-translate-y-1 hover:scale-105 active:scale-95"
                         >
                             <span className="truncate">View Project</span>
                         </button>
@@ -35,7 +35,7 @@ const Work = () => {
                             <p className="text-neutral-500 text-sm font-normal leading-normal">A mobile application for managing tasks and projects, built with React Native.</p>
                         </div>
                         <button
-                            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse text-sm font-medium leading-normal w-fit bg-[#ededed] text-[#141414]"
+                            className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse text-sm font-medium leading-normal w-fit bg-[#ededed] text-[#141414] transition-transform duration-200 hover:-translate-y-1 hover:scale-105 active:scale-95"
                         >
                             <span className="truncate">View Project</span>
                         </button>

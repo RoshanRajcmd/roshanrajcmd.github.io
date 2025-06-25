@@ -72,10 +72,10 @@ const About = () => {
                         {skills.length > initialVisibleCount && (
                             <button
                                 type="button"
-                                className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414] cursor-pointer"
+                                className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414] cursor-pointer transition-transform duration-200 hover:-translate-y-1 hover:scale-105 active:scale-95"
                                 onClick={() => setShowMore((prev) => !prev)}
                             >
-                                <p className="text-sm font-bold leading-normal flex items-center gap-1">
+                                <p className="text-sm font-bold leading-normal flex items-center gap-1 ">
                                     {showMore ? (
                                         <>
                                             Show less <MdExpandLess />

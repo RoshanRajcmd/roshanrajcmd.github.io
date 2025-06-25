@@ -119,7 +119,7 @@ const Home = () => {
                         ref={heartBtnRef}
                         type="button"
                         onClick={handleHeartBurst}
-                        className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform active:scale-95 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`}
+                        className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'} `}
                         style={{ position: 'relative', zIndex: 1 }}
                     >
                         <p
@@ -137,10 +137,10 @@ const Home = () => {
                         href="https://github.com/roshanrajcmd"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0"
+                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
                         aria-label="GitHub"
                     >
-                        <div className={`rounded-md ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="GithubLogo" data-size="20px" data-weight="regular">
+                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="GithubLogo" data-size="20px" data-weight="regular">
                             <FaGithubSquare className="size-8" />
                         </div>
                     </a>
@@ -148,19 +148,19 @@ const Home = () => {
                         href="https://www.linkedin.com/in/roshanraj1999/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0"
+                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
                         aria-label="LinkedIn"
                     >
-                        <div className={`rounded-md ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
+                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
                             <FaLinkedin className="size-8" />
                         </div>
                     </a>
                     <a
                         href="mailto:roshanraj5121999@gmail.com"
-                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0"
+                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
                         aria-label="Email"
                     >
-                        <div className={`rounded-md ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`}>
+                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`}>
                             <IoMailUnread className="size-8" />
                         </div>
                     </a>
@@ -175,7 +175,7 @@ const Home = () => {
             <div className="fixed bottom-8 right-8 z-40">
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className={`rounded-full p-3 shadow-lg shadow-black transition-all duration-300 transform ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-white text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-white'}`}
+                    className={`rounded-full p-3 shadow-lg shadow-black transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-white text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-white'}`}
                     aria-label="Scroll to top"
                 >
                     <FaArrowUp className="w-5 h-5" />
