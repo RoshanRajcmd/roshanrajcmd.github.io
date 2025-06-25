@@ -99,6 +99,7 @@ const Home = () => {
                     </h1>
                     <StarBurst />
                     <SlotMachine />
+                    <Punchline />
                 </section>
                 {/* Sections */}
                 {sections.map((sec, idx) => {
@@ -342,6 +343,23 @@ function SlotMachine() {
                     </button>
                 </div>
             )}
+        </div>
+    );
+}
+
+// Punchline component
+function Punchline() {
+    const punchlines = [
+        "Turning ideas into 'heck yes!' moments.",
+        "Crafting 0 → 1 journeys that feel like magic",
+        "Building products that spark joy and drop jaws.",
+        "Designing experiences that whisper ‘whoa’ and shout ‘wow!’ ",
+        "Engineer of ‘Aha!’ moments. <3"
+    ];
+    const [line] = React.useState(() => punchlines[Math.floor(Math.random() * punchlines.length)]);
+    return (
+        <div className="mt-10 text-lg md:text-xl text-center font-semibold italic text-indigo-500 dark:text-indigo-300 select-none">
+            {line}
         </div>
     );
 }
