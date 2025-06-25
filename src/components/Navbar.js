@@ -13,11 +13,11 @@ const Navbar = ({
     sections,
     scrollToSection,
 }) => (
-    <nav className="fixed w-full top-2 sm:top-4 md:top-7 inset-x-0 z-50">
+    <nav className="fixed w-full top-2 sm:top-4 md:top-7 inset-x-0 z-50 flex justify-center">
         <div
             id="navbar"
             className={`
-                flex flex-wrap flex-row sm:flex-row items-center justify-between
+                flex flex-row items-center justify-between w-full
                 mx-auto rounded-full bg-opacity-80 backdrop-blur shadow-lg 
                 transition-all duration-300 py-2 bg-transparent
                 min-w-0
@@ -33,7 +33,7 @@ const Navbar = ({
             </div>
 
             {/* Sections */}
-            <div className="flex flex-wrap justify-center flex-1 gap-2 sm:gap-6 mb-2 sm:mb-0 min-w-0">
+            <div className="flex flex-1 flex-wrap justify-center items-center gap-2 sm:gap-6 mb-2 sm:mb-0 min-w-0">
                 {sections.map((sec) => (
                     <button
                         className="bg-transparent px-2 sm:px-4 rounded-full transition-shadow duration-300 hover:shadow-[0_0_20px_5px_rgba(230,190,10,0.8)] text-base sm:text-xl"

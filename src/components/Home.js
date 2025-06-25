@@ -91,6 +91,16 @@ const Home = () => {
             <audio ref={audioRef} loop src={musicFile} />
 
             <main className="pt-24 container mx-auto px-2 sm:px-8">
+                {/* Hero Section */}
+                <section className="relative flex flex-col items-center justify-center w-full" style={{ minHeight: '66vh' }}>
+                    <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-extrabold text-center leading-tight tracking-tight select-none">
+                        Hi I'm.
+                        <br />Roshan Raj.
+                    </h1>
+                    <StarBurst />
+                    <SlotMachine />
+                </section>
+                {/* Sections */}
                 {sections.map((sec, idx) => {
                     const SectionComponent = sectionComponents[sec];
                     return (
@@ -224,6 +234,82 @@ function HeartBurst({ show, originRef }) {
                 </span>
             ))}
         </>
+    );
+}
+
+// Add StarBurst animation component
+function StarBurst() {
+    const [show, setShow] = useState(true);
+    React.useEffect(() => {
+        setShow(true);
+        const timeout = setTimeout(() => setShow(false), 1200);
+        return () => clearTimeout(timeout);
+    }, []);
+    if (!show) return null;
+    return (
+        <div className="pointer-events-none absolute inset-0 flex justify-center items-center z-10">
+            {[...Array(8)].map((_, i) => {
+                const angle = (i / 8) * 2 * Math.PI;
+                const distance = 180 + Math.random() * 40;
+                const x = Math.cos(angle) * distance;
+                const y = Math.sin(angle) * distance;
+                return (
+                    <span
+                        key={i}
+                        className="absolute text-yellow-300 text-4xl animate-star-burst"
+                        style={{
+                            left: `calc(50% + ${x}px)`,
+                            top: `calc(50% + ${y}px)`,
+                            animationDelay: `${Math.random() * 0.2}s`,
+                        }}
+                    >
+                        ★
+                    </span>
+                );
+            })}
+        </div>
+    );
+}
+
+// Add SlotMachine animation component
+function SlotMachine() {
+    const emojis = [
+        '🚀', '💡', '🎨', '🦄', '🔥', '🌟', '💻', '🎵', '📚', '🧠', '🌈', '⚡', '🍀', '🎲', '🧩', '🕹️', '🎉', '🥇', '🛠️', '🧑‍💻'
+    ];
+    const [slots, setSlots] = useState(['', '', '']);
+    const [spinning, setSpinning] = useState(true);
+
+    React.useEffect(() => {
+        let interval;
+        let count = 0;
+        setSpinning(true);
+        interval = setInterval(() => {
+            setSlots([
+                emojis[Math.floor(Math.random() * emojis.length)],
+                emojis[Math.floor(Math.random() * emojis.length)],
+                emojis[Math.floor(Math.random() * emojis.length)]
+            ]);
+            count++;
+            if (count > 15) { // spin for a short while
+                clearInterval(interval);
+                setSpinning(false);
+            }
+        }, 80);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="mt-8 flex justify-center items-center gap-2">
+            {slots.map((emoji, i) => (
+                <span
+                    key={i}
+                    className={`text-5xl md:text-6xl transition-transform duration-300 ${spinning ? 'animate-spin-slot' : ''}`}
+                    style={{ display: 'inline-block' }}
+                >
+                    {emoji}
+                </span>
+            ))}
+        </div>
     );
 }
 
