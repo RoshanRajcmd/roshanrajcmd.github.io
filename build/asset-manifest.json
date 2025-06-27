@@ -1,20 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.0fa479c5.css",
-    "main.js": "/static/js/main.0734d1fb.js",
+    "main.css": "/static/css/main.922b33a0.css",
+    "main.js": "/static/js/main.7073c302.js",
     "static/js/453.01f0a10c.chunk.js": "/static/js/453.01f0a10c.chunk.js",
-    "static/media/background-music.mp3": "/static/media/background-music.e9bcf4e550c5c89ca556.mp3",
     "static/media/Profile_1.png": "/static/media/Profile_1.c38ff544ec01a19d953e.png",
-    "static/media/Project1.png": "/static/media/Project1.29ab81aa7feab8ee1861.png",
-    "static/media/Project2.png": "/static/media/Project2.8fd580c68a38e0c4862d.png",
+    "static/media/Project5.png": "/static/media/Project5.643b9c4205342669958a.png",
+    "static/media/Project3.png": "/static/media/Project3.015f1529a69e3e6ab449.png",
+    "static/media/Project4.png": "/static/media/Project4.0267fd92e04423e35798.png",
     "static/media/resume.pdf": "/static/media/resume.d7c6cbd689a2cfae3449.pdf",
+    "static/media/Loading.png": "/static/media/Loading.162dfa791d7a46fd9468.png",
+    "static/media/Project2.jpg": "/static/media/Project2.35d2da02b24ab4c112f5.jpg",
+    "static/media/pop-up.mp3": "/static/media/pop-up.9b0b9c178e9569768dc1.mp3",
+    "static/media/drop_click.mp3": "/static/media/drop_click.e0055c353a3c44f4e020.mp3",
+    "static/media/double_popup.mp3": "/static/media/double_popup.126e139c4fbe0b87f136.mp3",
+    "static/media/paper-close.mov": "/static/media/paper-close.92535c3dff1730c3dbca.mov",
     "index.html": "/index.html",
-    "main.0fa479c5.css.map": "/static/css/main.0fa479c5.css.map",
-    "main.0734d1fb.js.map": "/static/js/main.0734d1fb.js.map",
+    "main.922b33a0.css.map": "/static/css/main.922b33a0.css.map",
+    "main.7073c302.js.map": "/static/js/main.7073c302.js.map",
     "453.01f0a10c.chunk.js.map": "/static/js/453.01f0a10c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0fa479c5.css",
-    "static/js/main.0734d1fb.js"
+    "static/css/main.922b33a0.css",
+    "static/js/main.7073c302.js"
   ]
 }
