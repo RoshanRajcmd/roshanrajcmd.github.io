@@ -1,7 +1,8 @@
 import ProfileImg from '../assets/Profile_1.png';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MdExpandLess } from "react-icons/md";
 import { MdExpandMore } from "react-icons/md";
+import doublePopup from '../assets/pop-up.mp3';
 
 const skills = [
     "Java",
@@ -33,11 +34,20 @@ const initialVisibleCount = 12;
 
 const About = () => {
     const [showMore, setShowMore] = useState(false);
-
+    const audioRef = useRef(null);
     const visibleSkills = showMore ? skills : skills.slice(0, initialVisibleCount);
+
+    const handleShowMore = () => {
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play();
+        }
+        setShowMore((prev) => !prev);
+    };
 
     return (
         <div>
+            <audio ref={audioRef} src={doublePopup} preload="auto" />
             <h2 className="justify-center text-4xl font-bold mb-4">About Me</h2>
             <div className="px-40 flex flex-1 justify-center py-5">
                 <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
@@ -73,7 +83,7 @@ const About = () => {
                             <button
                                 type="button"
                                 className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414] cursor-pointer transition-transform duration-200 hover:-translate-y-1 hover:scale-105 active:scale-95"
-                                onClick={() => setShowMore((prev) => !prev)}
+                                onClick={handleShowMore}
                             >
                                 <p className="text-sm font-bold leading-normal flex items-center gap-1 ">
                                     {showMore ? (

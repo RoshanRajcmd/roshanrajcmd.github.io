@@ -1,15 +1,24 @@
 import React, { useState, useRef } from 'react';
 import { MdExpandLess } from "react-icons/md";
 import { MdExpandMore } from "react-icons/md";
+import paperClose from '../assets/paper-close.mov';
 
 const Dropdown = ({ question, answer, darkMode }) => {
     const [open, setOpen] = useState(false);
     const contentRef = useRef(null);
+    const closeAudioRef = useRef(null);
+
+    const handleToggle = () => {
+        closeAudioRef.current && closeAudioRef.current.play();
+        setOpen((prev) => !prev);
+    };
+
     return (
         <div className="mb-4 rounded-lg overflow-hidden shadow">
+            <audio ref={closeAudioRef} src={paperClose} preload="auto" />
             <button
                 className={`w-full text-left px-4 py-3 font-semibold focus:outline-none flex justify-between items-center ${darkMode ? 'bg-gray-700' : 'bg-gray-100'}`}
-                onClick={() => setOpen((prev) => !prev)}
+                onClick={handleToggle}
             >
                 <span>{question}</span>
                 <span>{open ? <MdExpandLess /> : <MdExpandMore />}</span>

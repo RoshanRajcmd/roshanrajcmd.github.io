@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Project1 from '../assets/Project1.png';
 import Project2 from '../assets/Project2.jpg';
 import Project3 from '../assets/Project3.png';
 import Project4 from '../assets/Project4.png';

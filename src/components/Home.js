@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import musicFile from '../assets/background-music.mp3';
 import { FaGithubSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { IoMailUnread } from "react-icons/io5";
@@ -8,6 +7,7 @@ import Navbar from './Navbar';
 import Work from './Work';
 import About from './About';
 import FAQ from './FAQ';
+import doublePopup from '../assets/double_popup.mp3';
 
 const sections = ['Work', 'About', 'FAQ'];
 const BLOG_URL = 'https://medium.com/@roshanrajpersonal55';
@@ -19,11 +19,9 @@ const EMAIL_URL = "mailto:roshanraj5121999@gmail.com";
 const Home = () => {
     const sectionRefs = useRef({});
     const [darkMode, setDarkMode] = useState(false);
-    const [musicPlaying, setMusicPlaying] = useState(false);
     const [showHearts, setShowHearts] = useState(false);
-
-    const audioRef = useRef(null);
     const heartBtnRef = useRef(null);
+    const audioRef = useRef(null);
 
     const scrollToSection = (section) => {
         const element = sectionRefs.current[section];
@@ -42,19 +40,11 @@ const Home = () => {
         setDarkMode((prev) => !prev);
     };
 
-    const toggleMusic = () => {
-        const audio = audioRef.current;
-        if (!audio) return;
-
-        if (musicPlaying) {
-            audio.pause();
-        } else {
-            audio.play().catch(() => { });
-        }
-        setMusicPlaying((prev) => !prev);
-    };
-
     const handleHeartBurst = () => {
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play();
+        }
         setShowHearts(true);
         setTimeout(() => setShowHearts(false), 1200);
     }
@@ -86,14 +76,11 @@ const Home = () => {
             <Navbar
                 darkMode={darkMode}
                 scrolled={scrolled}
-                musicPlaying={musicPlaying}
-                toggleMusic={toggleMusic}
                 toggleTheme={toggleTheme}
                 sections={sections}
                 scrollToSection={scrollToSection}
                 blogLink={BLOG_URL}
             />
-            <audio ref={audioRef} loop src={musicFile} />
 
             <main className="pt-24 container mx-auto px-2 sm:px-8">
                 {/* Hero Section */}
@@ -129,6 +116,7 @@ const Home = () => {
             </main >
 
             <footer className="p-8 text-center">
+                <audio ref={audioRef} src={doublePopup} preload="auto" />
                 <HeartBurst show={showHearts} originRef={heartBtnRef} />
                 <div className="flex justify-center">
                     <button
