@@ -1,10 +1,15 @@
+import React, { useState } from 'react';
 import Project1 from '../assets/Project1.png';
 import Project2 from '../assets/Project2.png';
 import Project3 from '../assets/Project3.png';
 import Project4 from '../assets/Project4.png';
 import Project5 from '../assets/Project5.png';
 
-
+// Utility to get a random contrasting color
+function getRandomContrastColor() {
+    const colors = ['#FFB300', '#FF7043', '#66BB6A', '#29B6F6', '#FFD600', '#FF4081', '#C62828', '#00838F', '#AB47BC'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
 
 const Work = ({ darkMode }) => {
     const projects = [
@@ -55,6 +60,17 @@ const Work = ({ darkMode }) => {
             url: "https://github.com/RoshanRajcmd/py-browser",
         },
     ];
+    const [hoveredIdx, setHoveredIdx] = useState(null);
+    const [tagBgColors, setTagBgColors] = useState({});
+
+    const handleMouseEnter = (idx) => {
+        setHoveredIdx(idx);
+        setTagBgColors((prev) => ({
+            ...prev,
+            [idx]: getRandomContrastColor()
+        }));
+    };
+    const handleMouseLeave = () => setHoveredIdx(null);
 
     return (
         <div className="pt-16">
@@ -105,6 +121,8 @@ const Work = ({ darkMode }) => {
                         key={idx}
                         className={`rounded-2xl overflow-hidden shadow-md flex flex-col cursor-pointer transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ededed]'}`}
                         onClick={() => window.open(item.url, '_blank', 'noopener,noreferrer')}
+                        onMouseEnter={() => handleMouseEnter(idx)}
+                        onMouseLeave={handleMouseLeave}
                     >
                         <div className={`w-full flex items-center justify-center aspect-video relative p-2 ${darkMode ? 'bg-[#ededed]' : 'bg-[#141414]'}`}>
                             <img
@@ -113,7 +131,10 @@ const Work = ({ darkMode }) => {
                                 className={`w-full h-full object-cover rounded-lg`}
                             />
                             <div className="absolute top-8 left-8">
-                                <span className={`inline-block text-xs font-thin rounded-full px-3 py-1 ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ededed]'}`}>
+                                <span
+                                    className={`inline-block text-xs font-thin rounded-full px-3 py-1 transition-colors duration-300 ${darkMode ? 'text-[#141414]' : 'text-[#ededed]'}`}
+                                    style={{ backgroundColor: hoveredIdx === idx ? tagBgColors[idx] : (darkMode ? '#ededed' : '#141414') }}
+                                >
                                     {item.tag}
                                 </span>
                             </div>
