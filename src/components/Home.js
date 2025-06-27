@@ -333,14 +333,21 @@ function SlotMachine() {
             </div>
             {showGift && (
                 <div className="mt-6 flex flex-col items-center">
-                    <button
-                        className="relative bg-gradient-to-r from-green-400 to-green-600 text-[#ffffff] px-6 py-3 rounded-xl shadow-lg font-bold text-lg transition-transform duration-200 hover:scale-105 focus:outline-none"
-                        onMouseEnter={() => setGiftStarHover(true)}
-                        onMouseLeave={() => setGiftStarHover(false)}
-                    >
-                        {giftStarHover && <GiftStarBurst />}
-                        🎁 Claim Your Gift
-                    </button>
+                    <div className="relative group">
+                        <a
+                            href="/cute_stickers_ifound_in_internet.zip"
+                            download
+                            className="relative bg-gradient-to-r from-green-400 to-green-600 text-[#ffffff] px-6 py-3 rounded-xl shadow-lg font-bold text-lg transition-transform duration-200 hover:scale-105 focus:outline-none flex items-center justify-center"
+                            onMouseEnter={() => setGiftStarHover(true)}
+                            onMouseLeave={() => setGiftStarHover(false)}
+                        >
+                            {giftStarHover && <GiftStarBurst />}
+                            🎁 Claim Your Gift
+                        </a>
+                        <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-2 rounded bg-black text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                            You got some free cute sticker
+                        </span>
+                    </div>
                 </div>
             )}
         </div>
