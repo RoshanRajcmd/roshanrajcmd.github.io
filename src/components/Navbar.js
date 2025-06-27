@@ -8,6 +8,7 @@ import muteMusic from '../assets/drop_click.mp3';
 const Navbar = ({
     darkMode,
     scrolled,
+    toggleTheme,
     sections,
     scrollToSection,
     blogLink,
@@ -69,7 +70,7 @@ const Navbar = ({
                     <button onClick={() => { setSoundOn((prev) => !prev); playSoundEffect('sound'); }}>
                         {soundOn ? <FaVolumeUp className="w-5 h-5" /> : <FaVolumeMute className="w-5 h-5" />}
                     </button>
-                    <button onClick={() => { playSoundEffect('theme'); }}>
+                    <button onClick={() => { toggleTheme() }}>
                         {darkMode ? <IoIosSunny className="w-5 h-5" /> : <IoMdMoon className="w-5 h-5" />}
                     </button>
                 </div>
