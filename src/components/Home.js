@@ -10,6 +10,10 @@ import About from './About';
 import FAQ from './FAQ';
 
 const sections = ['Work', 'About', 'FAQ'];
+const BLOG_URL = 'https://medium.com/@roshanrajpersonal55';
+const GITHUB_URL = "https://github.com/roshanrajcmd";
+const LINKEDIN_URL = "https://www.linkedin.com/in/roshanraj1999/";
+const EMAIL_URL = "mailto:roshanraj5121999@gmail.com";
 
 
 const Home = () => {
@@ -87,6 +91,7 @@ const Home = () => {
                 toggleTheme={toggleTheme}
                 sections={sections}
                 scrollToSection={scrollToSection}
+                blogLink={BLOG_URL}
             />
             <audio ref={audioRef} loop src={musicFile} />
 
@@ -145,7 +150,7 @@ const Home = () => {
                 <div className="flex justify-center items-center gap-2 text-sm text-gray-500 mt-6">
                     Connect with me:
                     <a
-                        href="https://github.com/roshanrajcmd"
+                        href={GITHUB_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
@@ -156,7 +161,7 @@ const Home = () => {
                         </div>
                     </a>
                     <a
-                        href="https://www.linkedin.com/in/roshanraj1999/"
+                        href={LINKEDIN_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
@@ -167,7 +172,7 @@ const Home = () => {
                         </div>
                     </a>
                     <a
-                        href="mailto:roshanraj5121999@gmail.com"
+                        href={EMAIL_URL}
                         className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
                         aria-label="Email"
                     >

@@ -12,6 +12,7 @@ const Navbar = ({
     toggleTheme,
     sections,
     scrollToSection,
+    blogLink,
 }) => (
     <nav className="fixed w-full top-2 sm:top-4 md:top-7 inset-x-0 z-50 flex justify-center">
         <div
@@ -32,7 +33,7 @@ const Navbar = ({
                 </a>
             </div>
 
-            {/* Sections */}
+            {/* Sections*/}
             <div className="flex flex-1 flex-wrap justify-center items-center gap-2 sm:gap-6 mb-2 sm:mb-0 min-w-0">
                 {sections.map((sec) => (
                     <button
@@ -43,6 +44,15 @@ const Navbar = ({
                         {sec}
                     </button>
                 ))}
+                {/* Blog section - will be implemented later once i wrote some posts */}
+                {/* <a
+                    href={blogLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-transparent px-2 sm:px-4 rounded-full transition-shadow duration-300 hover:shadow-[0_0_20px_5px_rgba(230,190,10,0.8)] text-base sm:text-xl"
+                >
+                    Blog
+                </a> */}
             </div>
 
             <div className="flex flex-row space-x-2 sm:space-x-4 items-center">
