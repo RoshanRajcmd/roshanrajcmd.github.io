@@ -4,6 +4,7 @@ import Project2 from '../assets/Project2.png';
 import Project3 from '../assets/Project3.png';
 import Project4 from '../assets/Project4.png';
 import Project5 from '../assets/Project5.png';
+import LoadingImage from '../assets/Loading.png';
 
 // Utility to get a random contrasting color
 function getRandomContrastColor() {
@@ -37,10 +38,10 @@ const Work = ({ darkMode }) => {
             url: "https://github.com/RoshanRajcmd/ecom-web-app",
         },
         {
-            tag: "Fashion",
-            title: "Book Reading Web App",
+            tag: "Analytics",
+            title: "Tweezy",
             subtitle:
-                "A web application that allows users to track and manage their book readings.",
+                "A Python-based application that collects tweets, analyzes their sentiment.",
             image: Project4,
             url: "https://github.com/RoshanRajcmd/myreads-web-app",
         },
@@ -48,7 +49,7 @@ const Work = ({ darkMode }) => {
             tag: "Lifestyle",
             title: "E-commerce Platform",
             subtitle: "A full-featured e-commerce platform built with React, Node.js, and a SQL database.",
-            image: Project3,
+            image: LoadingImage,
             url: "https://github.com/RoshanRajcmd/ecom-web-app",
         },
         {
@@ -56,7 +57,7 @@ const Work = ({ darkMode }) => {
             title: "Custom Web Browser for Desktop",
             subtitle:
                 "A custom web browser built with Python and PyQt, featuring a sleek design and essential functionalities.",
-            image: Project5,
+            image: LoadingImage,
             url: "https://github.com/RoshanRajcmd/py-browser",
         },
     ];
