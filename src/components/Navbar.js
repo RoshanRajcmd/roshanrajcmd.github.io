@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { IoMdDownload } from "react-icons/io";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { IoIosSunny, IoMdMoon } from "react-icons/io";
@@ -11,16 +11,16 @@ const Navbar = ({
     sections,
     scrollToSection,
     blogLink,
+    soundOn,
+    setSoundOn
 }) => {
-
     const soundRef = useRef(null);
-    const [soundOn, setSoundOn] = useState(false);
-    const playSoundEffect = () => {
-        if (soundRef.current) {
+    // Play sound only if soundOn is true, except for the sound toggle itself
+    const playSoundEffect = (type) => {
+        if ((type === 'theme' && soundOn && soundRef.current) || (type === 'sound' && soundRef.current)) {
             soundRef.current.currentTime = 0;
             soundRef.current.play();
         }
-        setSoundOn((prev) => !prev);
     };
     return (
         <nav className="fixed w-full top-2 sm:top-4 md:top-7 inset-x-0 z-50 flex justify-center">
@@ -66,10 +66,10 @@ const Navbar = ({
                 </div>
 
                 <div className="flex flex-row space-x-2 sm:space-x-4 items-center">
-                    <button onClick={playSoundEffect}>
+                    <button onClick={() => { setSoundOn((prev) => !prev); playSoundEffect('sound'); }}>
                         {soundOn ? <FaVolumeUp className="w-5 h-5" /> : <FaVolumeMute className="w-5 h-5" />}
                     </button>
-                    <button onClick={playSoundEffect}>
+                    <button onClick={() => { playSoundEffect('theme'); }}>
                         {darkMode ? <IoIosSunny className="w-5 h-5" /> : <IoMdMoon className="w-5 h-5" />}
                     </button>
                 </div>

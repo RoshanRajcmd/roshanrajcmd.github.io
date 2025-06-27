@@ -3,13 +3,16 @@ import { MdExpandLess } from "react-icons/md";
 import { MdExpandMore } from "react-icons/md";
 import paperClose from '../assets/paper-close.mov';
 
-const Dropdown = ({ question, answer, darkMode }) => {
+const Dropdown = ({ question, answer, darkMode, soundOn }) => {
     const [open, setOpen] = useState(false);
     const contentRef = useRef(null);
     const closeAudioRef = useRef(null);
 
     const handleToggle = () => {
-        closeAudioRef.current && closeAudioRef.current.play();
+        if (soundOn && closeAudioRef.current) {
+            closeAudioRef.current.currentTime = 0;
+            closeAudioRef.current.play();
+        }
         setOpen((prev) => !prev);
     };
 

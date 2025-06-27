@@ -32,13 +32,13 @@ const skills = [
 
 const initialVisibleCount = 12;
 
-const About = () => {
+const About = ({ soundOn, darkMode }) => {
     const [showMore, setShowMore] = useState(false);
     const audioRef = useRef(null);
     const visibleSkills = showMore ? skills : skills.slice(0, initialVisibleCount);
 
     const handleShowMore = () => {
-        if (audioRef.current) {
+        if (soundOn && audioRef.current) {
             audioRef.current.currentTime = 0;
             audioRef.current.play();
         }

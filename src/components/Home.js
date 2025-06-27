@@ -22,6 +22,7 @@ const Home = () => {
     const [showHearts, setShowHearts] = useState(false);
     const heartBtnRef = useRef(null);
     const audioRef = useRef(null);
+    const [soundOn, setSoundOn] = useState(true);
 
     const scrollToSection = (section) => {
         const element = sectionRefs.current[section];
@@ -41,7 +42,7 @@ const Home = () => {
     };
 
     const handleHeartBurst = () => {
-        if (audioRef.current) {
+        if (soundOn && audioRef.current) {
             audioRef.current.currentTime = 0;
             audioRef.current.play();
         }
@@ -67,8 +68,8 @@ const Home = () => {
 
     const sectionComponents = {
         Work,
-        About,
-        FAQ,
+        About: (props) => <About {...props} soundOn={soundOn} />, // ensure soundOn is always passed
+        FAQ: (props) => <FAQ {...props} soundOn={soundOn} />,
     };
 
     return (
@@ -80,6 +81,8 @@ const Home = () => {
                 sections={sections}
                 scrollToSection={scrollToSection}
                 blogLink={BLOG_URL}
+                soundOn={soundOn}
+                setSoundOn={setSoundOn}
             />
 
             <main className="pt-24 container mx-auto px-2 sm:px-8">

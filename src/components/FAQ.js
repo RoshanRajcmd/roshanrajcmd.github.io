@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from './Dropdown';
 
-const FAQ = ({ darkMode }) => (
+const FAQ = ({ darkMode, soundOn }) => (
     <div>
         <h2 className="justify-center text-4xl font-bold mb-4">FAQ</h2>
         <div className="max-w-2xl mx-auto mt-8">
@@ -49,7 +49,7 @@ const FAQ = ({ darkMode }) => (
                     answer: "☕️ Coffee :)"
                 }
             ].map((item, idx) => (
-                <Dropdown key={idx} question={item.question} answer={item.answer} darkMode={darkMode} />
+                <Dropdown key={idx} question={item.question} answer={item.answer} darkMode={darkMode} soundOn={soundOn} />
             ))}
         </div>
     </div>
