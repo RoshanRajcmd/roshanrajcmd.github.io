@@ -4,7 +4,7 @@ import { MdExpandLess } from "react-icons/md";
 import { MdExpandMore } from "react-icons/md";
 import { FaQuoteLeft } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import doublePopup from '../assets/pop-up.mp3';
+import doublePopup from '../assets/pop-up.mov';
 import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS, EXPERIENCES } from './Constants';
 
 const About = ({ soundOn, darkMode }) => {

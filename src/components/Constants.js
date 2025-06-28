@@ -107,7 +107,7 @@ export const TESTIMONIALS = [
     },
     {
         text: "Working with Roshan was a pleasure. He brings creativity and dedication to every project.",
-        author: "Saravanan J.",
+        author: "Saravanan",
         role: "Software Developer",
         company: "HCL Technologies"
     },

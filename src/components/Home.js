@@ -264,7 +264,7 @@ function StarBurst() {
 // Add SlotMachine animation component
 function SlotMachine() {
     const emojis = React.useMemo(() => [
-        '🚀', '💡', '🎨', '🦄', '🔥', '🌟', '💻', '🎵', '📚', '🧠', '⚡', '🍀', '🧩', '🕹️', '🎉', '🥇', '🛠️', '🧑‍💻'
+        '🚀', '💡', '🦄', '🔥', '🌟', '💻', '📚', '🧠', '⚡', '🍀', '🧩', '🎉', '🥇', '🛠️', '🧑‍💻'
     ], []);
     const [slots, setSlots] = useState(['', '', '']);
     const [spinning, setSpinning] = useState(true);
