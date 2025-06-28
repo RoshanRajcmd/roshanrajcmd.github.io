@@ -167,7 +167,17 @@ const About = ({ soundOn, darkMode }) => {
                             </div>
                         ))}
                     </div>
-
+                    {/* MyPics Stream Section */}
+                    <div className="w-full py-12 flex flex-col items-center">
+                        <div className="flex flex-row justify-center gap-6 w-full max-w-5xl">
+                            <img src={require('../assets/myPics/myPic6.jpg')} alt="myPic6" className="rounded-lg object-cover" style={{ aspectRatio: '1/1', width: 160 }} />
+                            <img src={require('../assets/myPics/myPic1.jpg')} alt="myPic1" className="rounded-lg object-cover" style={{ aspectRatio: '1/1', width: 220 }} />
+                            <img src={require('../assets/myPics/myPic2.jpg')} alt="myPic2" className="rounded-lg object-cover" style={{ aspectRatio: '4/3', width: 260 }} />
+                            <img src={require('../assets/myPics/myPic3.jpeg')} alt="myPic3" className="rounded-lg object-cover" style={{ aspectRatio: '3/4', width: 200 }} />
+                            <img src={require('../assets/myPics/myPic4.jpeg')} alt="myPic4" className="rounded-lg object-cover" style={{ aspectRatio: '16/9', width: 320 }} />
+                            <img src={require('../assets/myPics/myPic5.jpeg')} alt="myPic5" className="rounded-lg object-cover" style={{ aspectRatio: '9/16', width: 160 }} />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
