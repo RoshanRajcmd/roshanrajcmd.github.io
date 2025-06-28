@@ -103,7 +103,7 @@ export const TESTIMONIALS = [
         text: "Roshan is a highly skilled developer who always delivers quality work on time. His attention to detail and problem-solving skills are exceptional.",
         author: "Sudha Desigan ",
         role: "Team Lead",
-        company: "HCL Technologies"
+        company: "Ford GTBC"
     },
     {
         text: "Working with Roshan was a pleasure. He brings creativity and dedication to every project.",
@@ -115,6 +115,6 @@ export const TESTIMONIALS = [
         text: "Roshan’s technical expertise and collaborative spirit make him an asset to any team.",
         author: "Varun Kumar",
         role: "Software Engineer",
-        company: "Quess Corp Limited"
+        company: "Renault RNTBCI"
     }
 ];
