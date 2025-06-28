@@ -3,8 +3,9 @@ import React, { useState, useRef } from 'react';
 import { MdExpandLess } from "react-icons/md";
 import { MdExpandMore } from "react-icons/md";
 import { FaQuoteLeft } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import doublePopup from '../assets/pop-up.mp3';
-import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS } from './Constants';
+import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS } from './Constants';
 
 const About = ({ soundOn, darkMode }) => {
     const [showMore, setShowMore] = useState(false);
@@ -18,6 +19,41 @@ const About = ({ soundOn, darkMode }) => {
         }
         setShowMore((prev) => !prev);
     };
+
+    // About Me cards for carousel
+    const [aboutIdx, setAboutIdx] = useState(0);
+    const [direction, setDirection] = useState('right'); // for animation
+    const handlePrevAbout = () => {
+        setDirection('left');
+        setAboutIdx((prev) => (prev === 0 ? ABOUT_CARDS.length - 1 : prev - 1));
+    };
+    const handleNextAbout = () => {
+        setDirection('right');
+        setAboutIdx((prev) => (prev === ABOUT_CARDS.length - 1 ? 0 : prev + 1));
+    };
+
+    // Add slide-in animations for About Me card carousel
+    const style = document.createElement('style');
+    style.innerHTML = `
+    @keyframes slide-right {
+      0% { opacity: 0; transform: translateX(60px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slide-left {
+      0% { opacity: 0; transform: translateX(-60px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .animate-slide-right {
+      animation: slide-right 0.5s;
+    }
+    .animate-slide-left {
+      animation: slide-left 0.5s;
+    }
+    `;
+    if (!document.head.querySelector('style[data-about-carousel]')) {
+        style.setAttribute('data-about-carousel', '');
+        document.head.appendChild(style);
+    }
 
     return (
         <div>
@@ -41,11 +77,31 @@ const About = ({ soundOn, darkMode }) => {
                             </div>
                         </div>
                     </div>
-                    <h2 className=" text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10">A Jack of All Trades</h2>
-                    <p className=" text-base font-normal leading-normal pb-3 pt-1 px-4">
-                        I am a software developer with 3+ years of experience in building web and desktop applications. I specialize in full-stack development and have a strong understanding
-                        of software engineering principles. My goal is to create impactful and user-friendly applications that solve real-world problems.
-                    </p>
+                    {/* About Me Card Carousel */}
+                    <div className="flex justify-center items-center w-full px-4 pb-3 pt-10">
+                        <button
+                            aria-label="Previous"
+                            onClick={handlePrevAbout}
+                            className="p-2 rounded-full hover:bg-[#ededed] hover:text-[#141414] transition-colors duration-200"
+                        >
+                            <FaChevronLeft size={22} />
+                        </button>
+                        <div
+                            key={aboutIdx}
+                            className={`mx-6 w-full max-w-4xl flex flex-col items-center transition-transform duration-500 ease-in-out ${direction === 'right' ? 'animate-slide-right' : 'animate-slide-left'}`}
+                            style={{ minHeight: 140 }}
+                        >
+                            <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3">{ABOUT_CARDS[aboutIdx].title}</h2>
+                            <p className="text-base font-normal leading-normal text-center">{ABOUT_CARDS[aboutIdx].description}</p>
+                        </div>
+                        <button
+                            aria-label="Next"
+                            onClick={handleNextAbout}
+                            className="p-2 rounded-full hover:bg-[#ededed] hover:text-[#141414] transition-colors duration-200"
+                        >
+                            <FaChevronRight size={22} />
+                        </button>
+                    </div>
                     <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10">Skills</h2>
                     <div className="flex gap-3 p-3 flex-wrap pr-4">
                         {visibleSkills.map((skill, idx) => (
@@ -85,6 +141,7 @@ const About = ({ soundOn, darkMode }) => {
                             </div>
                         ))}
                     </div>
+
                 </div>
             </div>
         </div>

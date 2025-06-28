@@ -118,3 +118,23 @@ export const TESTIMONIALS = [
         company: "Renault RNTBCI"
     }
 ];
+
+// About Me cards for carousel
+export const ABOUT_CARDS = [
+    {
+        title: "♠️ A Jack of All Trades",
+        description: "I am a software developer with 3+ years of experience in building web and desktop applications. I specialize in full-stack development and have a strong understanding of software engineering principles. My goal is to create impactful and user-friendly applications that solve real-world problems."
+    },
+    {
+        title: "🪓 Clarity Before Code",
+        description: "I believe in sharpening the axe before swinging. That means asking questions, gaining clarity, and learning fast when I don’t know something. My approach ensures I tackle problems with precision, not just speed."
+    },
+    {
+        title: "🤝 Built for Collaboration",
+        description: "I work best in teams where ideas flow freely. From pair programming to cross-functional planning, I thrive in collaborative environments where empathy, communication, and shared ownership lead to stronger outcomes—and stronger teams."
+    },
+    {
+        title: "🧩 Fluent in Tech Transitions",
+        description: "I adapt quickly to new tools, stacks, and project needs. Whether joining an existing codebase or pioneering a greenfield build, I stay flexible—choosing technologies based on context, not comfort. This allows me to contribute meaningfully across varied technical environments."
+    }
+];
