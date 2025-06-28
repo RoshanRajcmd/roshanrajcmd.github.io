@@ -8,6 +8,7 @@ import Work from './Work';
 import About from './About';
 import FAQ from './FAQ';
 import doublePopup from '../assets/double_popup.mp3';
+import mouseClickAudio from '../assets/mouse_click.mov';
 import { GITHUB_URL, LINKEDIN_URL, EMAIL_URL, SECTIONS } from './Constants';
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
     const [showHearts, setShowHearts] = useState(false);
     const heartBtnRef = useRef(null);
     const audioRef = useRef(null);
+    const mouseClickAudioRef = useRef(null);
     const [soundOn, setSoundOn] = useState(true);
 
     const scrollToSection = (section) => {
@@ -66,6 +68,14 @@ const Home = () => {
         FAQ: (props) => <FAQ {...props} soundOn={soundOn} />,
     };
 
+    // Utility: play mouse click sound if soundOn is enabled
+    const playClickSound = () => {
+        if (soundOn && mouseClickAudioRef.current) {
+            mouseClickAudioRef.current.currentTime = 0;
+            mouseClickAudioRef.current.play();
+        }
+    };
+
     return (
         <div className={darkMode ? 'dark bg-[#141414] text-[#ffffff]' : 'bg-[#ffffff]  text-[#141414]'}>
             <Navbar
@@ -104,7 +114,12 @@ const Home = () => {
                                 ref={(el) => (sectionRefs.current[sec] = el)}
                                 className="flex flex-col"
                             >
-                                <SectionComponent darkMode={darkMode} />
+                                {/* Pass playClickSound to Work section only */}
+                                {sec === 'Work' ? (
+                                    <Work darkMode={darkMode} playClickSound={playClickSound} />
+                                ) : (
+                                    <SectionComponent darkMode={darkMode} />
+                                )}
                             </section>
                         </React.Fragment>
                     );
@@ -113,6 +128,7 @@ const Home = () => {
 
             <footer className="p-8 text-center">
                 <audio ref={audioRef} src={doublePopup} preload="auto" />
+                <audio ref={mouseClickAudioRef} src={mouseClickAudio} preload="auto" />
                 <HeartBurst show={showHearts} originRef={heartBtnRef} />
                 <div className="flex justify-center">
                     <button
@@ -139,6 +155,7 @@ const Home = () => {
                         rel="noopener noreferrer"
                         className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
                         aria-label="GitHub"
+                        onClick={playClickSound}
                     >
                         <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="GithubLogo" data-size="20px" data-weight="regular">
                             <FaGithubSquare className="size-8" />
@@ -150,6 +167,7 @@ const Home = () => {
                         rel="noopener noreferrer"
                         className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
                         aria-label="LinkedIn"
+                        onClick={playClickSound}
                     >
                         <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
                             <FaLinkedin className="size-8" />
@@ -159,6 +177,7 @@ const Home = () => {
                         href={EMAIL_URL}
                         className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
                         aria-label="Email"
+                        onClick={playClickSound}
                     >
                         <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`}>
                             <IoMailUnread className="size-8" />

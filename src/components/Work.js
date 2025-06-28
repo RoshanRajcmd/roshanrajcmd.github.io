@@ -7,7 +7,7 @@ function getRandomContrastColor() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
-const Work = ({ darkMode }) => {
+const Work = ({ darkMode, playClickSound }) => {
     const [hoveredIdx, setHoveredIdx] = useState(null);
     const [tagBgColors, setTagBgColors] = useState({});
 
@@ -19,6 +19,11 @@ const Work = ({ darkMode }) => {
         }));
     };
     const handleMouseLeave = () => setHoveredIdx(null);
+
+    const handleProjectClick = (item) => {
+        if (playClickSound) playClickSound();
+        if (item.url) window.open(item.url, '_blank', 'noopener,noreferrer');
+    };
 
     return (
         <div className="pt-16">
@@ -68,7 +73,7 @@ const Work = ({ darkMode }) => {
                     <div
                         key={idx}
                         className={`rounded-2xl overflow-hidden shadow-md flex flex-col transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ededed]'} ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
-                        onClick={() => { if (item.url) window.open(item.url, '_blank', 'noopener,noreferrer'); }}
+                        onClick={() => handleProjectClick(item)}
                         onMouseEnter={() => handleMouseEnter(idx)}
                         onMouseLeave={handleMouseLeave}
                     >
