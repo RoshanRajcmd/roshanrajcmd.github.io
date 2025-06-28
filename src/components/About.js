@@ -5,7 +5,7 @@ import { MdExpandMore } from "react-icons/md";
 import { FaQuoteLeft } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import doublePopup from '../assets/pop-up.mp3';
-import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS } from './Constants';
+import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS, EXPERIENCES } from './Constants';
 
 const About = ({ soundOn, darkMode }) => {
     const [showMore, setShowMore] = useState(false);
@@ -128,6 +128,37 @@ const About = ({ soundOn, darkMode }) => {
                                 </p>
                             </button>
                         )}
+                    </div>
+                    {/* Experience Section (Gantt Chart, stacked lines) */}
+                    <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10">Experience</h2>
+                    <div className={`py-16 px-4 rounded-3xl ${darkMode ? 'bg-[#141414]' : 'bg-[#ffffff]'}`} >
+                        <div className="w-full max-w-7xl mx-auto flex flex-col gap-8">
+                            {EXPERIENCES.map((exp, idx) => {
+                                // Each segment starts where the previous ends
+                                // Calculate left offset based on cumulative periods of previous experiences
+                                const prevPeriods = EXPERIENCES.slice(0, idx).reduce((acc, e) => acc + (e.periods || 0), 0);
+                                const width = `${exp.periods * 120}px`;
+                                const left = `${prevPeriods * 120}px`;
+                                return (
+                                    <div key={idx} className="relative h-fit pb-8 w-full flex items-center">
+                                        <div
+                                            className="absolute bg-[#ededed] text-[#141414] h-8 rounded-full flex items-center justify-between font-bold p-6 w-auto whitespace-nowrap gap-4"
+                                            style={{
+                                                minWidth: 'fit-content',
+                                                left,
+                                                transition: 'left 0.5s, width 0.5s',
+                                            }}
+                                        >
+                                            <div className="flex flex-col w-auto whitespace-nowrap">
+                                                <span className="whitespace-nowrap">{exp.company}</span>
+                                                <span className="text-xs font-semibold whitespace-nowrap">{exp.role}</span>
+                                            </div>
+                                            <span className="ml-4 text-xs font-semibold whitespace-nowrap">{exp.duration}</span>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                     {/* Testimonial Section */}
                     <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-10">Hear from others</h2>
