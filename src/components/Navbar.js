@@ -31,7 +31,7 @@ const Navbar = ({
                 id="navbar"
                 className={`
                     flex flex-row items-center justify-between w-full
-                    mx-auto rounded-full bg-opacity-80 backdrop-blur shadow-lg 
+                    mx-auto rounded-full bg-opacity-80 backdrop-blur-sm shadow-lg 
                     transition-all duration-300 py-2 bg-transparent
                     min-w-0
                     ${scrolled ? 'max-w-3xl md:max-w-4xl lg:max-w-5xl md:px-24 lg:px-40' : 'max-w-full sm:max-w-7xl sm:px-4'}
