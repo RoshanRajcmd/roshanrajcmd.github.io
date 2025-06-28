@@ -4,6 +4,7 @@ import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { IoIosSunny, IoMdMoon } from "react-icons/io";
 import resumeFile from '../assets/resume.pdf';
 import muteMusic from '../assets/drop_click.mp3';
+import { BLOG_URL } from './Constants';
 
 const Navbar = ({
     darkMode,
@@ -11,10 +12,10 @@ const Navbar = ({
     toggleTheme,
     sections,
     scrollToSection,
-    blogLink,
     soundOn,
     setSoundOn
 }) => {
+
     const soundRef = useRef(null);
     // Play sound only if soundOn is true, except for the sound toggle itself
     const playSoundEffect = (type) => {
@@ -57,7 +58,7 @@ const Navbar = ({
                     ))}
                     {/* Blog section - will be implemented later once i wrote some posts */}
                     {/* <a
-                        href={blogLink}
+                        href={BLOG_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-transparent px-2 sm:px-4 rounded-full transition-shadow duration-300 hover:shadow-[0_0_20px_5px_rgba(230,190,10,0.8)] text-base sm:text-xl"

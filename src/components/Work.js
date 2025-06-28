@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import Project2 from '../assets/Project2.jpg';
-import Project3 from '../assets/Project3.png';
-import Project4 from '../assets/Project4.png';
-import Project5 from '../assets/Project5.png';
-import LoadingImage from '../assets/Loading.png';
+import { PROJECTS } from './Constants';
 
 // Utility to get a random contrasting color
 function getRandomContrastColor() {
@@ -12,54 +8,6 @@ function getRandomContrastColor() {
 }
 
 const Work = ({ darkMode }) => {
-    const projects = [
-        {
-            tag: "Lifestyle",
-            title: "Book Reading Web App",
-            subtitle:
-                "A web application that allows users to track and manage their book readings.",
-            image: Project4,
-            url: "https://github.com/RoshanRajcmd/myreads-web-app",
-        },
-        {
-            tag: "Desktop",
-            title: "Custom Web Browser for Desktop",
-            subtitle:
-                "A custom web browser built with Python and PyQt, featuring a sleek design and essential functionalities.",
-            image: Project5,
-            url: "https://github.com/RoshanRajcmd/py-browser",
-        },
-        {
-            tag: "Lifestyle",
-            title: "E-commerce Platform",
-            subtitle: "A full-featured e-commerce platform built with React, Node.js, and a SQL database.",
-            image: Project3,
-            url: "https://github.com/RoshanRajcmd/ecom-web-app",
-        },
-        {
-            tag: "Analytics",
-            title: "Tweezy",
-            subtitle:
-                "A Python-based ML application that collects tweets, analyzes their sentiment.",
-            image: Project2,
-            url: "https://github.com/RoshanRajcmd/myreads-web-app",
-        },
-        {
-            tag: "Desktop",
-            title: "EcoType - Vocal typing tutor",
-            subtitle: "A vocalized typing practice application that helps users improve their typing skills through audio prompts and real-time feedback.",
-            image: LoadingImage,
-            url: "",
-        },
-        {
-            tag: "Fitness",
-            title: "Buffit - Fitness Tracker",
-            subtitle:
-                "A customizable fitness tracking application that helps users monitor their workouts, nutrition, and progress.",
-            image: LoadingImage,
-            url: "",
-        },
-    ];
     const [hoveredIdx, setHoveredIdx] = useState(null);
     const [tagBgColors, setTagBgColors] = useState({});
 
@@ -116,7 +64,7 @@ const Work = ({ darkMode }) => {
             </div> */}
 
             <div className="grid md:grid-cols-3 gap-6">
-                {projects.map((item, idx) => (
+                {PROJECTS.map((item, idx) => (
                     <div
                         key={idx}
                         className={`rounded-2xl overflow-hidden shadow-md flex flex-col transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ededed]'} ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}

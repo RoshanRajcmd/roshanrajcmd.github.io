@@ -8,13 +8,7 @@ import Work from './Work';
 import About from './About';
 import FAQ from './FAQ';
 import doublePopup from '../assets/double_popup.mp3';
-
-const sections = ['Work', 'About', 'FAQ'];
-const BLOG_URL = 'https://medium.com/@roshanrajpersonal55';
-const GITHUB_URL = "https://github.com/roshanrajcmd";
-const LINKEDIN_URL = "https://www.linkedin.com/in/roshanraj1999/";
-const EMAIL_URL = "mailto:roshanraj5121999@gmail.com";
-
+import { GITHUB_URL, LINKEDIN_URL, EMAIL_URL, SECTIONS } from './Constants';
 
 const Home = () => {
     const sectionRefs = useRef({});
@@ -78,9 +72,8 @@ const Home = () => {
                 darkMode={darkMode}
                 scrolled={scrolled}
                 toggleTheme={toggleTheme}
-                sections={sections}
+                sections={SECTIONS}
                 scrollToSection={scrollToSection}
-                blogLink={BLOG_URL}
                 soundOn={soundOn}
                 setSoundOn={setSoundOn}
             />
@@ -97,7 +90,7 @@ const Home = () => {
                     <Punchline />
                 </section>
                 {/* Sections */}
-                {sections.map((sec, idx) => {
+                {SECTIONS.map((sec, idx) => {
                     const SectionComponent = sectionComponents[sec];
                     return (
                         <React.Fragment key={sec}>
