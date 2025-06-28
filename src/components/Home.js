@@ -76,160 +76,131 @@ const Home = () => {
         }
     };
 
-    const [showMobilePrompt, setShowMobilePrompt] = useState(false);
-
-    // Detect mobile device and show prompt
-    React.useEffect(() => {
-        const checkMobile = () => {
-            const isMobile = window.innerWidth < 900 || /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-            setShowMobilePrompt(isMobile);
-        };
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
     return (
-        <>
-            {showMobilePrompt && (
-                <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-70">
-                    <div className="bg-[#ededed] text-[#141414] rounded-2xl shadow-2xl p-8 max-w-xs text-center border-2 animate-pulse">
-                        <h2 className="text-xl font-bold mb-2">Desktop View Recommended</h2>
-                        <p className="text-base mb-4">For the best experience, please open this web application in Desktop view mode.</p>
-                        <button
-                            className="mt-2 px-4 py-2 rounded-lg bg-[#141414] text-[#ffffff] font-semibold hover:bg-[#2c2c2c] transition"
-                            onClick={() => setShowMobilePrompt(false)}
-                        >
-                            Continue Anyway
-                        </button>
-                    </div>
-                </div>
-            )}
-            <div className={darkMode ? 'dark bg-[#141414] text-[#ffffff]' : 'bg-[#ffffff]  text-[#141414]'}>
-                <Navbar
-                    darkMode={darkMode}
-                    scrolled={scrolled}
-                    toggleTheme={toggleTheme}
-                    sections={SECTIONS}
-                    scrollToSection={scrollToSection}
-                    soundOn={soundOn}
-                    setSoundOn={setSoundOn}
-                />
+        <div className={darkMode ? 'dark bg-[#141414] text-[#ffffff]' : 'bg-[#ffffff]  text-[#141414]'}>
+            <Navbar
+                darkMode={darkMode}
+                scrolled={scrolled}
+                toggleTheme={toggleTheme}
+                sections={SECTIONS}
+                scrollToSection={scrollToSection}
+                soundOn={soundOn}
+                setSoundOn={setSoundOn}
+            />
 
-                <main className="pt-24 container mx-auto px-2 sm:px-8">
-                    {/* Hero Section */}
-                    <section className="relative flex flex-col items-center justify-center w-full" style={{ minHeight: '66vh' }}>
-                        <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-extrabold text-center leading-tight tracking-tight select-none">
-                            Hi I'm.
-                            <br />Roshan Raj.
-                        </h1>
-                        <StarBurst />
-                        <SlotMachine />
-                        <Punchline />
-                    </section>
-                    {/* Sections */}
-                    {SECTIONS.map((sec, idx) => {
-                        const SectionComponent = sectionComponents[sec];
-                        return (
-                            <React.Fragment key={sec}>
-                                {idx !== 0 && (
-                                    <>
-                                        <hr className="my-12 border-t-2 border-gray-300 dark:border-gray-700" />
-                                        <div className="mb-8" />
-                                    </>
-                                )}
-                                <section
-                                    ref={(el) => (sectionRefs.current[sec] = el)}
-                                    className="flex flex-col"
-                                >
-                                    {/* Pass playClickSound to Work section only */}
-                                    {sec === 'Work' ? (
-                                        <Work darkMode={darkMode} playClickSound={playClickSound} />
-                                    ) : (
-                                        <SectionComponent darkMode={darkMode} />
-                                    )}
-                                </section>
-                            </React.Fragment>
-                        );
-                    })}
-                </main >
-
-                <footer className="p-8 text-center">
-                    <audio ref={audioRef} src={doublePopup} preload="auto" />
-                    <audio ref={mouseClickAudioRef} src={mouseClickAudio} preload="auto" />
-                    <HeartBurst show={showHearts} originRef={heartBtnRef} />
-                    <div className="flex justify-center">
-                        <button
-                            ref={heartBtnRef}
-                            type="button"
-                            onClick={handleHeartBurst}
-                            className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'} `}
-                            style={{ position: 'relative', zIndex: 1 }}
-                        >
-                            <p
-                                style={{
-                                    fontFamily: '"Departure Mono", "JetBrains Mono", "Helena Zhang", monospace'
-                                }}
+            <main className="pt-24 container mx-auto px-2 sm:px-8">
+                {/* Hero Section */}
+                <section className="relative flex flex-col items-center justify-center w-full" style={{ minHeight: '66vh' }}>
+                    <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-extrabold text-center leading-tight tracking-tight select-none">
+                        Hi I'm.
+                        <br />Roshan Raj.
+                    </h1>
+                    <StarBurst />
+                    <SlotMachine />
+                    <Punchline />
+                </section>
+                {/* Sections */}
+                {SECTIONS.map((sec, idx) => {
+                    const SectionComponent = sectionComponents[sec];
+                    return (
+                        <React.Fragment key={sec}>
+                            {idx !== 0 && (
+                                <>
+                                    <hr className="my-12 border-t-2 border-gray-300 dark:border-gray-700" />
+                                    <div className="mb-8" />
+                                </>
+                            )}
+                            <section
+                                ref={(el) => (sectionRefs.current[sec] = el)}
+                                className="flex flex-col"
                             >
-                                You could have been anywhere on the internet, yet you're here. Thanks for visiting❤️!
-                            </p>
-                        </button>
-                    </div>
-                    <div className="flex justify-center items-center gap-2 text-sm text-gray-500 mt-6">
-                        Connect with me:
-                        <a
-                            href={GITHUB_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
-                            aria-label="GitHub"
-                            onClick={playClickSound}
-                        >
-                            <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="GithubLogo" data-size="20px" data-weight="regular">
-                                <FaGithubSquare className="size-8" />
-                            </div>
-                        </a>
-                        <a
-                            href={LINKEDIN_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
-                            aria-label="LinkedIn"
-                            onClick={playClickSound}
-                        >
-                            <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
-                                <FaLinkedin className="size-8" />
-                            </div>
-                        </a>
-                        <a
-                            href={EMAIL_URL}
-                            className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
-                            aria-label="Email"
-                            onClick={playClickSound}
-                        >
-                            <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`}>
-                                <IoMailUnread className="size-8" />
-                            </div>
-                        </a>
-                    </div>
-                    <div>
-                        <span className="text-xs text-gray-400">
-                            &copy; {new Date().getFullYear()} Roshan Raj
-                        </span>
-                    </div>
-                </footer>
-                {/* Scroll to Top Button */}
-                <div className="fixed bottom-8 right-8 z-40">
+                                {/* Pass playClickSound to Work section only */}
+                                {sec === 'Work' ? (
+                                    <Work darkMode={darkMode} playClickSound={playClickSound} />
+                                ) : (
+                                    <SectionComponent darkMode={darkMode} />
+                                )}
+                            </section>
+                        </React.Fragment>
+                    );
+                })}
+            </main >
+
+            <footer className="p-8 text-center">
+                <audio ref={audioRef} src={doublePopup} preload="auto" />
+                <audio ref={mouseClickAudioRef} src={mouseClickAudio} preload="auto" />
+                <HeartBurst show={showHearts} originRef={heartBtnRef} />
+                <div className="flex justify-center">
                     <button
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        className={`rounded-full p-3 shadow-lg shadow-black transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-[#ffffff] text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-[#ffffff]'}`}
-                        aria-label="Scroll to top"
+                        ref={heartBtnRef}
+                        type="button"
+                        onClick={handleHeartBurst}
+                        className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'} `}
+                        style={{ position: 'relative', zIndex: 1 }}
                     >
-                        <FaArrowUp className="w-5 h-5" />
+                        <p
+                            style={{
+                                fontFamily: '"Departure Mono", "JetBrains Mono", "Helena Zhang", monospace'
+                            }}
+                        >
+                            You could have been anywhere on the internet, yet you're here. Thanks for visiting❤️!
+                        </p>
                     </button>
                 </div>
-            </div >
-        </>
+                <div className="flex justify-center items-center gap-2 text-sm text-gray-500 mt-6">
+                    Connect with me:
+                    <a
+                        href={GITHUB_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
+                        aria-label="GitHub"
+                        onClick={playClickSound}
+                    >
+                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="GithubLogo" data-size="20px" data-weight="regular">
+                            <FaGithubSquare className="size-8" />
+                        </div>
+                    </a>
+                    <a
+                        href={LINKEDIN_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
+                        aria-label="LinkedIn"
+                        onClick={playClickSound}
+                    >
+                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
+                            <FaLinkedin className="size-8" />
+                        </div>
+                    </a>
+                    <a
+                        href={EMAIL_URL}
+                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
+                        aria-label="Email"
+                        onClick={playClickSound}
+                    >
+                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`}>
+                            <IoMailUnread className="size-8" />
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <span className="text-xs text-gray-400">
+                        &copy; {new Date().getFullYear()} Roshan Raj
+                    </span>
+                </div>
+            </footer>
+            {/* Scroll to Top Button */}
+            <div className="fixed bottom-8 right-8 z-40">
+                <button
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    className={`rounded-full p-3 shadow-lg shadow-black transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-[#ffffff] text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-[#ffffff]'}`}
+                    aria-label="Scroll to top"
+                >
+                    <FaArrowUp className="w-5 h-5" />
+                </button>
+            </div>
+        </div >
     );
 };
 
