@@ -41,7 +41,11 @@ const FAQ = ({ darkMode, soundOn }) => (
                     answer: "3D printing, Book reading, gaming, and exploring new technologies are some of my hobbies. I also enjoy contributing to open-source projects in my free time."
                 },
                 {
-                    question: "What other languages you can speek?",
+                    question: "Where are you currently located?",
+                    answer: "📍Chennai, India."
+                },
+                {
+                    question: "What other languages you can speak?",
                     answer: "I am fluent in English, Hindi, and Tamil. I also N5 certified in Japanese."
                 },
                 {
