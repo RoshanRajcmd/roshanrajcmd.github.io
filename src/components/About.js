@@ -131,26 +131,43 @@ const About = ({ soundOn, darkMode }) => {
                     </div>
                     {/* Experience Section (Responsive Timeline) */}
                     <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-10">Experience</h2>
-                    <div className={`flex flex-col gap-3 py-8 rounded-3xl ${darkMode ? 'bg-[#141414]' : 'bg-[#ffffff]'} w-full`}>
-                        <div
-                            className="rounded-full flex flex-col sm:flex-row w-full max-w-[360px] sm:max-w-[600px] bg-[#ededed] text-[#141414] p-4 gap-2 sm:gap-4 relative items-start sm:items-center mx-auto"
-                        >
-                            <div className="flex flex-col pl-2 w-auto whitespace-nowrap">
-                                <span className="font-bold whitespace-nowrap">Quess Corp</span>
-                                <span className="text-xs font-normal whitespace-nowrap">Software Engineer</span>
-                                <span className="text-xs font-normal whitespace-nowrap">Client - Renault RNTBCI</span>
+                    <div className="w-full flex flex-col items-center py-8">
+                        <div className="relative w-full max-w-2xl flex flex-col sm:flex-row items-center sm:items-stretch gap-8 sm:gap-0">
+                            {/* Timeline vertical line */}
+                            <div className="hidden sm:block absolute left-1/2 top-0 h-full w-1 bg-[#ededed] -translate-x-1/2 z-0" aria-hidden="true"></div>
+                            {/* Timeline vertical line for mobile */}
+                            <div className="block sm:hidden absolute left-6 top-0 h-full w-1 bg-[#ededed] z-0" aria-hidden="true"></div>
+                            {/* Experience Items */}
+                            <div className="relative z-10 w-full flex flex-col sm:flex-row items-center sm:justify-between gap-8">
+                                {/* Experience 1 */}
+                                <div className="flex flex-row sm:flex-col items-center sm:items-end w-full sm:w-1/2">
+                                    {/* Dot */}
+                                    <div className="w-4 h-4 rounded-full bg-[#141414] border-4 border-[#ededed] z-10 mb-0 sm:mb-4 mr-4 sm:mr-0"></div>
+                                    <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full shadow-md">
+                                        <span className="font-bold">Quess Corp</span>
+                                        <span className="text-xs font-normal">Software Engineer</span>
+                                        <span className="text-xs font-normal">Client - Renault RNTBCI</span>
+                                        <div className="flex flex-row justify-between items-center mt-2">
+                                            <span className="text-xs font-semibold">2024 - 2025</span>
+                                            <span className="text-neutral-400 font-medium ml-2">8m</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Experience 2 */}
+                                <div className="flex flex-row sm:flex-col items-center sm:items-start w-full sm:w-1/2">
+                                    {/* Dot */}
+                                    <div className="w-4 h-4 rounded-full bg-[#141414] border-4 border-[#ededed] z-10 mb-0 sm:mb-4 mr-4 sm:mr-0"></div>
+                                    <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full shadow-md">
+                                        <span className="font-bold">HCL Technologies</span>
+                                        <span className="text-xs font-normal">Software Developer</span>
+                                        <span className="text-xs font-normal">Client - Ford GTBC</span>
+                                        <div className="flex flex-row justify-between items-center mt-2">
+                                            <span className="text-xs font-semibold">2020 - 2021</span>
+                                            <span className="text-neutral-400 font-medium ml-2">2y 11m</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <span className="sm:absolute right-6 top-1/2 sm:-translate-y-1/2 text-xs font-semibold whitespace-nowrap mt-2 sm:mt-0">2024 - 2025</span>
-                            <span className="ml-0 sm:ml-3 text-neutral-400 font-medium">8m</span>
-                        </div>
-                        <div className="rounded-full flex flex-col sm:flex-row w-full max-w-[360px] sm:max-w-[600px] bg-[#ededed] text-[#141414] p-4 gap-2 sm:gap-4 relative items-start sm:items-center mx-auto">
-                            <div className="flex flex-col pl-2 w-auto whitespace-nowrap">
-                                <span className="font-bold whitespace-nowrap">HCL Technologies</span>
-                                <span className="text-xs font-normal whitespace-nowrap">Software Developer</span>
-                                <span className="text-xs font-normal whitespace-nowrap">Client - Ford GTBC</span>
-                            </div>
-                            <span className="sm:absolute right-6 top-1/2 sm:-translate-y-1/2 text-xs font-semibold whitespace-nowrap mt-2 sm:mt-0">2020 - 2021</span>
-                            <span className="ml-0 sm:ml-24 text-neutral-400 font-medium">2y 11m</span>
                         </div>
                     </div>
                     <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Hear from others</h2>
