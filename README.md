@@ -82,7 +82,7 @@ npm run deploy
 
 This:
 - Builds your React app for production
-- Pushes the `build/` folder to a branch called `gh-pages`
+- Pushes the contents from `build/` folder in your `main` branch to a branch called `gh-pages`
 
 ---
 
@@ -119,7 +119,7 @@ You might be wondering — how can React (a JavaScript framework) be hosted on G
 2. **Build Step**: `npm run build` converts everything into static HTML, CSS, and JS inside the `build/` folder.
 
 3. **`gh-pages` Tool**: This tool:
-   - Pushes the `build/` folder to a new branch `gh-pages`
+   - Pushes the `build/` folder to a new branch `gh-pages` when you run `npm run deploy`.
    - GitHub Pages then serves your app from this branch
 
 ---
