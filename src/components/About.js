@@ -55,6 +55,28 @@ const About = ({ soundOn, darkMode }) => {
         document.head.appendChild(style);
     }
 
+    // For consistent marquee speed
+    const marqueeRef = useRef(null);
+    const containerRef = useRef(null);
+    const [marqueeDuration, setMarqueeDuration] = useState(24); // fallback default
+
+    React.useEffect(() => {
+        function updateDuration() {
+            if (marqueeRef.current && containerRef.current) {
+                const marqueeWidth = marqueeRef.current.scrollWidth;
+                const containerWidth = containerRef.current.offsetWidth;
+                // Set speed: e.g., 100px/sec
+                const speed = 100; // px per second
+                const distance = marqueeWidth / 2; // since translateX(-50%)
+                const duration = distance / speed;
+                setMarqueeDuration(duration);
+            }
+        }
+        updateDuration();
+        window.addEventListener('resize', updateDuration);
+        return () => window.removeEventListener('resize', updateDuration);
+    }, []);
+
     return (
         <div>
             <audio ref={audioRef} src={doublePopup} preload="auto" />
@@ -183,12 +205,13 @@ const About = ({ soundOn, darkMode }) => {
                     </div>
                     {/* MyPics Stream Section */}
                     <div className="w-full py-12 flex flex-col items-center">
-                        <div className="relative w-full max-w-5xl overflow-x-hidden">
+                        <div className="relative w-full max-w-5xl overflow-x-hidden" ref={containerRef}>
                             {/* Auto-scroll on all devices */}
                             <div
                                 className="flex flex-row flex-nowrap w-max sm:w-full gap-6 auto-marquee"
+                                ref={marqueeRef}
                                 style={{
-                                    animation: 'marquee 24s linear infinite',
+                                    animation: `marquee ${marqueeDuration}s linear infinite`,
                                     animationPlayState: 'running',
                                 }}
                             >
@@ -205,7 +228,6 @@ const About = ({ soundOn, darkMode }) => {
                                 ))}
                             </div>
                             <style>{`
-                                /* Removed media query so animation runs on all screens */
                                 @keyframes marquee {
                                     0% { transform: translateX(0); }
                                     100% { transform: translateX(-50%); }
