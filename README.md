@@ -153,6 +153,7 @@ Your live site URL:
 https://username.github.io
 ```
 
+Note: If you want some live metrics go to https://roshanrajcmd.github.io/metrics
 ---
 
 Happy coding! 🎉

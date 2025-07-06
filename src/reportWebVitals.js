@@ -1,13 +1,16 @@
-const reportWebVitals = onPerfEntry => {
-  if (onPerfEntry && onPerfEntry instanceof Function) {
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
-    });
-  }
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+import { saveMetric } from './metricsStore';
+
+const reportWebVitals = () => {
+  const collect = (metric) => {
+    saveMetric(metric);
+  };
+
+  getCLS(collect);
+  getFID(collect);
+  getFCP(collect);
+  getLCP(collect);
+  getTTFB(collect);
 };
 
 export default reportWebVitals;
