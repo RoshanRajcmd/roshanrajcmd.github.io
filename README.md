@@ -48,6 +48,7 @@ npm install --save gh-pages
 ```json
 "homepage": "https://username.github.io"
 ```
+I have used the default Jest configuration for testing that come along with the CRA setup. If you wish to have custom config change it accordingly in package.json.
 
 #### Add deployment scripts:
 ```json
