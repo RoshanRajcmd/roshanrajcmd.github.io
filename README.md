@@ -2,6 +2,9 @@
 
 Thanks for checking out my website! If you'd like to create your own awesome site using my code as a starting point, follow the steps below to host a React app on GitHub Pages.
 
+<small>If you want some live metrics go to https://roshanrajcmd.github.io/metrics (Under development)</small>
+
+
 <small><em>This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).</em></small>
 
 ---
@@ -153,7 +156,6 @@ Your live site URL:
 https://username.github.io
 ```
 
-Note: If you want some live metrics go to https://roshanrajcmd.github.io/metrics
 ---
 
 Happy coding! 🎉
