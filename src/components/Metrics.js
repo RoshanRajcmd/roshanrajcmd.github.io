@@ -6,6 +6,7 @@ const thresholds = {
     FCP: 1000,
     LCP: 2500,
     FID: 100,
+    //CLS: 0.1, // Cumulative Layout Shift is a bit different, usually not in ms
 };
 
 const getStatus = (name, value) => {
