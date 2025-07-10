@@ -19,7 +19,7 @@ export const SKILLS = [
     "PL/SQL",
     "Git",
     "REST APIs",
-    "SOAP APIs"
+    "SOAP APIs",
     "Selenium",
     "CI/CD tools",
     // Additional skills
@@ -38,12 +38,12 @@ export const SKILLS = [
     "Gradle",
     "GraphQL",
     "Webpack",
-    "Vite"
+    "Vite",
     "TDD",
     "BDD",
     "ORM/JPA - Hibernate",
     "SonarQube",
-    "SonarLint'
+    "SonarLint"
 ];
 
 // Initial visible count for About section
