@@ -1,6 +1,6 @@
-// metricsStore.js
+// Implemented a pub-sub pattern in metricsStore.js
 let metrics = [];
-let listeners = [];
+let listeners = []; // Array to hold subscriber callbacks functions
 
 export function saveMetric(metric) {
     metrics.push(metric);

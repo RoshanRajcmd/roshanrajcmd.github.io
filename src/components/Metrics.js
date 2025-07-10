@@ -25,7 +25,7 @@ const Metrics = () => {
         const unsubscribe = subscribe((updated) => {
             setMetrics([...updated]);
         });
-        return () => unsubscribe();
+        return () => unsubscribe(); // Cleanup subscription on unmount(component)
     }, []);
 
     return (
