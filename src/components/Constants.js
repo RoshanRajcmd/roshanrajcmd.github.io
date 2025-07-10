@@ -19,6 +19,7 @@ export const SKILLS = [
     "PL/SQL",
     "Git",
     "REST APIs",
+    "SOAP APIs"
     "Selenium",
     "CI/CD tools",
     // Additional skills
@@ -31,7 +32,18 @@ export const SKILLS = [
     "Elastic Stack",
     "Redux",
     "Spark",
-    "Terraform"
+    "Terraform",
+    "Jfrog",
+    "Maven",
+    "Gradle",
+    "GraphQL",
+    "Webpack",
+    "Vite"
+    "TDD",
+    "BDD",
+    "ORM/JPA - Hibernate",
+    "SonarQube",
+    "SonarLint'
 ];
 
 // Initial visible count for About section
