@@ -3,7 +3,7 @@ import Dropdown from './Dropdown';
 
 const FAQ = ({ darkMode, soundOn }) => (
     <div>
-        <h2 className="justify-center text-4xl font-bold mb-4">FAQ</h2>
+        <h2 className="justify-center text-center text-4xl font-bold mb-4">FAQ</h2>
         <div className="max-w-2xl mx-auto mt-8">
             {[
                 {

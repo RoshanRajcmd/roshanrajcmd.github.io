@@ -27,8 +27,8 @@ const Work = ({ darkMode, playClickSound }) => {
 
     return (
         <div className="pt-16">
-            <h2 className="justify-center text-4xl font-bold mb-4">Work</h2>
-            <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Projects</h2>
+            <h2 className="justify-center text-center text-4xl font-bold mb-4">Work</h2>
+            <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Projects</h2>
             {/* <div className="p-4">
                 <div className="flex items-stretch justify-between gap-4 rounded-lg">
                     <div className="flex flex-[2_2_0px] flex-col gap-4">

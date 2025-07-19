@@ -80,7 +80,7 @@ const About = ({ soundOn, darkMode }) => {
     return (
         <div>
             <audio ref={audioRef} src={doublePopup} preload="auto" />
-            <h2 className="justify-center text-4xl font-bold mb-4">About Me</h2>
+            <h2 className="justify-center text-center text-4xl font-bold mb-4">About Me</h2>
             <div className="px-4 sm:px-8 md:px-20 lg:px-40 flex flex-1 justify-center py-5 w-full">
                 <div className="layout-content-container flex flex-col max-w-[960px] w-full flex-1">
                     <div className="flex p-4 @container">
@@ -124,7 +124,7 @@ const About = ({ soundOn, darkMode }) => {
                             <FaChevronRight size={22} />
                         </button>
                     </div>
-                    <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Skills</h2>
+                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Skills</h2>
                     <div className="flex gap-3 p-2 sm:p-3 flex-wrap pr-2 sm:pr-4">
                         {visibleSkills.map((skill, idx) => (
                             <div key={skill} className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414]">
@@ -152,7 +152,7 @@ const About = ({ soundOn, darkMode }) => {
                         )}
                     </div>
                     {/* Experience Section (Responsive Timeline) */}
-                    <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-10">Experience</h2>
+                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-10">Experience</h2>
                     <div className="w-full flex flex-col items-center py-8">
                         <div className="relative w-full max-w-2xl flex flex-col sm:flex-row items-center sm:items-stretch gap-8 sm:gap-0">
                             {/* Timeline vertical line */}
@@ -192,7 +192,7 @@ const About = ({ soundOn, darkMode }) => {
                             </div>
                         </div>
                     </div>
-                    <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Hear from others</h2>
+                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Hear from others</h2>
                     <div className="flex flex-wrap gap-4 px-2 sm:px-4 pb-8 justify-center">
                         {TESTIMONIALS.map((testimonial, idx) => (
                             <div key={idx} className="bg-[#ededed] text-[#141414] rounded-xl p-5 shadow-md max-w-md flex-1 min-w-[220px]">
