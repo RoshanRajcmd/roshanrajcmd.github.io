@@ -11,6 +11,13 @@ const About = ({ soundOn, darkMode }) => {
     const [showMore, setShowMore] = useState(false);
     const audioRef = useRef(null);
     const visibleSkills = showMore ? SKILLS : SKILLS.slice(0, INITIAL_VISIBLE_SKILLS);
+    const marqueeRef = useRef(null);
+    const containerRef = useRef(null);
+    const [marqueeDuration, setMarqueeDuration] = useState(24); // fallback default
+    const [aboutIdx, setAboutIdx] = useState(0);
+    const [direction, setDirection] = useState('right'); // for animation
+    const experienceStartDate = "2021-09-07"; // yyyy-mm-dd
+    const { years, months } = getYearsAndMonthsSince(experienceStartDate);
 
     const handleShowMore = () => {
         if (soundOn && audioRef.current) {
@@ -21,8 +28,6 @@ const About = ({ soundOn, darkMode }) => {
     };
 
     // About Me cards for carousel
-    const [aboutIdx, setAboutIdx] = useState(0);
-    const [direction, setDirection] = useState('right'); // for animation
     const handlePrevAbout = () => {
         setDirection('left');
         setAboutIdx((prev) => (prev === 0 ? ABOUT_CARDS.length - 1 : prev - 1));
@@ -56,9 +61,23 @@ const About = ({ soundOn, darkMode }) => {
     }
 
     // For consistent marquee speed
-    const marqueeRef = useRef(null);
-    const containerRef = useRef(null);
-    const [marqueeDuration, setMarqueeDuration] = useState(24); // fallback default
+
+    function getYearsAndMonthsSince(dateString) {
+        const startDate = new Date(dateString);
+        const now = new Date();
+
+        let years = now.getFullYear() - startDate.getFullYear();
+        let months = now.getMonth() - startDate.getMonth();
+
+        // Adjust if current month is earlier than start month
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        return { years, months };
+    }
+
 
     React.useEffect(() => {
         function updateDuration() {
@@ -153,46 +172,38 @@ const About = ({ soundOn, darkMode }) => {
                     </div>
                     {/* Experience Section (Responsive Timeline) */}
                     <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-10">Experience</h2>
-                    <div className="w-full flex flex-col items-center py-8">
-                        <div className="relative w-full max-w-2xl flex flex-col sm:flex-row items-center sm:items-stretch gap-8 sm:gap-0">
-                            {/* Timeline vertical line */}
-                            <div className="hidden sm:block absolute left-1/2 top-0 h-full w-1 bg-[#ededed] -translate-x-1/2 z-0" aria-hidden="true"></div>
-                            {/* Timeline vertical line for mobile */}
-                            <div className="block sm:hidden absolute left-6 top-0 h-full w-1 bg-[#ededed] z-0" aria-hidden="true"></div>
-                            {/* Experience Items */}
-                            <div className="relative z-10 w-full flex flex-col sm:flex-row items-center sm:justify-between gap-8">
-                                {/* Experience 1 */}
-                                <div className="flex flex-row sm:flex-col items-center sm:items-end w-full sm:w-1/2">
-                                    {/* Dot */}
-                                    <div className="w-4 h-4 rounded-full bg-[#141414] border-4 border-[#ededed] z-10 mb-0 sm:mb-4 mr-4 sm:mr-0"></div>
-                                    <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full shadow-md">
-                                        <span className="font-bold">Quess Corp</span>
-                                        <span className="text-xs font-normal">Software Engineer</span>
-                                        <span className="text-xs font-normal">Client - Renault RNTBCI</span>
-                                        <div className="flex flex-row justify-between items-center mt-2">
-                                            <span className="text-xs font-semibold">2024 - 2025</span>
-                                            <span className="text-neutral-400 font-medium ml-2">8m</span>
+                    <h3 className="text-center text-[18px] font-medium text-neutral-500 leading-normal tracking-[-0.015em] px-2 sm:px-4 pt-2">{years} year{years !== 1 ? "s" : ""} and {months} month{months !== 1 ? "s" : ""}</h3>
+                    <div className="w-full flex flex-col items-center pb-4">
+                        <div className="overflow-x-auto w-full whitespace-nowrap py-4">
+                            <div className="relative w-full flex flex-col sm:flex-row items-center sm:items-stretch gap-8 sm:gap-0">
+                                {/* Timeline vertical line */}
+                                <div className="hidden sm:block absolute left-1/2 right-1/2 top-1.5 h-1 w-full bg-[#ededed] -translate-x-1/2 z-0" aria-hidden="true"></div>
+                                {/* Timeline vertical line for mobile */}
+                                <div className="block sm:hidden absolute left-1.5 top-0 h-full w-1 bg-[#ededed] z-0" aria-hidden="true"></div>
+                                {/* Experience Items */}
+                                <div className="relative z-10 w-full flex flex-col sm:flex-row items-center sm:justify-between gap-8">
+                                    {EXPERIENCES.map((experience, idx) => (
+                                        <div className="flex flex-row sm:flex-col items-center sm:items-end w-full sm:w-1/2">
+                                            {/* Dot */}
+                                            <div className={`w-4 h-4 rounded-full bg-[#141414] border-4 ${experience.current ? "border-green-400" : "border-[#ededed]"} z-10 mb-0 sm:mb-4 mr-4 sm:mr-0`}></div>
+                                            <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full shadow-md">
+                                                <span className="font-bold">{experience.compName}</span>
+                                                <span className="text-xs font-normal">{experience.role}</span>
+                                                {typeof experience.clientCompName === 'string' && experience.clientCompName.trim() !== '' && (
+                                                    <span className="text-xs font-normal">{experience.clientCompName}</span>
+                                                )}
+                                                <div className="flex flex-row justify-between items-center mt-2">
+                                                    <span className="text-xs font-semibold">{experience.timePeriod}</span>
+                                                    <span className="text-neutral-400 font-medium ml-2">{experience.duration}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                {/* Experience 2 */}
-                                <div className="flex flex-row sm:flex-col items-center sm:items-start w-full sm:w-1/2">
-                                    {/* Dot */}
-                                    <div className="w-4 h-4 rounded-full bg-[#141414] border-4 border-[#ededed] z-10 mb-0 sm:mb-4 mr-4 sm:mr-0"></div>
-                                    <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full shadow-md">
-                                        <span className="font-bold">HCL Technologies</span>
-                                        <span className="text-xs font-normal">Software Developer</span>
-                                        <span className="text-xs font-normal">Client - Ford GTBC</span>
-                                        <div className="flex flex-row justify-between items-center mt-2">
-                                            <span className="text-xs font-semibold">2020 - 2021</span>
-                                            <span className="text-neutral-400 font-medium ml-2">2y 11m</span>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Hear from others</h2>
+                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-10">Hear from others</h2>
                     <div className="flex flex-wrap gap-4 px-2 sm:px-4 pb-8 justify-center">
                         {TESTIMONIALS.map((testimonial, idx) => (
                             <div key={idx} className="bg-[#ededed] text-[#141414] rounded-xl p-5 shadow-md max-w-md flex-1 min-w-[220px]">
@@ -237,7 +248,7 @@ const About = ({ soundOn, darkMode }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

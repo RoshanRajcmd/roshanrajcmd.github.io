@@ -150,3 +150,23 @@ export const ABOUT_CARDS = [
         description: "I adapt quickly to new tools, stacks, and project needs. Whether joining an existing codebase or pioneering a greenfield build, I stay flexible—choosing technologies based on context, not comfort. This allows me to contribute meaningfully across varied technical environments."
     }
 ];
+
+// Experience Cards
+export const EXPERIENCES = [
+    {
+        compName: "Quess Corp",
+        role: "Software Engineer",
+        clientCompName: "Client - Renault RNTBCI",
+        timePeriod: "2024 - 2025",
+        duration: "11m",
+        current: true
+    },
+    {
+        compName: "HCL Technologies",
+        role: "Software Developer",
+        clientCompName: "Client - Ford GTBC",
+        timePeriod: "2020 - 2021",
+        duration: "2y 11m",
+        current: false
+    }
+]
