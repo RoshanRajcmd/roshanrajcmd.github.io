@@ -19,15 +19,24 @@ const Home = () => {
     const audioRef = useRef(null);
     const mouseClickAudioRef = useRef(null);
     const [soundOn, setSoundOn] = useState(true);
+    // State to track scroll position
+    const [scrolled, setScrolled] = useState(false);
+    const sectionComponents = {
+        Work,
+        About: (props) => <About {...props} soundOn={soundOn} />, // ensure soundOn is always passed
+        FAQ: (props) => <FAQ {...props} soundOn={soundOn} />,
+    };
 
     const scrollToSection = (section) => {
+        //get the section as element that is useref-ed
         const element = sectionRefs.current[section];
         if (element) {
-            //Top of the <body> relative to the viewport
+            //Top of the main <body> relative to the viewport (screen)
             const bodyRect = document.body.getBoundingClientRect().top;
             //Top of the target section relative to the viewport
+            //The below tell as how far from the top of the screen the element is right now
             const elementRect = element.getBoundingClientRect().top;
-            //80 is the offset height of navbar or custom offset
+            //110 is the offset height of navbar without this the section headers will be behind navbar
             const offsetPosition = elementRect - bodyRect - 110;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
@@ -46,9 +55,6 @@ const Home = () => {
         setTimeout(() => setShowHearts(false), 1200);
     }
 
-    // State to track scroll position
-    const [scrolled, setScrolled] = useState(false);
-
     // Effect to listen for scroll and update state
     React.useEffect(() => {
         const handleScroll = () => {
@@ -62,11 +68,6 @@ const Home = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const sectionComponents = {
-        Work,
-        About: (props) => <About {...props} soundOn={soundOn} />, // ensure soundOn is always passed
-        FAQ: (props) => <FAQ {...props} soundOn={soundOn} />,
-    };
 
     // Utility: play mouse click sound if soundOn is enabled
     const playClickSound = () => {
@@ -99,7 +100,7 @@ const Home = () => {
                     <SlotMachine />
                     <Punchline />
                 </section>
-                {/* Sections */}
+                {/* Other Sections */}
                 {SECTIONS.map((sec, idx) => {
                     const SectionComponent = sectionComponents[sec];
                     return (
@@ -197,7 +198,7 @@ const Home = () => {
                     className={`rounded-full p-3 shadow-lg shadow-black transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-[#ffffff] text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-[#ffffff]'}`}
                     aria-label="Scroll to top"
                 >
-                    <FaArrowUp className="w-5 h-5" />
+                    <FaArrowUp className="size-5" />
                 </button>
             </div>
         </div >

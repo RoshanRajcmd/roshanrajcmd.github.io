@@ -72,7 +72,7 @@ const Work = ({ darkMode, playClickSound }) => {
                 {PROJECTS.map((item, idx) => (
                     <div
                         key={idx}
-                        className={`rounded-2xl overflow-hidden shadow-md flex flex-col transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ededed]'} ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
+                        className={`rounded-2xl overflow-hidden shadow-md flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ededed]'} ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
                         onClick={() => handleProjectClick(item)}
                         onMouseEnter={() => handleMouseEnter(idx)}
                         onMouseLeave={handleMouseLeave}
