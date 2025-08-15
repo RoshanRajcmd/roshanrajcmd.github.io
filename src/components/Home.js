@@ -195,7 +195,7 @@ const Home = () => {
             <div className="fixed bottom-8 right-8 z-40">
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className={`rounded-full p-3 shadow-lg shadow-black transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-[#ffffff] text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-[#ffffff]'}`}
+                    className={`rounded-full p-3 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-[#ffffff] text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-[#ffffff]'}`}
                     aria-label="Scroll to top"
                 >
                     <FaArrowUp className="size-5" />
@@ -346,7 +346,7 @@ function SlotMachine() {
                         <a
                             href="/cute_stickers_ifound_in_internet.zip"
                             download
-                            className="relative bg-gradient-to-r from-green-400 to-green-600 text-[#ffffff] px-6 py-3 rounded-xl shadow-lg font-bold text-lg transition-transform duration-200 hover:scale-105 focus:outline-none flex items-center justify-center"
+                            className="relative bg-gradient-to-r from-green-400 to-green-600 text-[#ffffff] px-6 py-3 rounded-xl font-bold text-lg transition-transform duration-200 hover:scale-105 focus:outline-none flex items-center justify-center"
                             onMouseEnter={() => setGiftStarHover(true)}
                             onMouseLeave={() => setGiftStarHover(false)}
                         >

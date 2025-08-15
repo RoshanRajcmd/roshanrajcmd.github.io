@@ -186,7 +186,7 @@ const About = ({ soundOn, darkMode }) => {
                                         <div className="flex flex-row sm:flex-col items-center sm:items-end w-full sm:w-1/2">
                                             {/* Dot */}
                                             <div className={`w-4 h-4 rounded-full bg-[#141414] border-4 ${experience.current ? "border-green-400" : "border-[#ededed]"} z-10 mb-0 sm:mb-4 mr-4 sm:mr-0`}></div>
-                                            <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full shadow-md">
+                                            <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full">
                                                 <span className="font-bold">{experience.compName}</span>
                                                 <span className="text-xs font-normal">{experience.role}</span>
                                                 {typeof experience.clientCompName === 'string' && experience.clientCompName.trim() !== '' && (
@@ -206,7 +206,7 @@ const About = ({ soundOn, darkMode }) => {
                     <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-10">Hear from others</h2>
                     <div className="flex flex-wrap gap-4 px-2 sm:px-4 pb-8 justify-center">
                         {TESTIMONIALS.map((testimonial, idx) => (
-                            <div key={idx} className="bg-[#ededed] text-[#141414] rounded-xl p-5 shadow-md max-w-md flex-1 min-w-[220px]">
+                            <div key={idx} className="bg-[#ededed] text-[#141414] rounded-xl p-5 max-w-md flex-1 min-w-[220px]">
                                 <FaQuoteLeft size={24} />
                                 <p className="text-base italic mb-2">{testimonial.text}</p>
                                 <p className="font-bold">— {testimonial.author}</p>
