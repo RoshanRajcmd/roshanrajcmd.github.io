@@ -56,7 +56,7 @@ const Navbar = ({
                             {sec}
                         </button>
                     ))}
-                    {/* Blog section - will be implemented later once i wrote some posts */}
+                    {/* Blog section - will be enabled in future*/}
                     {/* <a
                         href={BLOG_URL}
                         target="_blank"

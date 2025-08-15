@@ -170,3 +170,22 @@ export const EXPERIENCES = [
         current: false
     }
 ]
+
+// Certificates Cards
+export const CERTIFICATES = [
+    {
+        certifiName: "AWS Cloud Computing 101",
+        time: "Apr 2025",
+        url: "https://www.credly.com/badges/01d0e5e8-b1fb-4c38-b19f-f0e8b836e636/public_url",
+    },
+    {
+        certifiName: "AWS Cloud Practitioner",
+        time: "Aug 2025",
+        url: "",
+    },
+    {
+        certifiName: "HashiCorp Teraform",
+        time: "Aug 2025",
+        url: "",
+    }
+]

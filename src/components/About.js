@@ -5,9 +5,9 @@ import { MdExpandMore } from "react-icons/md";
 import { FaQuoteLeft } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import doublePopup from '../assets/pop-up.mov';
-import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS, EXPERIENCES } from './Constants';
+import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS, EXPERIENCES, CERTIFICATES } from './Constants';
 
-const About = ({ soundOn, darkMode }) => {
+const About = ({ soundOn, darkMode, playClickSound }) => {
     const [showMore, setShowMore] = useState(false);
     const audioRef = useRef(null);
     const visibleSkills = showMore ? SKILLS : SKILLS.slice(0, INITIAL_VISIBLE_SKILLS);
@@ -78,6 +78,10 @@ const About = ({ soundOn, darkMode }) => {
         return { years, months };
     }
 
+    const handleCertificateClick = (item) => {
+        if (playClickSound) playClickSound();
+        if (item.url) window.open(item.url, '_blank', 'noopener,noreferrer');
+    };
 
     React.useEffect(() => {
         function updateDuration() {
@@ -118,6 +122,7 @@ const About = ({ soundOn, darkMode }) => {
                             </div>
                         </div>
                     </div>
+
                     {/* About Me Card Carousel */}
                     <div className="flex justify-center items-center w-full px-2 sm:px-4 pb-3 pt-10">
                         <button
@@ -143,6 +148,8 @@ const About = ({ soundOn, darkMode }) => {
                             <FaChevronRight size={22} />
                         </button>
                     </div>
+
+                    {/* Skills */}
                     <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Skills</h2>
                     <div className="flex gap-3 p-2 sm:p-3 flex-wrap pr-2 sm:pr-4">
                         {visibleSkills.map((skill, idx) => (
@@ -153,7 +160,7 @@ const About = ({ soundOn, darkMode }) => {
                         {SKILLS.length > INITIAL_VISIBLE_SKILLS && (
                             <button
                                 type="button"
-                                className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#ededed] text-[#141414] cursor-pointer transition-transform duration-200 hover:-translate-y-1 hover:scale-105 active:scale-95"
+                                className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg pl-4 pr-4 bg-[#bcbbbb] text-[#141414] cursor-pointer transition-transform duration-200 hover:-translate-y-1 hover:scale-105 active:scale-95"
                                 onClick={handleShowMore}
                             >
                                 <p className="text-sm font-bold leading-normal flex items-center gap-1 ">
@@ -170,8 +177,34 @@ const About = ({ soundOn, darkMode }) => {
                             </button>
                         )}
                     </div>
+
+                    {/* Educations */}
+                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Education</h2>
+                    <div className="flex items-center justify-center">
+                        <div className="w-72 gap-x-2 rounded-lg p-4 bg-[#ededed]">
+                            <p className="text-center text-base font-normal leading-normal  text-[#141414] italic">Mechatronics Engineering</p>
+                            <p className="text-center text-sm font-medium leading-normal text-neutral-500 ">Chennai Institue of Technology <br /> 2017 - 2021</p>
+                            <p className="text-center text-sm font-medium leading-normal text-[#141414]">🏆 Top 7 distinction in the state. 🎓</p>
+                        </div>
+                    </div>
+
+                    {/* Certifications - will be enabled in future*/}
+                    {/* <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Certifications</h2>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {CERTIFICATES.map((item, idx) => (
+                            <div
+                                key={idx}
+                                className={`items-center justify-center p-4 rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 bg-[#ededed] text-[#141414] ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
+                                onClick={() => handleCertificateClick(item)}
+                            >
+                                <span className="hover:underline">{item.certifiName}</span>
+                                <span className="text-xs font-semibold">{item.time}</span>
+                            </div>
+                        ))}
+                    </div> */}
+
                     {/* Experience Section (Responsive Timeline) */}
-                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-10">Experience</h2>
+                    < h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-10" >Experience</h2>
                     <h3 className="text-center text-[18px] font-medium text-neutral-500 leading-normal tracking-[-0.015em] px-2 sm:px-4 pt-2">{years} year{years !== 1 ? "s" : ""} and {months} month{months !== 1 ? "s" : ""}</h3>
                     <div className="w-full flex flex-col items-center pb-4">
                         <div className="overflow-x-auto w-full whitespace-nowrap py-4">
@@ -199,7 +232,7 @@ const About = ({ soundOn, darkMode }) => {
                                                         }`}
                                                 ></span>
                                                 {/* Inner solid circle */}
-                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#141414]"></span>
+                                                <span className="relative inline-flex rounded-full w-2 h-2 bg-[#141414]"></span>
                                             </div>
 
                                             {/* Experience Card */}
@@ -220,6 +253,8 @@ const About = ({ soundOn, darkMode }) => {
                             </div>
                         </div>
                     </div>
+
+                    {/* Testimonials */}
                     <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-10">Hear from others</h2>
                     <div className="flex flex-wrap gap-4 px-2 sm:px-4 pb-8 justify-center">
                         {TESTIMONIALS.map((testimonial, idx) => (
@@ -231,6 +266,7 @@ const About = ({ soundOn, darkMode }) => {
                             </div>
                         ))}
                     </div>
+
                     {/* MyPics Stream Section */}
                     <div className="w-full py-12 flex flex-col items-center">
                         <div className="relative w-full max-w-5xl overflow-x-hidden" ref={containerRef}>

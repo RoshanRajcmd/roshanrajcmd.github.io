@@ -23,7 +23,7 @@ const Home = () => {
     const [scrolled, setScrolled] = useState(false);
     const sectionComponents = {
         Work,
-        About: (props) => <About {...props} soundOn={soundOn} />, // ensure soundOn is always passed
+        About: (props) => <About {...props} soundOn={soundOn} playClickSound={playClickSound} />, // ensure soundOn is always passed
         FAQ: (props) => <FAQ {...props} soundOn={soundOn} />,
     };
 
