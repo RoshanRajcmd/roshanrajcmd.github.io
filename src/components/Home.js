@@ -10,6 +10,7 @@ import FAQ from './FAQ';
 import doublePopup from '../assets/double_popup.mp3';
 import mouseClickAudio from '../assets/mouse_click.mov';
 import { GITHUB_URL, LINKEDIN_URL, EMAIL_URL, SECTIONS } from './Constants';
+import { BsFillChatLeftTextFill } from "react-icons/bs";
 
 const Home = () => {
     const sectionRefs = useRef({});
@@ -26,6 +27,10 @@ const Home = () => {
         About: (props) => <About {...props} soundOn={soundOn} playClickSound={playClickSound} />, // ensure soundOn is always passed
         FAQ: (props) => <FAQ {...props} soundOn={soundOn} />,
     };
+    //AI chat bot
+    const [open, setOpen] = useState(false);
+    const [messages, setMessages] = useState([]);
+    const [input, setInput] = useState("");
 
     const scrollToSection = (section) => {
         //get the section as element that is useref-ed
@@ -76,6 +81,33 @@ const Home = () => {
             mouseClickAudioRef.current.play();
         }
     };
+
+
+    // AI chat box 
+    const handleOpenChat = () => {
+        setOpen(true);
+        if (messages.length === 0) {
+            setMessages([
+                { type: "ai", text: "👋😃 Hi, this is Roshan's AI assistant! How can I help you? - I am still under development, Please be patient" }
+            ]);
+        }
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setMessages([...messages, { type: "user", text: input }]);
+
+        const res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt: input }),
+        });
+        const data = await res.json();
+
+        setMessages([...messages, { type: "user", text: input }, { type: "ai", text: data.reply }]);
+        //Clean up the input 
+        setInput("");
+    };
+
 
     return (
         <div className={darkMode ? 'dark bg-[#141414] text-[#ffffff]' : 'bg-[#ffffff]  text-[#141414]'}>
@@ -191,6 +223,7 @@ const Home = () => {
                     </span>
                 </div>
             </footer>
+
             {/* Scroll to Top Button */}
             <div className="fixed bottom-8 right-8 z-40">
                 <button
@@ -201,6 +234,57 @@ const Home = () => {
                     <FaArrowUp className="size-5" />
                 </button>
             </div>
+
+            {/* AI chat button - will be enabled in the future*/}
+            {/* <button
+                onClick={handleOpenChat}
+                className="fixed right-5 bottom-28 z-50 bg-green-500 text-black px-4 py-2 rounded-full shadow-lg hover:bg-green-600 transition"
+            >
+                <div className={`flex items-center justify-center text-center gap-1 ${darkMode ? 'text-[#ededed]' : 'text-[#141414]'}`}>
+                    <BsFillChatLeftTextFill />
+                    <span>AI Chat</span>
+                </div>
+            </button > */}
+            {/* AI chat Model overlay */}
+            {open && (
+                <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/50">
+                    <div className="relative w-full max-w-xl h-[600px] bg-black rounded-lg shadow-xl flex flex-col">
+
+                        {/* Header like Mac Terminal */}
+                        <div className="flex items-center justify-between p-2 bg-gray-800 rounded-t-lg">
+                            <div className="flex gap-1">
+                                <span className="w-3 h-3 bg-red-500 rounded-full hover:cursor-pointer" onClick={() => setOpen(false)}></span>
+                                <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                                <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+                            </div>
+                            <button onClick={() => setOpen(false)} className="text-white font-bold">&times;</button>
+                        </div>
+
+                        {/* Chat Body */}
+                        <div className="flex-1 p-4 overflow-y-auto font-mono text-green-400" id="chat-window">
+                            {messages.map((msg, i) => (
+                                <div key={i} className={`${msg.type === 'user' ? 'text-white' : 'text-green-400'}`}>
+                                    <span>{msg.type === 'user' ? 'User: ' : 'Ai: '} {msg.text}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Input */}
+                        <form onSubmit={handleSubmit} className="flex p-2 border-t border-gray-700">
+                            <span className="text-white">$</span>
+                            <input
+                                type="text"
+                                className="flex-1 bg-black border-none outline-none text-white font-mono px-2"
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                placeholder="Type your meassage and hit Enter..."
+                            />
+                            <button type="submit" className="bg-green-500 text-black px-2 rounded">Send</button>
+                        </form>
+                    </div>
+                </div>
+            )}
+
         </div >
     );
 };
