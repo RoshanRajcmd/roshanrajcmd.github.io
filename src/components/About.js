@@ -179,7 +179,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                     </div>
 
                     {/* Educations */}
-                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Education</h2>
+                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-10">Education</h2>
                     <div className="flex items-center justify-center">
                         <div className="w-72 gap-x-2 rounded-lg p-4 bg-[#ededed]">
                             <p className="text-center text-base font-normal leading-normal  text-[#141414] italic">Mechatronics Engineering</p>
@@ -189,7 +189,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                     </div>
 
                     {/* Certifications - will be enabled in future*/}
-                    {/* <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Certifications</h2>
+                    {/* <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-16">Certifications</h2>
                     <div className="grid md:grid-cols-3 gap-6">
                         {CERTIFICATES.map((item, idx) => (
                             <div
@@ -204,7 +204,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                     </div> */}
 
                     {/* Experience Section (Responsive Timeline) */}
-                    < h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-10" >Experience</h2>
+                    < h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-16" >Experience</h2>
                     <h3 className="text-center text-[18px] font-medium text-neutral-500 leading-normal tracking-[-0.015em] px-2 sm:px-4 pt-2">{years} year{years !== 1 ? "s" : ""} and {months} month{months !== 1 ? "s" : ""}</h3>
                     <div className="w-full flex flex-col items-center pb-4">
                         <div className="overflow-x-auto w-full whitespace-nowrap py-4">
