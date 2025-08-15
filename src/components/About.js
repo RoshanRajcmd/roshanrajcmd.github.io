@@ -184,8 +184,25 @@ const About = ({ soundOn, darkMode }) => {
                                 <div className="relative z-10 w-full flex flex-col sm:flex-row items-center sm:justify-between gap-8">
                                     {EXPERIENCES.map((experience, idx) => (
                                         <div className="flex flex-row sm:flex-col items-center sm:items-end w-full sm:w-1/2">
+
                                             {/* Dot */}
-                                            <div className={`w-4 h-4 rounded-full bg-[#141414] border-4 ${experience.current ? "border-green-400" : "border-[#ededed]"} z-10 mb-0 sm:mb-4 mr-4 sm:mr-0`}></div>
+                                            <div className="relative w-4 h-4 flex items-center justify-center">
+                                                {/* Outer static green circle for current experience */}
+                                                {experience.current && (
+                                                    <span className={"absolute inline-flex h-full w-full rounded-full bg-green-500"}></span>
+                                                )}
+                                                {/* Live green dot */}
+                                                <span
+                                                    className={`absolute inline-flex  rounded-full ${experience.current
+                                                        ? "h-5 w-5 bg-green-400 opacity-75 animate-ping"
+                                                        : "h-full w-full bg-[#ededed]"
+                                                        }`}
+                                                ></span>
+                                                {/* Inner solid circle */}
+                                                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#141414]"></span>
+                                            </div>
+
+                                            {/* Experience Card */}
                                             <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full">
                                                 <span className="font-bold">{experience.compName}</span>
                                                 <span className="text-xs font-normal">{experience.role}</span>
@@ -246,8 +263,8 @@ const About = ({ soundOn, darkMode }) => {
                             `}</style>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
         </div >
     );
 };
