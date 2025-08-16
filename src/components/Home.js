@@ -30,7 +30,7 @@ const Home = () => {
         FAQ: (props) => <FAQ {...props} soundOn={soundOn} />,
     };
     //AI chat bot
-    const [open, setOpen] = useState(false);
+    const [openChat, setOpenChat] = useState(false);
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
 
@@ -87,25 +87,27 @@ const Home = () => {
 
     // AI chat box 
     const handleOpenChat = () => {
-        setOpen(true);
+        setOpenChat(!openChat);
         if (messages.length === 0) {
             setMessages([
-                { type: "ai", text: "👋😃 Hi, this is Roshan's AI assistant! How can I help you? - I am still under development, Please be patient" }
+                { type: "ai", text: "👋😃 Hi, this is Roshan's AI assistant! - ⚠️ I am still under development, Please be patient ⚠️" }
             ]);
         }
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setMessages([...messages, { type: "user", text: input }]);
 
-        const res = await fetch("/api/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ prompt: input }),
-        });
-        const data = await res.json();
+        // TODO - will be enabled in the future
+        // const res = await fetch("/api/chat", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify({ prompt: input }),
+        // });
+        // const data = await res.json();
+        // setMessages([...messages, { type: "user", text: input }, { type: "ai", text: data.reply }]);
 
-        setMessages([...messages, { type: "user", text: input }, { type: "ai", text: data.reply }]);
         //Clean up the input 
         setInput("");
     };
@@ -249,29 +251,29 @@ const Home = () => {
                 </button>
             </div>
 
-            {/* AI chat button - will be enabled in the future*/}
-            {/* <button
+            {/* AI chat button */}
+            <button
                 onClick={handleOpenChat}
-                className="fixed right-5 bottom-28 z-50 bg-green-500 text-black px-4 py-2 rounded-full shadow-lg hover:bg-green-600 transition"
+                className="sticky left-8 bottom-8 z-50 bg-green-500 text-black px-4 py-2 rounded-full shadow-lg hover:bg-green-600 transition"
             >
                 <div className={`flex items-center justify-center text-center gap-1 ${darkMode ? 'text-[#ededed]' : 'text-[#141414]'}`}>
                     <BsFillChatLeftTextFill />
                     <span>AI Chat</span>
                 </div>
-            </button > */}
+            </button >
             {/* AI chat Model overlay */}
-            {open && (
+            {openChat && (
                 <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/50">
                     <div className="relative w-full max-w-xl h-[600px] bg-black rounded-lg shadow-xl flex flex-col">
 
                         {/* Header like Mac Terminal */}
                         <div className="flex items-center justify-between p-2 bg-gray-800 rounded-t-lg">
                             <div className="flex gap-1">
-                                <span className="w-3 h-3 bg-red-500 rounded-full hover:cursor-pointer" onClick={() => setOpen(false)}></span>
-                                <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
-                                <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+                                <span className="w-3 h-3 bg-red-500 rounded-full hover:cursor-pointer" onClick={() => setOpenChat(false)}></span>
+                                <span className="w-3 h-3 bg-yellow-500 rounded-full hover:cursor-not-allowed"></span>
+                                <span className="w-3 h-3 bg-green-500 rounded-full hover:cursor-not-allowed"></span>
                             </div>
-                            <button onClick={() => setOpen(false)} className="text-white font-bold">&times;</button>
+                            <button onClick={() => setOpenChat(false)} className="text-white font-bold">&times;</button>
                         </div>
 
                         {/* Chat Body */}
@@ -298,7 +300,6 @@ const Home = () => {
                     </div>
                 </div>
             )}
-
         </div >
     );
 };
