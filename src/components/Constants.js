@@ -53,6 +53,7 @@ export const INITIAL_VISIBLE_SKILLS = 12;
 export const BLOG_URL = 'https://medium.com/@roshanrajpersonal55';
 export const GITHUB_URL = "https://github.com/roshanrajcmd";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/roshanraj1999/";
+export const BEHANCE_URL = "https://www.behance.net/RoshanRaj512";
 export const EMAIL_URL = "mailto:roshanraj5121999@gmail.com";
 
 // Add more shared constants as needed

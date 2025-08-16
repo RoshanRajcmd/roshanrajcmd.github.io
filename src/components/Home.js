@@ -9,8 +9,10 @@ import About from './About';
 import FAQ from './FAQ';
 import doublePopup from '../assets/double_popup.mp3';
 import mouseClickAudio from '../assets/mouse_click.mov';
-import { GITHUB_URL, LINKEDIN_URL, EMAIL_URL, SECTIONS } from './Constants';
+import { GITHUB_URL, LINKEDIN_URL, EMAIL_URL, BEHANCE_URL, SECTIONS } from './Constants';
 import { BsFillChatLeftTextFill } from "react-icons/bs";
+import { FaBehanceSquare } from "react-icons/fa";
+
 
 const Home = () => {
     const sectionRefs = useRef({});
@@ -204,6 +206,18 @@ const Home = () => {
                     >
                         <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
                             <FaLinkedin className="size-8" />
+                        </div>
+                    </a>
+                    <a
+                        href={BEHANCE_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
+                        aria-label="LinkedIn"
+                        onClick={playClickSound}
+                    >
+                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
+                            <FaBehanceSquare className="size-8" />
                         </div>
                     </a>
                     <a
