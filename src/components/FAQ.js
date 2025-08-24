@@ -8,7 +8,7 @@ const FAQ = ({ darkMode, soundOn }) => (
             {[
                 {
                     question: "Can I contact you for freelance or full-time opportunities?",
-                    answer: "Absolutely! I'm open to both freelance and full-time roles. Please use the emailid to contact me."
+                    answer: "Absolutely! I'm open to both freelance and full-time roles. Please use the email ID to contact me."
                 },
                 {
                     question: "How can i contact you?",
@@ -38,7 +38,7 @@ const FAQ = ({ darkMode, soundOn }) => (
                 },
                 {
                     question: "Whats your Hobbies and Free time activities?",
-                    answer: "3D printing, Book reading, gaming, and exploring new technologies are some of my hobbies. I also enjoy contributing to open-source projects in my free time."
+                    answer: "3D printing, Book reading, gaming, and exploring new technologies or even some new hobbies. I also enjoy contributing to open-source projects in my free time."
                 },
                 {
                     question: "Where are you currently located?",

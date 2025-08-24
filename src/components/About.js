@@ -189,7 +189,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                     </div>
 
                     {/* Certifications - will be enabled in future*/}
-                    {/* <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-16">Certifications</h2>
+                    <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-16">Certifications</h2>
                     <div className="grid md:grid-cols-3 gap-6">
                         {CERTIFICATES.map((item, idx) => (
                             <div
@@ -197,11 +197,11 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                                 className={`items-center justify-center p-4 rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 bg-[#ededed] text-[#141414] ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
                                 onClick={() => handleCertificateClick(item)}
                             >
-                                <span className="hover:underline">{item.certifiName}</span>
+                                <span className="text-xl hover:underline">{item.certifiName}</span>
                                 <span className="text-xs font-semibold">{item.time}</span>
                             </div>
                         ))}
-                    </div> */}
+                    </div>
 
                     {/* Experience Section (Responsive Timeline) */}
                     < h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-16" >Experience</h2>

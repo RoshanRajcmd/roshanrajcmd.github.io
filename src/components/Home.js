@@ -129,8 +129,8 @@ const Home = () => {
                 {/* Hero Section */}
                 <section className="relative flex flex-col items-center justify-center w-full" style={{ minHeight: '66vh' }}>
                     <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-extrabold text-center leading-tight tracking-tight select-none">
-                        Hi I'm.
-                        <br />Roshan Raj.
+                        Hi I'm
+                        <br />Roshan Raj
                     </h1>
                     <StarBurst />
                     <SlotMachine />

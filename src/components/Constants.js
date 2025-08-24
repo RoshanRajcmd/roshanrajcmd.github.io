@@ -11,6 +11,7 @@ import LoadingImage from '../assets/Loading.png';
 export const SKILLS = [
     "Java",
     "SpringBoot",
+    "REST APIs",
     "React.js",
     "Python",
     "Flask",
@@ -18,11 +19,10 @@ export const SKILLS = [
     "AWS",
     "PL/SQL",
     "Git",
-    "REST APIs",
-    "SOAP APIs",
     "Selenium",
+    "ORM/JPA - Hibernate",
     "CI/CD tools",
-    // Additional skills
+    "SOAP APIs",
     "Node.js",
     "PostgreSQL",
     "MongoDB",
@@ -41,9 +41,9 @@ export const SKILLS = [
     "Vite",
     "TDD",
     "BDD",
-    "ORM/JPA - Hibernate",
     "SonarQube",
-    "SonarLint"
+    "SonarLint",
+    "TMUX"
 ];
 
 // Initial visible count for About section
@@ -64,7 +64,7 @@ export const SECTIONS = ['Work', 'About', 'FAQ'];
 export const PROJECTS = [
     {
         tag: "Lifestyle",
-        title: "Book Reading Web App",
+        title: "MyReads",
         subtitle:
             "A web application that allows users to track and manage their book readings.",
         image: Project4,
@@ -72,7 +72,7 @@ export const PROJECTS = [
     },
     {
         tag: "Desktop",
-        title: "Custom Web Browser for Desktop",
+        title: "PyBrowser",
         subtitle:
             "A custom web browser built with Python and PyQt, featuring a sleek design and essential functionalities.",
         image: Project5,
@@ -95,14 +95,14 @@ export const PROJECTS = [
     },
     {
         tag: "Desktop",
-        title: "EcoType - Vocal typing tutor",
+        title: "EcoType",
         subtitle: "A vocalized typing practice application that helps users improve their typing skills through audio prompts and real-time feedback.",
         image: LoadingImage,
         url: "",
     },
     {
         tag: "Fitness",
-        title: "Buffit - Fitness Tracker",
+        title: "Buffit",
         subtitle:
             "A customizable fitness tracking application that helps users monitor their workouts, nutrition, and progress.",
         image: LoadingImage,
@@ -175,18 +175,43 @@ export const EXPERIENCES = [
 // Certificates Cards
 export const CERTIFICATES = [
     {
-        certifiName: "AWS Cloud Computing 101",
+        certifiName: "AWS Cloud Computing",
         time: "Apr 2025",
         url: "https://www.credly.com/badges/01d0e5e8-b1fb-4c38-b19f-f0e8b836e636/public_url",
     },
     {
-        certifiName: "AWS Cloud Practitioner",
+        certifiName: "Google Cloud Badges",
         time: "Aug 2025",
-        url: "",
+        url: "https://www.cloudskillsboost.google/public_profiles/2ea0e69d-29bd-45d1-8945-bc77a9f33c2d",
     },
     {
-        certifiName: "HashiCorp Teraform",
+        certifiName: "Microsoft Learn Trophies",
         time: "Aug 2025",
-        url: "",
-    }
+        url: "https://learn.microsoft.com/en-us/users/me/achievements?tab=tab-modules#trophies-section",
+    },
+    // {
+    //     certifiName: "UX - User Experience",
+    //     time: "Sep 2024",
+    //     url: "https://www.interaction-design.org/members/roshan-raj/certificate/course/06bddf21-631f-4ac6-9c36-cd97455f2266",
+    // },
+    // {
+    //     certifiName: "UI - Interaction Design",
+    //     time: "May 2025",
+    //     url: "https://www.interaction-design.org/members/roshan-raj/certificate/course/c7ae43d6-c084-4369-a7bd-9f44d5db7bd9",
+    // },
+    // {
+    //     certifiName: "UI - Accessibility Design",
+    //     time: "Oct 2024",
+    //     url: "https://www.interaction-design.org/members/roshan-raj/certificate/course/31652279-8d80-498b-929f-9f701984a40d",
+    // },
+    // {
+    //     certifiName: "AWS Cloud Practitioner",
+    //     time: "Aug 2025",
+    //     url: "",
+    // },
+    // {
+    //     certifiName: "HashiCorp Teraform",
+    //     time: "Aug 2025",
+    //     url: "",
+    // }
 ]
