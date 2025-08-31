@@ -56,6 +56,13 @@ const Work = ({ darkMode, playClickSound }) => {
                         </div>
                         <div className="px-4 pt-2 pb-6 flex flex-col gap-1 flex-1">
                             <p className="text-xl font-semibold ">{item.title}</p>
+                            <div className='flex gap-1'>
+                                {item.techStack.map((tech, idx) => (
+                                    <p className={`text-xs px-2 py-1 rounded-full bg-none ${darkMode ? 'text-[#ededed] bg-[#bcbbbb]' : 'text-[#141414]  bg-gray-600'}`}>
+                                        {tech}
+                                    </p>
+                                ))}
+                            </div>
                             <p className={`text-sm  font-light ${darkMode ? 'text-[#141414]' : 'text-gray-500'}`}>{item.subtitle}</p>
                         </div>
                     </div>

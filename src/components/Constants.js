@@ -68,6 +68,7 @@ export const PROJECTS = [
         subtitle:
             "A web application that allows users to track and manage their book readings.",
         image: Project4,
+        techStack: ["React", "Spring Boot", "MySQL", "Docker", "NGINX",], //Max 5 is permitted
         url: GITHUB_URL + "/myreads-web-app",
     },
     {
@@ -76,6 +77,7 @@ export const PROJECTS = [
         subtitle:
             "A custom web browser built with Python and PyQt, featuring a sleek design and essential functionalities.",
         image: Project5,
+        techStack: ["Python", "PyQt5", "json-parsing"],
         url: GITHUB_URL + "/py-browser",
     },
     {
@@ -83,6 +85,7 @@ export const PROJECTS = [
         title: "E-commerce Platform",
         subtitle: "A full-featured e-commerce platform built with React, Node.js, and a SQL database.",
         image: Project3,
+        techStack: ["MEAN", "MongoDB", "Angular", "Nodejs", "Docker"],
         url: GITHUB_URL + "/ecom-web-app",
     },
     {
@@ -91,13 +94,15 @@ export const PROJECTS = [
         subtitle:
             "A Python-based ML application that collects tweets, analyzes their sentiment.",
         image: Project2,
-        url: GITHUB_URL + "/myreads-web-app",
+        techStack: ["React", "Python", "ML", "Docker"],
+        url: GITHUB_URL + "/tweezy",
     },
     {
         tag: "Desktop",
         title: "EcoType",
         subtitle: "A vocalized typing practice application that helps users improve their typing skills through audio prompts and real-time feedback.",
         image: LoadingImage,
+        techStack: ["React", "Spring Boot", "Vite", "Electron"],
         url: "",
     },
     {
@@ -106,6 +111,7 @@ export const PROJECTS = [
         subtitle:
             "A customizable fitness tracking application that helps users monitor their workouts, nutrition, and progress.",
         image: LoadingImage,
+        techStack: ["React", "Spring Boot", "TailwindCss"],
         url: "",
     },
 ];
