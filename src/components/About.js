@@ -5,7 +5,8 @@ import { MdExpandMore } from "react-icons/md";
 import { FaQuoteLeft } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import doublePopup from '../assets/pop-up.mov';
-import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS, EXPERIENCES, CERTIFICATES } from './Constants';
+import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS, EXPERIENCES, CERTIFICATES, CAREER_EXPERIENCE_START_DATE } from './Constants';
+import { getYearsAndMonthsSinceInWords } from './Utility';
 
 const About = ({ soundOn, darkMode, playClickSound }) => {
     const [showMore, setShowMore] = useState(false);
@@ -16,8 +17,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
     const [marqueeDuration, setMarqueeDuration] = useState(24); // fallback default
     const [aboutIdx, setAboutIdx] = useState(0);
     const [direction, setDirection] = useState('right'); // for animation
-    const experienceStartDate = "2021-09-07"; // yyyy-mm-dd
-    const { years, months } = getYearsAndMonthsSince(experienceStartDate);
+    const yoeInWords = getYearsAndMonthsSinceInWords(CAREER_EXPERIENCE_START_DATE, false);
 
     const handleShowMore = () => {
         if (soundOn && audioRef.current) {
@@ -58,24 +58,6 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
     if (!document.head.querySelector('style[data-about-carousel]')) {
         style.setAttribute('data-about-carousel', '');
         document.head.appendChild(style);
-    }
-
-    // For consistent marquee speed
-
-    function getYearsAndMonthsSince(dateString) {
-        const startDate = new Date(dateString);
-        const now = new Date();
-
-        let years = now.getFullYear() - startDate.getFullYear();
-        let months = now.getMonth() - startDate.getMonth();
-
-        // Adjust if current month is earlier than start month
-        if (months < 0) {
-            years--;
-            months += 12;
-        }
-
-        return { years, months };
     }
 
     const handleCertificateClick = (item) => {
@@ -205,7 +187,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
 
                     {/* Experience Section (Responsive Timeline) */}
                     < h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-16" >Experience</h2>
-                    <h3 className="text-center text-[18px] font-medium text-neutral-500 leading-normal tracking-[-0.015em] px-2 sm:px-4 pt-2">{years} year{years !== 1 ? "s" : ""} and {months} month{months !== 1 ? "s" : ""}</h3>
+                    <h3 className="text-center text-[18px] font-medium text-neutral-500 leading-normal tracking-[-0.015em] px-2 sm:px-4 pt-2">{yoeInWords}</h3>
                     <div className="w-full flex flex-col items-center pb-4">
                         <div className="overflow-x-auto w-full whitespace-nowrap py-4">
                             <div className="relative w-full flex flex-col sm:flex-row items-center sm:items-stretch gap-8 sm:gap-0">
@@ -214,7 +196,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                                 {/* Timeline vertical line for mobile */}
                                 <div className="block sm:hidden absolute left-1.5 top-0 h-full w-1 bg-[#ededed] z-0" aria-hidden="true"></div>
                                 {/* Experience Items */}
-                                <div className="relative z-10 w-full flex flex-col sm:flex-row items-center sm:justify-between gap-8">
+                                <div className="relative z-10 w-full flex flex-col sm:flex-row sm:justify-between gap-8">
                                     {EXPERIENCES.map((experience, idx) => (
                                         <div className="flex flex-row sm:flex-col items-center sm:items-end w-full sm:w-1/2">
 

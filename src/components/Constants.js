@@ -6,6 +6,10 @@ import Project3 from '../assets/Project3.png';
 import Project4 from '../assets/Project4.png';
 import Project5 from '../assets/Project5.png';
 import LoadingImage from '../assets/Loading.png';
+import { getYearsAndMonthsSinceInWords } from './Utility';
+
+export const CAREER_EXPERIENCE_START_DATE = "2021-09-07"; // yyyy-mm-dd
+export const CURRENT_EXPERIENCE_JOIN_DATE = "2025-09-08";
 
 // Skills for About section
 export const SKILLS = [
@@ -158,15 +162,25 @@ export const ABOUT_CARDS = [
     }
 ];
 
+
+
 // Experience Cards
 export const EXPERIENCES = [
+    {
+        compName: "Amazon India",
+        role: "SDE 1",
+        clientCompName: "",
+        timePeriod: "2025",
+        duration: getYearsAndMonthsSinceInWords(CURRENT_EXPERIENCE_JOIN_DATE, true),
+        current: true
+    },
     {
         compName: "Quess Corp",
         role: "Software Engineer",
         clientCompName: "Client - Renault RNTBCI",
         timePeriod: "2024 - 2025",
         duration: "11m",
-        current: true
+        current: false
     },
     {
         compName: "HCL Technologies",
