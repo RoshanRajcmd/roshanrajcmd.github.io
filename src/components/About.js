@@ -176,7 +176,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                         {CERTIFICATES.map((item, idx) => (
                             <div
                                 key={idx}
-                                className={`items-center justify-center p-4 rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 bg-[#ededed] text-[#141414] ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
+                                className={`items-center justify-center text-center p-4 rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 bg-[#ededed] text-[#141414] ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
                                 onClick={() => handleCertificateClick(item)}
                             >
                                 <span className="text-xl hover:underline">{item.certifiName}</span>
