@@ -252,15 +252,17 @@ const Home = () => {
             </div>
 
             {/* AI chat button */}
-            <button
-                onClick={handleOpenChat}
-                className="sticky left-8 bottom-8 z-50 bg-green-500 text-black px-4 py-2 rounded-full shadow-lg hover:bg-green-600 transition"
-            >
-                <div className={`flex items-center justify-center text-center gap-1 ${darkMode ? 'text-[#ededed]' : 'text-[#141414]'}`}>
-                    <BsFillChatLeftTextFill />
-                    <span>AI Chat</span>
-                </div>
-            </button >
+            <div className="fixed left-5 bottom-8 z-50">
+                <button
+                    onClick={handleOpenChat}
+                    className={`highlight-card relative px-4 py-2 rounded-full shadow-lg ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ffffff]'}`}
+                >
+                    <div className={`flex items-center justify-center text-center gap-1 `}>
+                        <BsFillChatLeftTextFill />
+                        <span>AI Chat</span>
+                    </div>
+                </button>
+            </div>
             {/* AI chat Model overlay */}
             {openChat && (
                 <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/50">

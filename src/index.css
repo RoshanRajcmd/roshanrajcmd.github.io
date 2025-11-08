@@ -66,3 +66,51 @@
 .animate-spin-slot {
   animation: spin-slot 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
+@keyframes border-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.highlight-card {
+  isolation: isolate;
+}
+
+.highlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: inherit;
+  background: linear-gradient(45deg,
+      #d71616,
+      #ebef0b,
+      #09e3cd,
+      #da8013,
+      #ffcb6b);
+  background-size: 300% 300%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.highlight-card:hover::before {
+  opacity: 1;
+  animation: border-gradient 3s linear infinite;
+}
