@@ -146,7 +146,7 @@ export const TESTIMONIALS = [
 export const ABOUT_CARDS = [
     {
         title: "♠️ A Jack of All Trades",
-        description: "I am a software developer with 3+ years of experience in building web and desktop applications. I specialize in full-stack development and have a strong understanding of software engineering principles. My goal is to create impactful and user-friendly applications that solve real-world problems."
+        description: "I am a software developer with 4+ years of experience in building web and desktop applications. I specialize in full-stack development and have a strong understanding of software engineering principles. My goal is to create impactful and user-friendly applications that solve real-world problems."
     },
     {
         title: "🪓 Clarity Before Code",

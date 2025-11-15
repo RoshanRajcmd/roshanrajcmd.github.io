@@ -12,6 +12,15 @@ import mouseClickAudio from '../assets/mouse_click.mov';
 import { GITHUB_URL, LINKEDIN_URL, EMAIL_URL, BEHANCE_URL, SECTIONS } from './Constants';
 import { BsFillChatLeftTextFill } from "react-icons/bs";
 import { FaBehanceSquare } from "react-icons/fa";
+// Train images - imported so bundlers can resolve them statically
+import train_img_1 from '../assets/train_img_1.png';
+import train_img_2 from '../assets/train_img_2.png';
+import train_img_3 from '../assets/train_img_3.png';
+import train_img_4 from '../assets/train_img_4.png';
+import train_img_5 from '../assets/train_img_5.png';
+import train_img_6 from '../assets/train_img_6.png';
+
+const TRAIN_IMAGES = [train_img_1, train_img_2, train_img_3, train_img_4, train_img_5, train_img_6];
 
 
 const Home = () => {
@@ -167,6 +176,22 @@ const Home = () => {
                 <audio ref={audioRef} src={doublePopup} preload="auto" />
                 <audio ref={mouseClickAudioRef} src={mouseClickAudio} preload="auto" />
                 <HeartBurst show={showHearts} originRef={heartBtnRef} />
+
+                {/* Train of static images (train_img_1 .. train_img_6) */}
+                <div className="flex justify-center pb-9 width">
+                    <div className="flex gap-4 overflow-x-auto px-4">
+                        {TRAIN_IMAGES.map((src, idx) => (
+                            <img
+                                key={idx}
+                                src={src}
+                                alt={`train_img_${idx + 1}`}
+                                className="rounded-lg object-cover mx-2"
+                                style={{ width: 70, height: 93 }}
+                            />
+                        ))}
+                    </div>
+                </div>
+
                 <div className="flex justify-center">
                     <button
                         ref={heartBtnRef}
@@ -241,7 +266,7 @@ const Home = () => {
             </footer>
 
             {/* Scroll to Top Button */}
-            <div className="fixed bottom-8 right-8 z-40">
+            <div className="fixed bottom-5 right-8 z-40">
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className={`rounded-full p-3 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-[#ffffff] text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-[#ffffff]'}`}
@@ -252,7 +277,7 @@ const Home = () => {
             </div>
 
             {/* AI chat button */}
-            <div className="fixed left-5 bottom-8 z-50">
+            <div className="fixed left-5 bottom-5 z-50">
                 <button
                     onClick={handleOpenChat}
                     className={`highlight-card relative px-4 py-2 rounded-full shadow-lg ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ffffff]'}`}
