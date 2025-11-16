@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { FaGithubSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { IoMailUnread } from "react-icons/io5";
@@ -12,13 +12,13 @@ import mouseClickAudio from '../assets/mouse_click.mov';
 import { GITHUB_URL, LINKEDIN_URL, EMAIL_URL, BEHANCE_URL, SECTIONS } from './Constants';
 import { BsFillChatLeftTextFill } from "react-icons/bs";
 import { FaBehanceSquare } from "react-icons/fa";
-// Train images - imported so bundlers can resolve them statically
 import train_img_1 from '../assets/train_img_1.png';
 import train_img_2 from '../assets/train_img_2.png';
 import train_img_3 from '../assets/train_img_3.png';
 import train_img_4 from '../assets/train_img_4.png';
 import train_img_5 from '../assets/train_img_5.png';
 import train_img_6 from '../assets/train_img_6.png';
+import Chat from './Chat';
 
 const TRAIN_IMAGES = [train_img_1, train_img_2, train_img_3, train_img_4, train_img_5, train_img_6];
 
@@ -33,15 +33,25 @@ const Home = () => {
     const [soundOn, setSoundOn] = useState(true);
     // State to track scroll position
     const [scrolled, setScrolled] = useState(false);
+    // Utility: play mouse click sound if soundOn is enabled
+    const playClickSound = React.useCallback(() => {
+        if (soundOn && mouseClickAudioRef.current) {
+            mouseClickAudioRef.current.currentTime = 0;
+            mouseClickAudioRef.current.play();
+        }
+    }, [soundOn]);
+
+    // Note: we avoid creating inline wrapper components here to keep
+    // component references stable across renders. This helps prevent
+    // unnecessary re-renders of heavy children components when
+    // unrelated state (like AI chat input) changes.
     const sectionComponents = {
         Work,
-        About: (props) => <About {...props} soundOn={soundOn} playClickSound={playClickSound} />, // ensure soundOn is always passed
-        FAQ: (props) => <FAQ {...props} soundOn={soundOn} />,
+        About,
+        FAQ,
     };
-    //AI chat bot
     const [openChat, setOpenChat] = useState(false);
-    const [messages, setMessages] = useState([]);
-    const [input, setInput] = useState("");
+
 
     const scrollToSection = (section) => {
         //get the section as element that is useref-ed
@@ -84,43 +94,10 @@ const Home = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-
-    // Utility: play mouse click sound if soundOn is enabled
-    const playClickSound = () => {
-        if (soundOn && mouseClickAudioRef.current) {
-            mouseClickAudioRef.current.currentTime = 0;
-            mouseClickAudioRef.current.play();
-        }
-    };
-
-
     // AI chat box 
     const handleOpenChat = () => {
-        setOpenChat(!openChat);
-        if (messages.length === 0) {
-            setMessages([
-                { type: "ai", text: "👋😃 Hi, this is Roshan's AI assistant! - ⚠️ I am still under development, Please be patient ⚠️" }
-            ]);
-        }
+        setOpenChat((prev) => !prev);
     };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setMessages([...messages, { type: "user", text: input }]);
-
-        // TODO - will be enabled in the future
-        // const res = await fetch("/api/chat", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({ prompt: input }),
-        // });
-        // const data = await res.json();
-        // setMessages([...messages, { type: "user", text: input }, { type: "ai", text: data.reply }]);
-
-        //Clean up the input 
-        setInput("");
-    };
-
 
     return (
         <div className={darkMode ? 'dark bg-[#141414] text-[#ffffff]' : 'bg-[#ffffff]  text-[#141414]'}>
@@ -145,6 +122,7 @@ const Home = () => {
                     <SlotMachine />
                     <Punchline />
                 </section>
+
                 {/* Other Sections */}
                 {SECTIONS.map((sec, idx) => {
                     const SectionComponent = sectionComponents[sec];
@@ -160,11 +138,15 @@ const Home = () => {
                                 ref={(el) => (sectionRefs.current[sec] = el)}
                                 className="flex flex-col"
                             >
-                                {/* Pass playClickSound to Work section only */}
+                                {/* Render sections with explicit props to avoid creating
+                                    wrapper components on every render (prevents rerenders
+                                    of heavy children when unrelated state changes). */}
                                 {sec === 'Work' ? (
                                     <Work darkMode={darkMode} playClickSound={playClickSound} />
+                                ) : sec === 'About' ? (
+                                    <About darkMode={darkMode} soundOn={soundOn} playClickSound={playClickSound} />
                                 ) : (
-                                    <SectionComponent darkMode={darkMode} />
+                                    <FAQ darkMode={darkMode} soundOn={soundOn} />
                                 )}
                             </section>
                         </React.Fragment>
@@ -290,43 +272,7 @@ const Home = () => {
             </div>
             {/* AI chat Model overlay */}
             {openChat && (
-                <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/50">
-                    <div className="relative w-full max-w-xl h-[600px] bg-black rounded-lg shadow-xl flex flex-col">
-
-                        {/* Header like Mac Terminal */}
-                        <div className="flex items-center justify-between p-2 bg-gray-800 rounded-t-lg">
-                            <div className="flex gap-1">
-                                <span className="w-3 h-3 bg-red-500 rounded-full hover:cursor-pointer" onClick={() => setOpenChat(false)}></span>
-                                <span className="w-3 h-3 bg-yellow-500 rounded-full hover:cursor-not-allowed"></span>
-                                <span className="w-3 h-3 bg-green-500 rounded-full hover:cursor-not-allowed"></span>
-                            </div>
-                            <span className='text-gray-500 font-mono'>roshanrajcmd@Roshan's-Portfolio:~</span>
-                            <button onClick={() => setOpenChat(false)} className="text-white font-bold">&times;</button>
-                        </div>
-
-                        {/* Chat Body */}
-                        <div className="flex-1 p-4 overflow-y-auto font-mono text-green-400" id="chat-window">
-                            {messages.map((msg, i) => (
-                                <div key={i} className={`${msg.type === 'user' ? 'text-white' : 'text-green-400'}`}>
-                                    <span>{msg.type === 'user' ? 'User: ' : 'Ai: '} {msg.text}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* Input */}
-                        <form onSubmit={handleSubmit} className="flex p-2 border-t border-gray-700">
-                            <span className="text-white">$</span>
-                            <input
-                                type="text"
-                                className="flex-1 bg-black border-none outline-none text-white font-mono px-2"
-                                value={input}
-                                onChange={(e) => setInput(e.target.value)}
-                                placeholder="Type your meassage and hit Enter..."
-                            />
-                            <button type="submit" className="bg-green-500 text-black px-2 rounded">Send</button>
-                        </form>
-                    </div>
-                </div>
+                <Chat onClose={() => setOpenChat(false)} />
             )}
         </div >
     );

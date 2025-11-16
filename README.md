@@ -35,12 +35,26 @@ git remote add origin https://github.com/username/username.github.io.git
 
 ---
 
-### 📥 3. Install the `gh-pages` Package
+### 📥 3. Install the `gh-pages` Package and more
 
 Inside your project folder:
 
 ```bash
 npm install --save gh-pages
+├── @mlc-ai/web-llm@0.2.79
+├── @tailwindcss/cli@4.1.7
+├── @testing-library/dom@10.4.0
+├── @testing-library/jest-dom@6.6.3
+├── @testing-library/react@16.3.0
+├── @testing-library/user-event@13.5.0
+├── gh-pages@6.3.0
+├── react-dom@19.1.0
+├── react-icons@5.5.0
+├── react-router-dom@7.6.3
+├── react-scripts@5.0.1
+├── react@19.1.0
+├── tailwindcss@3.4.17
+└── web-vitals@2.1.4
 ```
 
 ---
@@ -128,24 +142,30 @@ You might be wondering — how can React (a JavaScript framework) be hosted on G
 
 ---
 
-## 🔁 Future Updates
+## 🤖 How Does the AI Works?
 
-To make changes to your site:
+Traditionally, AI prompts from the frontend are processed by a backend logic that calls an API of one of the popular AI models, which is pre-trained. Implementing this often comes with the cost of maintaining a server or subscribing to use the LLM models' APIs and securely storing credentials as secrets.
 
-1. Modify your React code
-2. Run:
+I aim to have this portfolio public with free and open source solutions, so i used [WebLLM](https://webllm.mlc.ai/) who is making a new phase in the AI era with their solution to bake LLMs directly into the client side. My implementation pre-trains the AI model `Llama-3.1-8B-Instruct-q4f16_1-MLC` with my context in `src/data/portfolioAiContext.js` when initalized first-time in the client side.
 
-```bash
-npm run deploy
-```
+  ### The good stuff
+  - You dont have to create a account or sub to use the model
+  - Computation overhead is on the client side
+  - No Money 🤑
 
-And your live site will be updated!
+  ### The less good stuff
+  - Computation overhead is on the client side (yep) so if the client machine is less capable to compure a model your portfolio experience will be bad
+  - Heavy Cold start as the AI initialization happens fully in the client side.
+  - Limited to use smaller "billion-parameter" models to ensur the model doesn't overwhelm or crash clients browser 😵‍💫
+
+Other alternates you can check out is [HuggingFace](https://huggingface.co/) who can offer a huge varity of LLM you can implement.
 
 ---
 
 ## 🧠 Summary
 
 ```bash
+npm start         # Starts your development server
 npm run build     # Compiles the app to static files
 npm run deploy    # Publishes to GitHub Pages
 ```

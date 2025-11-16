@@ -64,6 +64,11 @@ export const EMAIL_URL = "mailto:roshanraj5121999@gmail.com";
 
 export const SECTIONS = ['Work', 'About', 'FAQ'];
 
+// Chat / AI related constants
+export const ROLE_AI = 'ai';
+export const ROLE_USER = 'user';
+export const MLC_MODEL_ID = 'Llama-3.1-8B-Instruct-q4f16_1-MLC';
+
 // Projects data for Work section
 export const PROJECTS = [
     {
