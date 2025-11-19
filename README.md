@@ -146,7 +146,7 @@ You might be wondering — how can React (a JavaScript framework) be hosted on G
 
 Traditionally, AI prompts from the frontend are processed by a backend logic that calls an API of one of the popular AI models, which is pre-trained. Implementing this often comes with the cost of maintaining a server or subscribing to use the LLM models' APIs and securely storing credentials as secrets.
 
-I aim to have this portfolio public with free and open source solutions, so i used [WebLLM](https://webllm.mlc.ai/) who is making a new phase in the AI era with their solution to bake LLMs directly into the client side. My implementation pre-trains the AI model `Llama-3.1-8B-Instruct-q4f16_1-MLC` with my context in `src/data/portfolioAiContext.js` when initalized first-time in the client side.
+I aim to have this portfolio public with free and open source solutions, so i used [WebLLM](https://webllm.mlc.ai/) who is making a new phase in the AI era with their solution to bake LLMs directly into the client side. My implementation pre-trains the AI model `Llama-3.2-3B-Instruct-q4f16_1-MLC` with my context in `src/data/portfolioAiContext.js` when initalized first-time in the client side.
 
   ### The good stuff
   - You dont have to create a account or sub to use the model

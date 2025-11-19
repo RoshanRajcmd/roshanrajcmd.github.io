@@ -67,7 +67,7 @@ export const SECTIONS = ['Work', 'About', 'FAQ'];
 // Chat / AI related constants
 export const ROLE_AI = 'ai';
 export const ROLE_USER = 'user';
-export const MLC_MODEL_ID = 'Llama-3.1-8B-Instruct-q4f16_1-MLC';
+export const MLC_MODEL_ID = 'Llama-3.2-3B-Instruct-q4f16_1-MLC';
 
 // Projects data for Work section
 export const PROJECTS = [
@@ -191,7 +191,7 @@ export const EXPERIENCES = [
         compName: "HCL Technologies",
         role: "Software Developer",
         clientCompName: "Client - Ford GTBC",
-        timePeriod: "2020 - 2021",
+        timePeriod: "2021 - 2024",
         duration: "2y 11m",
         current: false
     }

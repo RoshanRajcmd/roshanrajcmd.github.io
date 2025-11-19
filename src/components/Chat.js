@@ -123,7 +123,7 @@ export default function Chat({ onClose }) {
                 <div className="flex-1 p-4 overflow-y-auto font-mono text-green-400" id="chat-window" ref={chatWindowRef}>
                     {messages.map((msg, i) => (
                         <div key={i} className={`${msg.type === ROLE_USER ? 'text-white' : 'text-green-400'}`}>
-                            <span>{msg.type === ROLE_USER ? 'User: ' : 'Ai: '} {msg.text}</span>
+                            <span>{msg.type === ROLE_USER ? 'User: ' : 'Ari: '} {msg.text}</span>
                         </div>
                     ))}
 
