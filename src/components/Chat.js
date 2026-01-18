@@ -105,7 +105,7 @@ export default function Chat({ onClose }) {
     };
 
     return (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50">
             <div className="relative w-full max-w-xl h-[600px] bg-black rounded-lg shadow-xl flex flex-col">
 
                 {/* Header like Mac Terminal */}
@@ -155,7 +155,7 @@ export default function Chat({ onClose }) {
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Type your message and hit Enter..."
                     />
-                    <button type="submit" className="bg-green-500 text-black px-2 rounded">Send</button>
+                    <button type="submit" className="bg-[#00ff22] text-black px-2 rounded">Send</button>
                 </form>
             </div>
         </div>

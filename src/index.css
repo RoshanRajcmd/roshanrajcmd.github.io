@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@900&display=swap');
 
 @keyframes heart-burst {
   0% {
@@ -92,11 +93,9 @@
   padding: 3px;
   border-radius: inherit;
   background: linear-gradient(45deg,
-      #d71616,
-      #ebef0b,
-      #09e3cd,
-      #da8013,
-      #ffcb6b);
+      #00b919,
+      #00ff22,
+      #fcfcfc);
   background-size: 300% 300%;
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,

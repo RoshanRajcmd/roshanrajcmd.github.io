@@ -86,15 +86,27 @@ const Home = () => {
     // Effect to listen for scroll and update state
     React.useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 80) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
+            const scrollPos = window.scrollY + 140;
+
+            for (const sec of SECTIONS) {
+                const el = sectionRefs.current[sec];
+                if (el) {
+                    const top = el.offsetTop;
+                    const height = el.offsetHeight;
+
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        setActiveSection(sec);
+                    }
+                }
             }
+
+            setScrolled(window.scrollY > 80);
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
 
     // AI chat box 
     const handleOpenChat = () => {
@@ -111,6 +123,7 @@ const Home = () => {
                 scrollToSection={scrollToSection}
                 soundOn={soundOn}
                 setSoundOn={setSoundOn}
+                activeSection={activeSection}
             />
 
             <main className="pt-24 container mx-auto px-2 sm:px-8">
@@ -182,7 +195,7 @@ const Home = () => {
                         type="button"
                         onClick={handleHeartBurst}
                         className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'} `}
-                        style={{ position: 'relative', zIndex: 1 }}
+                        style={{ position: 'relative' }}
                     >
                         <p
                             style={{
@@ -193,54 +206,9 @@ const Home = () => {
                         </p>
                     </button>
                 </div>
-                <div className="flex justify-center items-center gap-2 text-sm text-gray-500 mt-6">
+                <div className="justify-center items-center gap-2 text-sm text-gray-500 mt-6">
                     Connect with me:
-                    <a
-                        href={GITHUB_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
-                        aria-label="GitHub"
-                        onClick={playClickSound}
-                    >
-                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="GithubLogo" data-size="20px" data-weight="regular">
-                            <FaGithubSquare className="size-8" />
-                        </div>
-                    </a>
-                    <a
-                        href={LINKEDIN_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
-                        aria-label="LinkedIn"
-                        onClick={playClickSound}
-                    >
-                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
-                            <FaLinkedin className="size-8" />
-                        </div>
-                    </a>
-                    <a
-                        href={BEHANCE_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
-                        aria-label="LinkedIn"
-                        onClick={playClickSound}
-                    >
-                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
-                            <FaBehanceSquare className="size-8" />
-                        </div>
-                    </a>
-                    <a
-                        href={EMAIL_URL}
-                        className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
-                        aria-label="Email"
-                        onClick={playClickSound}
-                    >
-                        <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'}`}>
-                            <IoMailUnread className="size-8" />
-                        </div>
-                    </a>
+                    <Contacts darkMode={darkMode} playClickSound={playClickSound} />
                 </div>
                 <div>
                     <span className="text-xs text-gray-400">
@@ -261,7 +229,7 @@ const Home = () => {
             </div>
 
             {/* AI chat button */}
-            <div className="fixed left-4 bottom-4 z-50">
+            <div className="fixed left-4 bottom-4 z-40">
                 <button
                     onClick={handleOpenChat}
                     className={`highlight-card relative px-4 py-2 rounded-full shadow-lg ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ffffff]'}`}

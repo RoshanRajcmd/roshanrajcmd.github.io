@@ -192,11 +192,11 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                         <div className="overflow-x-auto w-full whitespace-nowrap py-4">
                             <div className="relative w-full flex flex-col sm:flex-row items-center sm:items-stretch gap-8 sm:gap-0">
                                 {/* Timeline vertical line */}
-                                <div className="hidden sm:block absolute left-1/2 right-1/2 top-1.5 h-1 w-full bg-[#ededed] -translate-x-1/2 z-0" aria-hidden="true"></div>
+                                <div className="hidden sm:block absolute left-1/2 right-1/2 top-1.5 h-1 w-full bg-[#ededed] -translate-x-1/2" aria-hidden="true"></div>
                                 {/* Timeline vertical line for mobile */}
-                                <div className="block sm:hidden absolute left-1.5 top-0 h-full w-1 bg-[#ededed] z-0" aria-hidden="true"></div>
+                                <div className="block sm:hidden absolute left-1.5 top-0 h-full w-1 bg-[#ededed]" aria-hidden="true"></div>
                                 {/* Experience Items */}
-                                <div className="relative z-10 w-full flex flex-col sm:flex-row sm:justify-between gap-8">
+                                <div className="relative w-full flex flex-col sm:flex-row sm:justify-between gap-8">
                                     {EXPERIENCES.map((experience, idx) => (
                                         <div className="flex flex-row sm:flex-col items-center sm:items-end w-full sm:w-1/2">
 
@@ -204,12 +204,12 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                                             <div className="relative w-4 h-4 flex items-center justify-center">
                                                 {/* Outer static green circle for current experience */}
                                                 {experience.current && (
-                                                    <span className={"absolute inline-flex h-full w-full rounded-full bg-green-500"}></span>
+                                                    <span className={"absolute inline-flex h-full w-full rounded-full bg-[#00ff22]"}></span>
                                                 )}
                                                 {/* Live green dot */}
                                                 <span
                                                     className={`absolute inline-flex  rounded-full ${experience.current
-                                                        ? "h-5 w-5 bg-green-400 opacity-75 animate-ping"
+                                                        ? "h-5 w-5 bg-[#00ff22] opacity-75 animate-ping"
                                                         : "h-full w-full bg-[#ededed]"
                                                         }`}
                                                 ></span>
