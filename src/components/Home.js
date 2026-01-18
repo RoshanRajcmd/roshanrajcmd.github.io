@@ -19,6 +19,7 @@ import train_img_4 from '../assets/train_img_4.png';
 import train_img_5 from '../assets/train_img_5.png';
 import train_img_6 from '../assets/train_img_6.png';
 import Chat from './Chat';
+import Contacts from './Contacts';
 
 const TRAIN_IMAGES = [train_img_1, train_img_2, train_img_3, train_img_4, train_img_5, train_img_6];
 
@@ -33,6 +34,7 @@ const Home = () => {
     const [soundOn, setSoundOn] = useState(true);
     // State to track scroll position
     const [scrolled, setScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState("Home");
     // Utility: play mouse click sound if soundOn is enabled
     const playClickSound = React.useCallback(() => {
         if (soundOn && mouseClickAudioRef.current) {
@@ -248,7 +250,7 @@ const Home = () => {
             </footer>
 
             {/* Scroll to Top Button */}
-            <div className="fixed bottom-5 right-8 z-40">
+            <div className="fixed right-4 bottom-4 z-40">
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className={`rounded-full p-3 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-[#ffffff] text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-[#ffffff]'}`}
@@ -259,7 +261,7 @@ const Home = () => {
             </div>
 
             {/* AI chat button */}
-            <div className="fixed left-5 bottom-5 z-50">
+            <div className="fixed left-4 bottom-4 z-50">
                 <button
                     onClick={handleOpenChat}
                     className={`highlight-card relative px-4 py-2 rounded-full shadow-lg ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ffffff]'}`}
