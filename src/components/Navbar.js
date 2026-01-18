@@ -38,7 +38,7 @@ const Navbar = ({
                 <nav className="fixed top-4 right-4 z-50">
                     <button
                         onClick={() => setOpen(true)}
-                        className={`p-2 rounded-lg shadow-lg backdrop-blur-sm transition-all ${darkMode ? "bg-[#141414] text-white" : "bg-white text-black"
+                        className={`p-2 rounded-lg shadow-lg backdrop-blur-sm transition-all ${darkMode ? "text-[#ffffff]" : "text-[#141414]"
                             }`}
                     >
                         <HiMenuAlt2 className="w-10 h-10" />
@@ -47,7 +47,7 @@ const Navbar = ({
                     {/* FULLSCREEN MENU */}
                     {open && (
                         <div
-                            className={`fixed inset-0 z-50 flex flex-col ${darkMode ? "bg-[#141414] text-white" : "bg-white text-black"
+                            className={`fixed inset-0 z-50 flex flex-col ${darkMode ? "bg-[#141414] text-[#ffffff]" : "bg-[#ffffff] text-[#141414]"
                                 }`}
                         >
                             {/* HEADER */}
@@ -100,7 +100,7 @@ const Navbar = ({
                             <div className="flex justify-center mt-auto">
                                 <a
                                     href={resumeFile}
-                                    className="flex items-center gap-2 bg-[#00ff22] text-black font-bold text-sm px-5 py-2 rounded-lg"
+                                    className="flex items-center gap-2 bg-[#00ff22] text-[#141414] font-bold text-sm px-5 py-2 rounded-lg"
                                 >
                                     <HiOutlineDocumentDownload className="w-5 h-5" />
                                     Resume

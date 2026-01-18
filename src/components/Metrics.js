@@ -30,7 +30,7 @@ const Metrics = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 p-8">
-            <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6">
+            <div className="max-w-3xl mx-auto bg-[#ffffff] shadow-lg rounded-lg p-6">
                 <h2 className="text-2xl font-bold mb-6 text-gray-800">📊 Web Vitals Dashboard</h2>
                 {metrics.length === 0 ? (
                     <p className="text-gray-500">No metrics available yet...</p>

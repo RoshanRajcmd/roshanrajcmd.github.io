@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import portfolioAiContext from "../data/portfolioAiContext.js";
 import { ROLE_AI, ROLE_USER, MLC_MODEL_ID } from './Constants';
+import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_NEON_GREEN, COLOR_LIGHT_GRAY } from './ColorConstants';
 
 export default function Chat({ onClose }) {
     const [messages, setMessages] = useState([]);
@@ -105,8 +106,8 @@ export default function Chat({ onClose }) {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-            <div className="relative w-full max-w-xl h-[600px] bg-black rounded-lg shadow-xl flex flex-col">
+        <div className={`fixed inset-0 flex items-center justify-center bg-[${COLOR_DARK_BG}]/50}`}>
+            <div className={`relative w-full max-w-xl h-[600px] bg-[${COLOR_DARK_BG}] rounded-lg shadow-xl flex flex-col`}>
 
                 {/* Header like Mac Terminal */}
                 <div className="flex items-center justify-between p-2 bg-gray-800 rounded-t-lg">
@@ -116,13 +117,13 @@ export default function Chat({ onClose }) {
                         <span className="w-3 h-3 bg-green-500 rounded-full hover:cursor-not-allowed"></span>
                     </div>
                     <span className='text-gray-500 font-mono'>roshanrajcmd@Roshan's-Portfolio:~</span>
-                    <button onClick={onClose} className="text-white font-bold">&times;</button>
+                    <button onClick={onClose} className={`text-[${COLOR_DARK_TEXT}] font-bold`}>&times;</button>
                 </div>
 
                 {/* Chat Body */}
                 <div className="flex-1 p-4 overflow-y-auto font-mono text-green-400" id="chat-window" ref={chatWindowRef}>
                     {messages.map((msg, i) => (
-                        <div key={i} className={`${msg.type === ROLE_USER ? 'text-white' : 'text-green-400'}`}>
+                        <div key={i} className={msg.type === ROLE_USER ? `text-[${COLOR_DARK_TEXT}]` : 'text-green-400'}>
                             <span>{msg.type === ROLE_USER ? 'User: ' : 'Ari: '} {msg.text}</span>
                         </div>
                     ))}
@@ -147,15 +148,15 @@ export default function Chat({ onClose }) {
 
                 {/* Input */}
                 <form onSubmit={handleSubmit} className="flex p-2 border-t border-gray-700">
-                    <span className="text-white">$</span>
+                    <span className={`text-[${COLOR_DARK_TEXT}]`}>$</span>
                     <input
                         type="text"
-                        className="flex-1 bg-black border-none outline-none text-white font-mono px-2"
+                        className={`flex-1 bg-[${COLOR_DARK_BG}] border-none outline-none text-[${COLOR_DARK_TEXT}] font-mono px-2`}
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Type your message and hit Enter..."
                     />
-                    <button type="submit" className="bg-[#00ff22] text-black px-2 rounded">Send</button>
+                    <button type="submit" className={`bg-[${COLOR_NEON_GREEN}] text-[${COLOR_DARK_BG}] px-2 rounded`}>Send</button>
                 </form>
             </div>
         </div>

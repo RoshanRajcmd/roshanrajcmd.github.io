@@ -20,6 +20,7 @@ import train_img_5 from '../assets/train_img_5.png';
 import train_img_6 from '../assets/train_img_6.png';
 import Chat from './Chat';
 import Contacts from './Contacts';
+import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_BG, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_HOVER_GRAY } from './ColorConstants';
 
 const TRAIN_IMAGES = [train_img_1, train_img_2, train_img_3, train_img_4, train_img_5, train_img_6];
 
@@ -114,7 +115,7 @@ const Home = () => {
     };
 
     return (
-        <div className={darkMode ? 'dark bg-[#141414] text-[#ffffff]' : 'bg-[#ffffff]  text-[#141414]'}>
+        <div className={darkMode ? `dark bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}]` : `bg-[${COLOR_LIGHT_BG}] text-[${COLOR_LIGHT_TEXT}]`}>
             <Navbar
                 darkMode={darkMode}
                 scrolled={scrolled}
@@ -194,7 +195,7 @@ const Home = () => {
                         ref={heartBtnRef}
                         type="button"
                         onClick={handleHeartBurst}
-                        className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'dark bg-gray-600 text-[#ededed]' : 'bg-[#ededed] text-gray-600'} `}
+                        className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? `dark bg-gray-600 text-[${COLOR_LIGHT_GRAY}]` : `bg-[${COLOR_LIGHT_GRAY}] text-gray-600`} `}
                         style={{ position: 'relative' }}
                     >
                         <p
@@ -221,7 +222,7 @@ const Home = () => {
             <div className="fixed right-4 bottom-4 z-40">
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className={`rounded-full p-3 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? 'bg-[#ededed] hover:bg-[#ffffff] text-[#141414]' : 'dark bg-[#141414] hover:bg-[#4e4d4d] text-[#ffffff]'}`}
+                    className={`rounded-full p-3 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}] hover:bg-[${COLOR_DARK_TEXT}] text-[${COLOR_LIGHT_TEXT}]` : `dark bg-[${COLOR_DARK_BG}] hover:bg-[${COLOR_HOVER_GRAY}] text-[${COLOR_DARK_TEXT}]`}`}
                     aria-label="Scroll to top"
                 >
                     <FaArrowUp className="size-5" />
@@ -232,7 +233,7 @@ const Home = () => {
             <div className="fixed left-4 bottom-4 z-40">
                 <button
                     onClick={handleOpenChat}
-                    className={`highlight-card relative px-4 py-2 rounded-full shadow-lg ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ffffff]'}`}
+                    className={`highlight-card relative px-4 py-2 rounded-full shadow-lg ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}] text-[${COLOR_LIGHT_TEXT}]` : `bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}]`}`}
                 >
                     <div className={`flex items-center justify-center text-center gap-1 `}>
                         <BsFillChatLeftTextFill />
@@ -396,7 +397,7 @@ function SlotMachine() {
                             {giftStarHover && <GiftStarBurst />}
                             🎁 Claim Your Gift
                         </a>
-                        <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-2 rounded bg-black text-white text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg">
+                        <span className={`absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-2 rounded bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}] text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg`}>
                             You got some free cute sticker
                         </span>
                     </div>

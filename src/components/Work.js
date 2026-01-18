@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PROJECTS } from './Constants';
+import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_MEDIUM_GRAY, COLOR_LIGHT_GRAY_TEXT } from './ColorConstants';
 
 // Utility to get a random contrasting color
 function getRandomContrastColor() {
@@ -34,12 +35,12 @@ const Work = ({ darkMode, playClickSound }) => {
                 {PROJECTS.map((item, idx) => (
                     <div
                         key={idx}
-                        className={`rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${darkMode ? 'bg-[#ededed] text-[#141414]' : 'bg-[#141414] text-[#ededed]'} ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
+                        className={`rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}] text-[${COLOR_LIGHT_TEXT}]` : `bg-[${COLOR_DARK_BG}] text-[${COLOR_LIGHT_GRAY}]`} ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
                         onClick={() => handleProjectClick(item)}
                         onMouseEnter={() => handleMouseEnter(idx)}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <div className={`w-full flex items-center justify-center aspect-video relative p-2 ${darkMode ? 'bg-[#ededed]' : 'bg-[#141414]'}`}>
+                        <div className={`w-full flex items-center justify-center aspect-video relative p-2 ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}]` : `bg-[${COLOR_DARK_BG}]`}`}>
                             <img
                                 src={item.image}
                                 alt={item.title}
@@ -47,8 +48,8 @@ const Work = ({ darkMode, playClickSound }) => {
                             />
                             <div className="absolute top-8 left-8">
                                 <span
-                                    className={`inline-block text-xs font-normal rounded-full px-3 py-1 transition-colors duration-300 ${darkMode ? 'text-[#141414]' : 'text-[#ededed]'}${hoveredIdx === idx ? ' shadow-lg' : ''}`}
-                                    style={{ backgroundColor: hoveredIdx === idx ? tagBgColors[idx] : (darkMode ? '#ededed' : '#141414') }}
+                                    className={`inline-block text-xs font-normal rounded-full px-3 py-1 transition-colors duration-300 ${darkMode ? `text-[${COLOR_LIGHT_TEXT}]` : `text-[${COLOR_LIGHT_GRAY}]`}${hoveredIdx === idx ? ' shadow-lg' : ''}`}
+                                    style={{ backgroundColor: hoveredIdx === idx ? tagBgColors[idx] : (darkMode ? COLOR_LIGHT_GRAY : COLOR_DARK_BG) }}
                                 >
                                     {item.tag}
                                 </span>
@@ -58,12 +59,12 @@ const Work = ({ darkMode, playClickSound }) => {
                             <p className="text-xl pb-4 font-semibold ">{item.title}</p>
                             <div className='flex flex-wrap gap-1'>
                                 {item.techStack.map((tech, idx) => (
-                                    <p className={`text-xs px-2 py-0 rounded-full bg-none ${darkMode ? 'text-[#ededed] bg-[#bcbbbb]' : 'text-[#141414]  bg-[#dadada]'}`}>
+                                    <p className={`text-xs px-2 py-0 rounded-full bg-none ${darkMode ? `text-[${COLOR_LIGHT_GRAY}] bg-[${COLOR_MEDIUM_GRAY}]` : `text-[${COLOR_LIGHT_TEXT}] bg-[${COLOR_LIGHT_GRAY_TEXT}]`}`}>
                                         {tech}
                                     </p>
                                 ))}
                             </div>
-                            <p className={`text-sm  font-light ${darkMode ? 'text-[#141414]' : 'text-gray-500'}`}>{item.subtitle}</p>
+                            <p className={`text-sm  font-light ${darkMode ? `text-[${COLOR_LIGHT_TEXT}]` : 'text-gray-500'}`}>{item.subtitle}</p>
                         </div>
                     </div>
                 ))}
