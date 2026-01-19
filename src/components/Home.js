@@ -427,7 +427,7 @@ function Punchline() {
 // Star burst for the gift button
 function GiftStarBurst() {
     return (
-        <div className="pointer-events-none absolute inset-0 flex justify-center items-center z-10">
+        <div className="pointer-events-none absolute insert-0 flex justify-center items-center z-10">
             {[...Array(8)].map((_, i) => {
                 const angle = (i / 8) * 2 * Math.PI;
                 const distance = 40 + Math.random() * 10;
