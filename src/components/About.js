@@ -119,7 +119,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                             className={`mx-2 sm:mx-6 w-full max-w-4xl flex flex-col items-center transition-transform duration-500 ease-in-out ${direction === 'right' ? 'animate-slide-right' : 'animate-slide-left'}`}
                             style={{ minHeight: 140 }}
                         >
-                            <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3">{ABOUT_CARDS[aboutIdx].title}</h2>
+                            <h2 className="text-[22px] font-bold leading-tight tracking-[-0.015em] text-center  pb-3 ">{ABOUT_CARDS[aboutIdx].title}</h2>
                             <p className="text-base font-normal leading-normal text-center">{ABOUT_CARDS[aboutIdx].description}</p>
                         </div>
                         <button
