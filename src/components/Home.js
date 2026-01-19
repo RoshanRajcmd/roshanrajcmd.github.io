@@ -125,6 +125,7 @@ const Home = () => {
                 soundOn={soundOn}
                 setSoundOn={setSoundOn}
                 activeSection={activeSection}
+                playClickSound={playClickSound}
             />
 
             <main className="pt-24 container mx-auto px-2 sm:px-8">
