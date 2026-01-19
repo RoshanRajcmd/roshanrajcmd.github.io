@@ -4,6 +4,7 @@ import { MdExpandLess } from "react-icons/md";
 import { MdExpandMore } from "react-icons/md";
 import { FaQuoteLeft } from "react-icons/fa";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 import doublePopup from '../assets/pop-up.mov';
 import { SKILLS, INITIAL_VISIBLE_SKILLS, TESTIMONIALS, ABOUT_CARDS, EXPERIENCES, CERTIFICATES, CAREER_EXPERIENCE_START_DATE } from './Constants';
 import { getYearsAndMonthsSinceInWords } from './Utility';
@@ -179,8 +180,11 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                                 className={`items-center justify-center text-center p-4 rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 bg-[#ededed] text-[#141414] ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
                                 onClick={() => handleCertificateClick(item)}
                             >
-                                <span className="text-xl hover:underline">{item.certifiName}</span>
-                                <span className="text-xs font-semibold">{item.time}</span>
+                                <span className="text-xl">{item.certifiName}</span>
+                                <div className='flex gap-2 justify-center items-center'>
+                                    <span className="text-xs font-semibold">{item.time}</span>
+                                    <FiExternalLink />
+                                </div>
                             </div>
                         ))}
                     </div>
