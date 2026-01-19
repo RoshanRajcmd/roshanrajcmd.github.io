@@ -107,7 +107,7 @@ export default function Chat({ onClose }) {
 
     return (
         <div className={`fixed inset-0 flex items-center justify-center bg-[${COLOR_DARK_BG}]/50}`}>
-            <div className={`relative w-full max-w-xl h-[600px] bg-[${COLOR_DARK_BG}] rounded-lg shadow-xl flex flex-col`}>
+            <div className={`relative w-full max-w-xl h-[600px] bg-[${COLOR_DARK_BG}] rounded-lg shadow-xl flex flex-col border border-gray-500`}>
 
                 {/* Header like Mac Terminal */}
                 <div className="flex items-center justify-between p-2 bg-gray-800 rounded-t-lg">
