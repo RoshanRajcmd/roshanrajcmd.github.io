@@ -131,32 +131,31 @@ const Navbar = ({
                             download
                             className={`flex items-center gap-2 px-4 py-2 rounded-full bg-[${COLOR_NEON_GREEN}] text-[${COLOR_LIGHT_TEXT}] hover:shadow-lg`}
                         >
-                            <HiOutlineDocumentDownload className="w-5 h-5"/>
+                            <HiOutlineDocumentDownload className="w-5 h-5" />
                             <span className="text-sm font-semibold">Resume</span>
                         </a>
 
                         {/* Sections */}
-                        <div className="flex gap-4">
+                        <div className="flex gap-4 items-center">
                             {sections.map((sec) => (
                                 <button
                                     key={sec}
                                     onClick={() => scrollToSection(sec)}
-                                    className="bg-transparent px-2 sm:px-4 rounded-full transition-shadow duration-300
-                                            text-base sm:text-xl block mx-auto
+                                    className="bg-transparent px-4 rounded-full transition-shadow duration-300
+                                            sm:text-xl block mx-auto
                                             text-[clamp(2.2rem,6vw,4rem)] font-extrabold uppercase tracking-tight"
                                 >
                                     <span className="relative inline-block">
-                                    {activeSection === sec && (
-                                        <span className={`absolute left-0 right-0 top-1/2 h-[3px] bg-[${COLOR_NEON_GREEN}]`} />
-                                    )}
+                                        {activeSection === sec && (
+                                            <span className={`absolute left-0 right-0 top-1/2 h-[3px] bg-[${COLOR_NEON_GREEN}]`} />
+                                        )}
 
-                                    <span
-                                        className={`relative ${
-                                        activeSection === sec ? "opacity-60" : "hover:opacity-70"
-                                        }`}
-                                    >
-                                        {sec}
-                                    </span>
+                                        <span
+                                            className={`relative ${activeSection === sec ? "opacity-60" : "hover:opacity-70"
+                                                }`}
+                                        >
+                                            {sec}
+                                        </span>
                                     </span>
                                 </button>
                             ))}
@@ -173,12 +172,12 @@ const Navbar = ({
                         </div>
 
                         {/* Controls */}
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-4 px-9 py-2 ">
                             <button onClick={() => setSoundOn((p) => !p)}>
-                                {soundOn ? <FaVolumeUp className="w-5 h-5"/> : <FaVolumeMute className="w-5 h-5"/>}
+                                {soundOn ? <FaVolumeUp className="w-5 h-5" /> : <FaVolumeMute className="w-5 h-5" />}
                             </button>
                             <button onClick={toggleTheme}>
-                                {darkMode ? <IoIosSunny className="w-5 h-5"/> : <IoMdMoon className="w-5 h-5"/>}
+                                {darkMode ? <IoIosSunny className="w-5 h-5" /> : <IoMdMoon className="w-5 h-5" />}
                             </button>
                         </div>
                     </div>
