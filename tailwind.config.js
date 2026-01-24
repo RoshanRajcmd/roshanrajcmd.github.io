@@ -9,8 +9,6 @@ module.exports = {
         nunito: ['Nunito', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
-        name1: ['"Playfair Display"', 'serif'],
-        name2: ['Inter', 'sans-serif'],
       },
     },
   },

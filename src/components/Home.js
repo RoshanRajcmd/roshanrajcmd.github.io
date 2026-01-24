@@ -22,6 +22,12 @@ import Chat from './Chat';
 import Contacts from './Contacts';
 import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_BG, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_HOVER_GRAY } from './ColorConstants';
 
+import HeroBackground from './HeroBackground';
+import HeroTitle from './HeroTitle';
+import HeroSubtitle from './HeroSubtitle';
+import ScrollHint from './ScrollHint';
+import SlotMachine from './SlotMachine';
+
 const TRAIN_IMAGES = [train_img_1, train_img_2, train_img_3, train_img_4, train_img_5, train_img_6];
 
 
@@ -114,6 +120,14 @@ const Home = () => {
         setOpenChat((prev) => !prev);
     };
 
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const onScroll = () => setScrollY(window.scrollY);
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
     return (
         <div className={darkMode ? `dark bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}]` : `bg-[${COLOR_LIGHT_BG}] text-[${COLOR_LIGHT_TEXT}]`}>
             <Navbar
@@ -128,17 +142,26 @@ const Home = () => {
                 playClickSound={playClickSound}
             />
 
+            {/* Hero Section - Outside main to avoid padding */}
+            <section
+                ref={(el) => (sectionRefs.current["Home"] = el)}
+                className="relative w-full overflow-hidden"
+                style={{ height: '100vh' }}
+            >
+                {/* Background */}
+                <HeroBackground scrollY={scrollY} />
+
+                {/* Foreground */}
+                <div className="relative z-10 flex flex-col items-center justify-center h-full">
+                    <HeroTitle scrollY={scrollY} />
+                    <SlotMachine scrollY={scrollY} />
+                    <HeroSubtitle scrollY={scrollY} />
+                    <ScrollHint scrollY={scrollY} />
+                </div>
+            </section>
+
             <main className="pt-24 container mx-auto px-2 sm:px-8">
-                {/* Hero Section */}
-                <section className="relative flex flex-col items-center justify-center w-full" style={{ minHeight: '100vh' }}>
-                    <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-extrabold text-center leading-tight tracking-tight select-none">
-                        Hi I'm
-                        <br />Roshan Raj
-                    </h1>
-                    <StarBurst />
-                    <SlotMachine />
-                    <Punchline />
-                </section>
+
 
                 {/* Other Sections */}
                 {SECTIONS.map((sec, idx) => {
@@ -326,130 +349,6 @@ function StarBurst() {
     );
 }
 
-// Add SlotMachine animation component
-function SlotMachine() {
-    const emojis = React.useMemo(() => [
-        '🚀', '💡', '🦄', '🔥', '🌟', '💻', '📚', '🧠', '⚡', '🍀', '🧩', '🎉', '🥇', '🛠️', '🧑‍💻'
-    ], []);
-    const [slots, setSlots] = useState(['', '', '']);
-    const [spinning, setSpinning] = useState(true);
-    const [showGift, setShowGift] = useState(false);
-    const [giftStarHover, setGiftStarHover] = useState(false);
-    const clover = '🍀';
-    // Determine if this page load is a 'lucky' one (increase chance: 1 in 2)
-    const luckyPage = React.useMemo(() => Math.floor(Math.random() * 2) === 0, []);
 
-    React.useEffect(() => {
-        let interval;
-        let count = 0;
-        setSpinning(true);
-        interval = setInterval(() => {
-            // If lucky page, force 3 clovers at the end
-            if (count > 15 && luckyPage) {
-                setSlots([clover, clover, clover]);
-            } else {
-                setSlots([
-                    emojis[Math.floor(Math.random() * emojis.length)],
-                    emojis[Math.floor(Math.random() * emojis.length)],
-                    emojis[Math.floor(Math.random() * emojis.length)]
-                ]);
-            }
-            count++;
-            if (count > 15) { // spin for a short while
-                clearInterval(interval);
-                setSpinning(false);
-            }
-        }, 80);
-        return () => clearInterval(interval);
-    }, [emojis, luckyPage]);
-
-    React.useEffect(() => {
-        if (slots[0] === clover && slots[1] === clover && slots[2] === clover && !spinning) {
-            setShowGift(true);
-        }
-    }, [slots, spinning]);
-
-    return (
-        <div className="flex flex-col items-center">
-            <div className="mt-8 flex justify-center items-center gap-2">
-                {slots.map((emoji, i) => (
-                    <span
-                        key={i}
-                        className={`text-5xl md:text-6xl transition-transform duration-300 ${spinning ? 'animate-spin-slot' : ''}`}
-                        style={{ display: 'inline-block' }}
-                    >
-                        {emoji}
-                    </span>
-                ))}
-            </div>
-            <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 text-center">
-                Try your luck! If you get 3 clovers, a special gift appears. (1 in 5 chance per page load)
-            </div>
-            {showGift && (
-                <div className="mt-6 flex flex-col items-center">
-                    <div className="relative group">
-                        <a
-                            href="/cute_stickers_ifound_in_internet.zip"
-                            download
-                            className="relative bg-gradient-to-r from-green-400 to-green-600 text-[#ffffff] px-6 py-3 rounded-xl font-bold text-lg transition-transform duration-200 hover:scale-105 focus:outline-none flex items-center justify-center"
-                            onMouseEnter={() => setGiftStarHover(true)}
-                            onMouseLeave={() => setGiftStarHover(false)}
-                        >
-                            {giftStarHover && <GiftStarBurst />}
-                            🎁 Claim Your Gift
-                        </a>
-                        <span className={`absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-2 rounded bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}] text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg`}>
-                            You got some free cute sticker
-                        </span>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-}
-
-// Punchline component
-function Punchline() {
-    const punchlines = [
-        "Turning ideas into 'heck yes!' moments.",
-        "Crafting 0 → 1 journeys that feel like magic",
-        "Building products that spark joy and drop jaws.",
-        "Designing experiences that whisper ‘whoa’ and shout ‘wow!’ ",
-        "Engineer of ‘Aha!’ moments. <3"
-    ];
-    const [line] = React.useState(() => punchlines[Math.floor(Math.random() * punchlines.length)]);
-    return (
-        <div className="mt-10 text-lg md:text-xl text-center font-semibold italic text-indigo-500 dark:text-indigo-300 select-none">
-            {line}
-        </div>
-    );
-}
-
-// Star burst for the gift button
-function GiftStarBurst() {
-    return (
-        <div className="pointer-events-none absolute insert-0 flex justify-center items-center z-10">
-            {[...Array(8)].map((_, i) => {
-                const angle = (i / 8) * 2 * Math.PI;
-                const distance = 40 + Math.random() * 10;
-                const x = Math.cos(angle) * distance;
-                const y = Math.sin(angle) * distance;
-                return (
-                    <span
-                        key={i}
-                        className="absolute text-yellow-300 text-2xl animate-star-burst"
-                        style={{
-                            left: `calc(50% + ${x}px)`,
-                            top: `calc(50% + ${y}px)`,
-                            animationDelay: `${Math.random() * 0.2}s`,
-                        }}
-                    >
-                        ★
-                    </span>
-                );
-            })}
-        </div>
-    );
-}
 
 export default Home;

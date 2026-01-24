@@ -63,9 +63,10 @@ const Navbar = ({
                     >
                         {/* HEADER */}
                         <div className="flex justify-between items-center px-8 pt-6">
-                            <div className="text-2xl leading-tight">
-                                <div className="font-name1 font-bold">ROSHAN</div>
-                                <div className="font-name2 font-black">RAJ</div>
+                            <div className="text-2xl leading-[0.9] tracking-tight select-none font-nunito font-bold lowercase">
+                                ROSHAN
+                                <br />
+                                RAJ
                             </div>
 
                             <div className="flex items-center gap-4">
@@ -123,8 +124,8 @@ const Navbar = ({
                             <div>Connect with me</div>
                             <Contacts darkMode={darkMode} playClickSound={playClickSound} />
                         </div>
-                    </div>
-                </nav>
+                    </div >
+                </nav >
             ) : (
                 /* DESKTOP NAV (UNCHANGED LOGIC, CLEANED) */
                 <nav className="fixed inset-x-0 top-2 sm:top-4 md:top-7 z-50 flex justify-center items-center">
@@ -182,9 +183,14 @@ const Navbar = ({
 
                         {/* Controls */}
                         <div className="flex items-center gap-4 px-9 py-2 ">
-                            <button onClick={() => setSoundOn((p) => !p)}>
-                                {soundOn ? <FaVolumeUp className="w-5 h-5" /> : <FaVolumeMute className="w-5 h-5" />}
-                            </button>
+                            <div className="relative group">
+                                <button onClick={() => setSoundOn((p) => !p)}>
+                                    {soundOn ? <FaVolumeUp className="w-5 h-5" /> : <FaVolumeMute className="w-5 h-5" />}
+                                </button>
+                                <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                                    sfx
+                                </span>
+                            </div>
                             <button onClick={toggleTheme}>
                                 {darkMode ? <IoIosSunny className="w-5 h-5" /> : <IoMdMoon className="w-5 h-5" />}
                             </button>
