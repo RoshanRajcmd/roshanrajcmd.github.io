@@ -130,7 +130,7 @@ const Home = () => {
 
             <main className="pt-24 container mx-auto px-2 sm:px-8">
                 {/* Hero Section */}
-                <section className="relative flex flex-col items-center justify-center w-full" style={{ minHeight: '66vh' }}>
+                <section className="relative flex flex-col items-center justify-center w-full" style={{ minHeight: '100vh' }}>
                     <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-extrabold text-center leading-tight tracking-tight select-none">
                         Hi I'm
                         <br />Roshan Raj
@@ -209,7 +209,7 @@ const Home = () => {
                     </button>
                 </div>
                 <div className="justify-center items-center gap-2 text-sm text-gray-500 mt-6">
-                    Connect with me:
+                    Connect with me
                     <Contacts darkMode={darkMode} playClickSound={playClickSound} />
                 </div>
                 <div>

@@ -40,7 +40,7 @@ const Navbar = ({
                 <nav className="fixed top-4 right-4 z-50">
                     <button
                         onClick={() => setOpen(true)}
-                        className={`p-2 rounded-lg shadow-lg backdrop-blur-sm transition-all ${darkMode ? `text-[${COLOR_DARK_TEXT}]` : `text-[${COLOR_LIGHT_TEXT}]`
+                        className={`p-2 rounded-lg shadow-lg backdrop-blur-sm transition-all ${darkMode ? `text-[${COLOR_DARK_TEXT}] shadow-white/10` : `text-[${COLOR_LIGHT_TEXT}] shadow-black/10`
                             }`}
                     >
                         <HiMenuAlt2 className="w-10 h-10" />
@@ -111,7 +111,7 @@ const Navbar = ({
                         <div className="flex justify-center mt-auto">
                             <a
                                 href={resumeFile}
-                                className={`flex items-center gap-2 bg-[${COLOR_NEON_GREEN}] text-[${COLOR_LIGHT_TEXT}] font-bold text-sm px-5 py-2 rounded-lg`}
+                                className={`flex items-center gap-2 bg-[${COLOR_NEON_GREEN}] text-[${COLOR_LIGHT_TEXT}] font-bold text-sm px-5 py-2 rounded-full`}
                             >
                                 <HiOutlineDocumentDownload className="w-5 h-5" />
                                 Resume
@@ -119,8 +119,8 @@ const Navbar = ({
                         </div>
 
                         {/* FOOTER */}
-                        <div className="text-xs text-center mt-auto mb-6">
-                            <div>BUSINESS ENQUIRIES</div>
+                        <div className="text-center mt-auto mb-6 gap-2 text-sm text-gray-500">
+                            <div>Connect with me</div>
                             <Contacts darkMode={darkMode} playClickSound={playClickSound} />
                         </div>
                     </div>
@@ -129,10 +129,10 @@ const Navbar = ({
                 /* DESKTOP NAV (UNCHANGED LOGIC, CLEANED) */
                 <nav className="fixed inset-x-0 top-2 sm:top-4 md:top-7 z-50 flex justify-center items-center">
                     <div
-                        className={`flex items-center justify-between w-full rounded-full backdrop-blur-sm shadow-lg transition-all duration-300 px-4 py-4 ${scrolled
+                        className={`flex items-center justify-between w-full rounded-full backdrop-blur-sm transition-all duration-300 px-4 py-4 shadow-lg ${scrolled
                             ? "max-w-4xl lg:max-w-5xl"
                             : "max-w-7xl"
-                            }`}
+                            } ${darkMode ? "shadow-white/10" : "shadow-black/10"}`}
                     >
                         {/* Resume */}
                         <a
