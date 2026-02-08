@@ -31,7 +31,7 @@ const Work = ({ darkMode, playClickSound }) => {
             <h2 className="justify-center text-center text-4xl font-bold mb-4">Work</h2>
             <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Projects</h2>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 pt-6">
                 {PROJECTS.map((item, idx) => (
                     <div
                         key={idx}

@@ -7,10 +7,6 @@ const FAQ = ({ darkMode, soundOn }) => (
         <div className="max-w-2xl mx-auto mt-8">
             {[
                 {
-                    question: "Can I contact you for freelance or full-time opportunities?",
-                    answer: "Absolutely! I'm open to both freelance and full-time roles. Please use the email ID to contact me."
-                },
-                {
                     question: "How can i contact you?",
                     answer: (
                         <>
@@ -34,7 +30,7 @@ const FAQ = ({ darkMode, soundOn }) => (
                 },
                 {
                     question: "Will you be able to work in my timezone?",
-                    answer: "Yes, I am flexible with my working hours and can adjust to different time zones as needed."
+                    answer: "I have some flexibility in my working hours and can adjust to different time zones when required, subject to prior discussion."
                 },
                 {
                     question: "Whats your Hobbies and Free time activities?",
@@ -42,7 +38,7 @@ const FAQ = ({ darkMode, soundOn }) => (
                 },
                 {
                     question: "Where are you currently located?",
-                    answer: "📍Chennai, India."
+                    answer: "📍Bangalore, India."
                 },
                 {
                     question: "What other languages you can speak?",

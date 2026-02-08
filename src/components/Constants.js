@@ -107,21 +107,21 @@ export const PROJECTS = [
         url: GITHUB_URL + "/tweezy",
     },
     {
+        tag: "AI",
+        title: "Lumi AI",
+        subtitle:
+            "An AI-powered personal assistant that helps users manage tasks, provide personalized recommendations and preset persona using open-sourced and cutome MCP servers with text and voice interactions.",
+        image: LoadingImage,
+        techStack: ["React", "Flask", "MCP servers", "Docker", "Local LLMs"],
+        url: "https://github.com/RoshanRajcmd/ai-comp",
+    },
+    {
         tag: "Desktop",
         title: "EcoType",
         subtitle: "A vocalized typing practice application that helps users improve their typing skills through audio prompts and real-time feedback.",
         image: LoadingImage,
         techStack: ["React", "Spring Boot", "Vite", "Electron"],
-        url: "",
-    },
-    {
-        tag: "Fitness",
-        title: "Buffit",
-        subtitle:
-            "A customizable fitness tracking application that helps users monitor their workouts, nutrition, and progress.",
-        image: LoadingImage,
-        techStack: ["React", "Spring Boot", "TailwindCss"],
-        url: "",
+        url: "https://github.com/RoshanRajcmd/echotype",
     },
 ];
 
