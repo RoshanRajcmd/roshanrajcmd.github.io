@@ -158,7 +158,7 @@ export const PROJECTS = [
         tag: "3D",
         title: "Miscellaneous Works",
         subtitle:
-            "A collection of miscellaneous design works to my showcase creativity",
+            "A collection of miscellaneous design works to showcase my creativity",
         image: OtherProject3,
         techStack: ["Blender", "Inkscape", "SolidWorks", "Sketchbook"],
         url: "https://www.behance.net/gallery/202752327/Miscellaneous-Works",
