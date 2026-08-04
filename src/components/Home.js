@@ -254,7 +254,7 @@ const Home = () => {
             </div>
 
             {/* AI chat button */}
-            <div className="fixed left-4 bottom-4 z-40">
+            {/* <div className="fixed left-4 bottom-4 z-40">
                 <button
                     onClick={handleOpenChat}
                     className={`highlight-card relative px-4 py-2 rounded-full shadow-lg ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}] text-[${COLOR_LIGHT_TEXT}]` : `bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}]`}`}
@@ -264,7 +264,7 @@ const Home = () => {
                         <span>AI Chat</span>
                     </div>
                 </button>
-            </div>
+            </div> */}
             {/* AI chat Model overlay */}
             {openChat && (
                 <Chat onClose={() => setOpenChat(false)} />
