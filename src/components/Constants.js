@@ -5,6 +5,9 @@ import Project2 from '../assets/Project2.jpg';
 import Project3 from '../assets/Project3.png';
 import Project4 from '../assets/Project4.png';
 import Project5 from '../assets/Project5.png';
+import OtherProject1 from '../assets/OtherProject1.png';
+import OtherProject2 from '../assets/OtherProject2.png';
+import OtherProject3 from '../assets/OtherProject3.jpg';
 import LoadingImage from '../assets/Loading.png';
 import { getYearsAndMonthsSinceInWords } from './Utility';
 
@@ -70,6 +73,8 @@ export const ROLE_USER = 'user';
 export const MLC_MODEL_ID = 'Llama-3.2-3B-Instruct-q4f16_1-MLC';
 
 // Projects data for Work section
+export const DEVELOPMENT = "Development";
+export const OTHERS = "Others";
 export const PROJECTS = [
     {
         tag: "Lifestyle",
@@ -77,8 +82,9 @@ export const PROJECTS = [
         subtitle:
             "A web application that allows users to track and manage their book readings.",
         image: Project4,
-        techStack: ["React", "Spring Boot", "MySQL", "Docker", "NGINX",], //Max 5 is permitted
+        techStack: ["React", "Spring Boot", "MySQL", "Docker", "NGINX"],
         url: GITHUB_URL + "/myreads-web-app",
+        category: DEVELOPMENT,
     },
     {
         tag: "Desktop",
@@ -88,6 +94,7 @@ export const PROJECTS = [
         image: Project5,
         techStack: ["Python", "PyQt5", "json-parsing"],
         url: GITHUB_URL + "/py-browser",
+        category: DEVELOPMENT,
     },
     {
         tag: "Lifestyle",
@@ -96,6 +103,7 @@ export const PROJECTS = [
         image: Project3,
         techStack: ["MEAN", "MongoDB", "Angular", "Nodejs", "Docker"],
         url: GITHUB_URL + "/ecom-web-app",
+        category: DEVELOPMENT,
     },
     {
         tag: "Analytics",
@@ -105,6 +113,7 @@ export const PROJECTS = [
         image: Project2,
         techStack: ["React", "Python", "ML", "Docker"],
         url: GITHUB_URL + "/tweezy",
+        category: DEVELOPMENT,
     },
     {
         tag: "AI",
@@ -114,6 +123,7 @@ export const PROJECTS = [
         image: LoadingImage,
         techStack: ["React", "Flask", "MCP servers", "Docker", "Local LLMs"],
         url: "https://github.com/RoshanRajcmd/ai-comp",
+        category: DEVELOPMENT,
     },
     {
         tag: "Desktop",
@@ -122,6 +132,37 @@ export const PROJECTS = [
         image: LoadingImage,
         techStack: ["React", "Spring Boot", "Vite", "Electron"],
         url: "https://github.com/RoshanRajcmd/echotype",
+        category: DEVELOPMENT,
+    },
+    {
+        tag: "3D",
+        title: "Taketori Armchair",
+        subtitle:
+            "A modern armchair inspired by Japanese folklore, featuring a minimalist aesthetic and natural materials.",
+        image: OtherProject1,
+        techStack: ["Blender", "Autodesk", "SketchBook"],
+        url: "https://www.behance.net/gallery/206110383/Taketori-Armchair",
+        category: OTHERS,
+    },
+    {
+        tag: "3D",
+        title: "BAMBOU Desk Lamp",
+        subtitle:
+            "A desk lamp inspired by the natural beauty of bamboo, featuring a minimalist design and sustainable materials.",
+        image: OtherProject2,
+        techStack: ["SolidWorks", "Solidworks Visualize"],
+        url: "https://www.behance.net/gallery/200061883/BAMBOU-Desk-Lamp",
+        category: OTHERS,
+    },
+    {
+        tag: "3D",
+        title: "Miscellaneous Works",
+        subtitle:
+            "A collection of miscellaneous design works to my showcase creativity",
+        image: OtherProject3,
+        techStack: ["Blender", "Inkscape", "SolidWorks", "Sketchbook"],
+        url: "https://www.behance.net/gallery/202752327/Miscellaneous-Works",
+        category: OTHERS,
     },
 ];
 
