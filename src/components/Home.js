@@ -27,6 +27,7 @@ import HeroTitle from './HeroTitle';
 import HeroSubtitle from './HeroSubtitle';
 import ScrollHint from './ScrollHint';
 import SlotMachine from './SlotMachine';
+import NerdTerminal from './NerdTerminal';
 
 const TRAIN_IMAGES = [train_img_1, train_img_2, train_img_3, train_img_4, train_img_5, train_img_6];
 
