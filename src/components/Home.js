@@ -73,10 +73,18 @@ const Home = () => {
         setTimeout(() => setShowHearts(false), 1200);
     }
 
-    // Effect to listen for scroll and update state
-    React.useEffect(() => {
-        const handleScroll = () => {
-            const scrollPos = window.scrollY + 140;
+    const [scrollY, setScrollY] = useState(0);
+
+    // A single scroll listener drives every scroll-derived piece of state. The
+    // work is deferred to a rAF so a burst of scroll events only reads layout
+    // (offsetTop/offsetHeight force a reflow) once per frame.
+    useEffect(() => {
+        let frame = null;
+
+        const update = () => {
+            frame = null;
+            const y = window.scrollY;
+            const scrollPos = y + 140;
 
             for (const sec of SECTIONS) {
                 const el = sectionRefs.current[sec];
@@ -90,20 +98,19 @@ const Home = () => {
                 }
             }
 
-            setScrolled(window.scrollY > 80);
+            setScrolled(y > 80);
+            setScrollY(y);
         };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+        const handleScroll = () => {
+            if (frame === null) frame = window.requestAnimationFrame(update);
+        };
 
-
-    const [scrollY, setScrollY] = useState(0);
-
-    useEffect(() => {
-        const onScroll = () => setScrollY(window.scrollY);
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (frame !== null) window.cancelAnimationFrame(frame);
+        };
     }, []);
 
     return (
