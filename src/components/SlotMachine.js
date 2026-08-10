@@ -103,7 +103,12 @@ function SlotMachine({ scrollY = 0 }) {
                             {giftStarHover && <GiftStarBurst />}
                             🎁 Claim Your Gift
                         </a>
-                        <span className={`absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-2 rounded bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}] text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg`}>
+                        {/* Colours applied inline: Tailwind cannot generate arbitrary
+                            values built from template literals. */}
+                        <span
+                            className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-2 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg"
+                            style={{ backgroundColor: COLOR_DARK_BG, color: COLOR_DARK_TEXT }}
+                        >
                             You got some free cute sticker
                         </span>
                     </div>

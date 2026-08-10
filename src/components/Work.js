@@ -32,6 +32,17 @@ const Work = ({ darkMode, playClickSound }) => {
         if (item.url) window.open(item.url, '_blank', 'noopener,noreferrer');
     };
 
+    // Colours live in JS constants, so they are applied inline — Tailwind's
+    // scanner cannot generate arbitrary values built from template literals.
+    const cardStyle = {
+        backgroundColor: darkMode ? COLOR_LIGHT_GRAY : COLOR_DARK_BG,
+        color: darkMode ? COLOR_LIGHT_TEXT : COLOR_LIGHT_GRAY,
+    };
+    const techStyle = {
+        backgroundColor: darkMode ? COLOR_MEDIUM_GRAY : COLOR_LIGHT_GRAY_TEXT,
+        color: darkMode ? COLOR_LIGHT_GRAY : COLOR_LIGHT_TEXT,
+    };
+
     return (
         <div className="pt-16">
             <h2 className="justify-center text-center text-4xl font-bold mb-4">Work</h2>
@@ -61,12 +72,16 @@ const Work = ({ darkMode, playClickSound }) => {
                 {visibleProjects.map((item, idx) => (
                     <div
                         key={idx}
-                        className={`rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}] text-[${COLOR_LIGHT_TEXT}]` : `bg-[${COLOR_DARK_BG}] text-[${COLOR_LIGHT_GRAY}]`} ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
+                        className={`rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
+                        style={cardStyle}
                         onClick={() => handleProjectClick(item)}
                         onMouseEnter={() => handleMouseEnter(idx)}
                         onMouseLeave={handleMouseLeave}
                     >
-                        <div className={`w-full flex items-center justify-center aspect-video relative p-2 ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}]` : `bg-[${COLOR_DARK_BG}]`}`}>
+                        <div
+                            className="w-full flex items-center justify-center aspect-video relative p-2"
+                            style={{ backgroundColor: cardStyle.backgroundColor }}
+                        >
                             <img
                                 src={item.image}
                                 alt={item.title}
@@ -74,8 +89,11 @@ const Work = ({ darkMode, playClickSound }) => {
                             />
                             <div className="absolute top-8 left-8">
                                 <span
-                                    className={`inline-block text-xs font-normal rounded-full px-3 py-1 transition-colors duration-300 ${darkMode ? `text-[${COLOR_LIGHT_TEXT}]` : `text-[${COLOR_LIGHT_GRAY}]`}${hoveredIdx === idx ? ' shadow-lg' : ''}`}
-                                    style={{ backgroundColor: hoveredIdx === idx ? tagBgColors[idx] : (darkMode ? COLOR_LIGHT_GRAY : COLOR_DARK_BG) }}
+                                    className={`inline-block text-xs font-normal rounded-full px-3 py-1 transition-colors duration-300${hoveredIdx === idx ? ' shadow-lg' : ''}`}
+                                    style={{
+                                        backgroundColor: hoveredIdx === idx ? tagBgColors[idx] : (darkMode ? COLOR_LIGHT_GRAY : COLOR_DARK_BG),
+                                        color: darkMode ? COLOR_LIGHT_TEXT : COLOR_LIGHT_GRAY,
+                                    }}
                                 >
                                     {item.tag}
                                 </span>
@@ -84,13 +102,17 @@ const Work = ({ darkMode, playClickSound }) => {
                         <div className="px-4 pt-2 pb-6 flex flex-col gap-1 flex-1">
                             <p className="text-xl pb-4 font-semibold ">{item.title}</p>
                             <div className='flex flex-wrap gap-1'>
-                                {item.techStack.map((tech, idx) => (
-                                    <p className={`text-xs px-2 py-0 rounded-full bg-none ${darkMode ? `text-[${COLOR_LIGHT_GRAY}] bg-[${COLOR_MEDIUM_GRAY}]` : `text-[${COLOR_LIGHT_TEXT}] bg-[${COLOR_LIGHT_GRAY_TEXT}]`}`}>
+                                {item.techStack.map((tech) => (
+                                    <p key={tech} className="text-xs px-2 py-0 rounded-full" style={techStyle}>
                                         {tech}
                                     </p>
                                 ))}
                             </div>
-                            <p className={`text-sm  font-light ${darkMode ? `text-[${COLOR_LIGHT_TEXT}]` : 'text-gray-500'}`}>{item.subtitle}</p>
+                            {darkMode ? (
+                                <p className="text-sm font-light" style={{ color: COLOR_LIGHT_TEXT }}>{item.subtitle}</p>
+                            ) : (
+                                <p className="text-sm font-light text-gray-500">{item.subtitle}</p>
+                            )}
                         </div>
                     </div>
                 ))}

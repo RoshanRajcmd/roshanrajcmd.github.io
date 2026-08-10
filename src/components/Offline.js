@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { OFFLINE_PROJECTS } from './Constants';
-import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_MEDIUM_GRAY, COLOR_LIGHT_GRAY_TEXT } from './ColorConstants';
+import { COLOR_DARK_BG, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY } from './ColorConstants';
 
 export function Offline({ soundOn, darkMode, playClickSound }) {
 
@@ -13,6 +13,13 @@ export function Offline({ soundOn, darkMode, playClickSound }) {
     if (item.url) window.open(item.url, '_blank', 'noopener,noreferrer');
   };
 
+  // Colours live in JS constants, so they are applied inline — Tailwind's
+  // scanner cannot generate arbitrary values built from template literals.
+  const cardStyle = {
+    backgroundColor: darkMode ? COLOR_LIGHT_GRAY : COLOR_DARK_BG,
+    color: darkMode ? COLOR_LIGHT_TEXT : COLOR_LIGHT_GRAY,
+  };
+
   return (
     <div className="pt-16" >
       <h2 className="justify-center text-[22px] font-bold leading-tight tracking-[-0.015em] text-center mb-4">Hobbies 'n Interests</h2>
@@ -23,10 +30,14 @@ export function Offline({ soundOn, darkMode, playClickSound }) {
         {OFFLINE_PROJECTS.map((item, idx) => (
           <div
             key={idx}
-            className={`rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}] text-[${COLOR_LIGHT_TEXT}]` : `bg-[${COLOR_DARK_BG}] text-[${COLOR_LIGHT_GRAY}]`} ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
+            className={`rounded-2xl overflow-hidden flex flex-col transition-transform duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${!item.url ? 'cursor-default' : 'cursor-pointer'}`}
+            style={cardStyle}
             onClick={() => handleProjectClick(item)}
           >
-            <div className={`w-full flex items-center justify-center aspect-video relative p-2 ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}]` : `bg-[${COLOR_DARK_BG}]`}`}>
+            <div
+              className="w-full flex items-center justify-center aspect-video relative p-2"
+              style={{ backgroundColor: cardStyle.backgroundColor }}
+            >
               <img
                 src={item.image}
                 alt={item.title}
@@ -35,7 +46,11 @@ export function Offline({ soundOn, darkMode, playClickSound }) {
             </div>
             <div className="px-4 pt-2 pb-6 flex flex-col gap-1 flex-1">
               <p className="text-xl pb-4 font-semibold ">{item.title}</p>
-              <p className={`text-sm  font-light ${darkMode ? `text-[${COLOR_LIGHT_TEXT}]` : 'text-gray-500'}`}>{item.subtitle}</p>
+              {darkMode ? (
+                <p className="text-sm font-light" style={{ color: COLOR_LIGHT_TEXT }}>{item.subtitle}</p>
+              ) : (
+                <p className="text-sm font-light text-gray-500">{item.subtitle}</p>
+              )}
             </div>
           </div>
         ))}

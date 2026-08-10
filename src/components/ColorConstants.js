@@ -1,22 +1,28 @@
-// Color Constants for consistent color usage throughout the project
-// These hex color values are extracted from Tailwind arbitrary color values
+// Color Constants for consistent color usage throughout the project.
+// These are consumed as inline `style` values, never interpolated into Tailwind
+// class names — Tailwind's JIT scanner reads source text, so an arbitrary value
+// like `bg-[${COLOR_DARK_BG}]` can never be generated.
 
 // Primary Dark Mode Color
-export const COLOR_DARK_BG = '#141414';      // bg-[#141414]
-export const COLOR_DARK_TEXT = '#ffffff';    // text-[#ffffff]
+export const COLOR_DARK_BG = '#141414';
+export const COLOR_DARK_TEXT = '#ffffff';
 
 // Primary Light Mode Color
-export const COLOR_LIGHT_BG = '#ffffff';     // bg-[#ffffff]
-export const COLOR_LIGHT_TEXT = '#141414';   // text-[#141414]
+export const COLOR_LIGHT_BG = '#ffffff';
+export const COLOR_LIGHT_TEXT = '#141414';
 
 // Secondary Neutral Colors
-export const COLOR_LIGHT_GRAY = '#ededed';   // bg-[#ededed], text-[#ededed]
-export const COLOR_MEDIUM_GRAY = '#bcbbbb';  // bg-[#bcbbbb]
-export const COLOR_LIGHT_GRAY_TEXT = '#dadada'; // bg-[#dadada]
+export const COLOR_LIGHT_GRAY = '#ededed';
+export const COLOR_MEDIUM_GRAY = '#bcbbbb';
+export const COLOR_LIGHT_GRAY_TEXT = '#dadada';
 
 // Accent Colors
-export const COLOR_NEON_GREEN = '#00ff22';   // bg-[#00ff22]
-export const COLOR_HOVER_GRAY = '#4e4d4d';   // hover:bg-[#4e4d4d]
+export const COLOR_NEON_GREEN = '#00ff22';
+export const COLOR_HOVER_GRAY = '#4e4d4d';
+
+// Tailwind's gray-600, needed as a literal where the paired colour is applied
+// inline (mixing an inline colour with a `gray-600` class would be inconsistent).
+export const COLOR_GRAY_600 = '#4b5563';
 
 // Chat Component Specific Colors
 export const COLOR_CHAT_MODAL_OVERLAY = 'bg-[#141414]/50'; // Overlay with opacity
@@ -68,39 +74,6 @@ export const COLOR_SCHEMES = {
   scrollButtonBg: (darkMode) => darkMode ? COLOR_LIGHT_GRAY : COLOR_DARK_BG,
   scrollButtonHoverBg: (darkMode) => darkMode ? COLOR_DARK_TEXT : COLOR_HOVER_GRAY,
   scrollButtonText: (darkMode) => darkMode ? COLOR_LIGHT_TEXT : COLOR_DARK_TEXT,
-};
-
-// Tailwind Class Generators for ease of use
-export const getTailwindClasses = {
-  // Dark/Light mode main container
-  mainContainer: (darkMode) => darkMode 
-    ? `dark bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}]`
-    : `bg-[${COLOR_LIGHT_BG}] text-[${COLOR_LIGHT_TEXT}]`,
-
-  // Secondary buttons/cards with dark/light toggle
-  secondaryButton: (darkMode) => darkMode
-    ? `dark bg-gray-600 text-[${COLOR_LIGHT_GRAY}]`
-    : `bg-[${COLOR_LIGHT_GRAY}] text-gray-600`,
-
-  // Project cards
-  projectCard: (darkMode) => darkMode
-    ? `bg-[${COLOR_LIGHT_GRAY}] text-[${COLOR_LIGHT_TEXT}]`
-    : `bg-[${COLOR_DARK_BG}] text-[${COLOR_LIGHT_GRAY}]`,
-
-  // Contact icon buttons
-  contactIcon: (darkMode) => darkMode
-    ? `dark bg-gray-600 text-[${COLOR_LIGHT_GRAY}]`
-    : `bg-[${COLOR_LIGHT_GRAY}] text-gray-600`,
-
-  // AI Chat button
-  chatButton: (darkMode) => darkMode
-    ? `bg-[${COLOR_LIGHT_GRAY}] text-[${COLOR_LIGHT_TEXT}]`
-    : `bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}]`,
-
-  // Scroll to top button
-  scrollButton: (darkMode) => darkMode
-    ? `bg-[${COLOR_LIGHT_GRAY}] hover:bg-[${COLOR_DARK_TEXT}] text-[${COLOR_LIGHT_TEXT}]`
-    : `dark bg-[${COLOR_DARK_BG}] hover:bg-[${COLOR_HOVER_GRAY}] text-[${COLOR_DARK_TEXT}]`,
 };
 
 // Export all colors for direct use

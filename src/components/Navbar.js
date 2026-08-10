@@ -39,8 +39,8 @@ const Navbar = ({
                 <nav className="fixed top-4 right-4 z-50">
                     <button
                         onClick={() => setOpen(true)}
-                        className={`p-2 rounded-lg shadow-lg backdrop-blur-sm transition-all ${darkMode ? `text-[${COLOR_DARK_TEXT}] shadow-white/10` : `text-[${COLOR_LIGHT_TEXT}] shadow-black/10`
-                            }`}
+                        className={`p-2 rounded-lg shadow-lg backdrop-blur-sm transition-all ${darkMode ? "shadow-white/10" : "shadow-black/10"}`}
+                        style={{ color: darkMode ? COLOR_DARK_TEXT : COLOR_LIGHT_TEXT }}
                     >
                         <HiMenuAlt2 className="w-10 h-10" />
                     </button>
@@ -54,11 +54,11 @@ const Navbar = ({
                                 ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                                 : "opacity-0 scale-95 -translate-y-6 pointer-events-none"
                             }
-              ${darkMode
-                                ? `bg-[${COLOR_LIGHT_TEXT}] text-[${COLOR_DARK_TEXT}]`
-                                : `bg-[${COLOR_DARK_TEXT}] text-[${COLOR_LIGHT_TEXT}]`
-                            }
             `}
+                        style={{
+                            backgroundColor: darkMode ? COLOR_LIGHT_TEXT : COLOR_DARK_TEXT,
+                            color: darkMode ? COLOR_DARK_TEXT : COLOR_LIGHT_TEXT,
+                        }}
                     >
                         {/* HEADER */}
                         <div className="flex justify-between items-center px-8 pt-6">
@@ -93,7 +93,10 @@ const Navbar = ({
                                     className="relative block mx-auto text-[clamp(2.2rem,6vw,4rem)] font-extrabold uppercase tracking-tight"
                                 >
                                     {activeSection === sec && (
-                                        <span className={`absolute inset-x-0 top-1/2 h-[3px] bg-[${COLOR_NEON_GREEN}]`} />
+                                        <span
+                                            className="absolute inset-x-0 top-1/2 h-[3px]"
+                                            style={{ backgroundColor: COLOR_NEON_GREEN }}
+                                        />
                                     )}
                                     <span
                                         className={`relative ${activeSection === sec
@@ -111,7 +114,8 @@ const Navbar = ({
                         <div className="flex justify-center mt-auto">
                             <a
                                 href={resumeFile}
-                                className={`flex items-center gap-2 bg-[${COLOR_NEON_GREEN}] text-[${COLOR_LIGHT_TEXT}] font-bold text-sm px-5 py-2 rounded-full`}
+                                className="flex items-center gap-2 font-bold text-sm px-5 py-2 rounded-full"
+                                style={{ backgroundColor: COLOR_NEON_GREEN, color: COLOR_LIGHT_TEXT }}
                             >
                                 <HiOutlineDocumentDownload className="w-5 h-5" />
                                 Resume
@@ -138,7 +142,8 @@ const Navbar = ({
                         <a
                             href={resumeFile}
                             download
-                            className={`flex items-center gap-2 px-4 py-2 rounded-full bg-[${COLOR_NEON_GREEN}] text-[${COLOR_LIGHT_TEXT}] hover:shadow-lg`}
+                            className="flex items-center gap-2 px-4 py-2 rounded-full hover:shadow-lg"
+                            style={{ backgroundColor: COLOR_NEON_GREEN, color: COLOR_LIGHT_TEXT }}
                         >
                             <HiOutlineDocumentDownload className="w-5 h-5" />
                             <span className="text-sm font-semibold">Resume</span>
@@ -156,7 +161,10 @@ const Navbar = ({
                                 >
                                     <span className="relative inline-block">
                                         {activeSection === sec && (
-                                            <span className={`absolute left-0 right-0 top-1/2 h-[3px] bg-[${COLOR_NEON_GREEN}]`} />
+                                            <span
+                                                className="absolute left-0 right-0 top-1/2 h-[3px]"
+                                                style={{ backgroundColor: COLOR_NEON_GREEN }}
+                                            />
                                         )}
 
                                         <span

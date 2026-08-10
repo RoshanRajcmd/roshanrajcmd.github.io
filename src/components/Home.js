@@ -14,7 +14,7 @@ import train_img_4 from '../assets/train_img_4.png';
 import train_img_5 from '../assets/train_img_5.png';
 import train_img_6 from '../assets/train_img_6.png';
 import Contacts from './Contacts';
-import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_BG, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_HOVER_GRAY } from './ColorConstants';
+import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_BG, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_HOVER_GRAY, COLOR_GRAY_600 } from './ColorConstants';
 
 import HeroBackground from './HeroBackground';
 import HeroTitle from './HeroTitle';
@@ -36,6 +36,7 @@ const Home = () => {
     // State to track scroll position
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("Home");
+    const [scrollTopHover, setScrollTopHover] = useState(false);
     // Utility: play mouse click sound if soundOn is enabled
     const playClickSound = React.useCallback(() => {
         if (soundOn && mouseClickAudioRef.current) {
@@ -106,7 +107,13 @@ const Home = () => {
     }, []);
 
     return (
-        <div className={darkMode ? `dark bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}]` : `bg-[${COLOR_LIGHT_BG}] text-[${COLOR_LIGHT_TEXT}]`}>
+        <div
+            className={darkMode ? 'dark' : ''}
+            style={{
+                backgroundColor: darkMode ? COLOR_DARK_BG : COLOR_LIGHT_BG,
+                color: darkMode ? COLOR_DARK_TEXT : COLOR_LIGHT_TEXT,
+            }}
+        >
             <Navbar
                 darkMode={darkMode}
                 scrolled={scrolled}
@@ -195,8 +202,14 @@ const Home = () => {
                         ref={heartBtnRef}
                         type="button"
                         onClick={handleHeartBurst}
-                        className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? `dark bg-gray-600 text-[${COLOR_LIGHT_GRAY}]` : `bg-[${COLOR_LIGHT_GRAY}] text-gray-600`} `}
-                        style={{ position: 'relative' }}
+                        className={`bg-gradient-to-r rounded-xl shadow-lg px-6 py-4 inline-block border transition-transform duration-200 active:scale-95 hover:-translate-y-1 hover:scale-105 ${darkMode ? 'dark' : ''}`}
+                        style={{
+                            position: 'relative',
+                            // backgroundColor (not the `background` shorthand) so the
+                            // bg-gradient-to-r background-image is preserved.
+                            backgroundColor: darkMode ? COLOR_GRAY_600 : COLOR_LIGHT_GRAY,
+                            color: darkMode ? COLOR_LIGHT_GRAY : COLOR_GRAY_600,
+                        }}
                     >
                         <p
                             style={{
@@ -220,9 +233,20 @@ const Home = () => {
 
             {/* Scroll to Top Button */}
             <div className="fixed right-4 bottom-4 z-40">
+                {/* Colours (including the hover swap) are applied inline because
+                    Tailwind cannot generate arbitrary values built from template
+                    literals. */}
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                    className={`rounded-full p-3 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}] hover:bg-[${COLOR_DARK_TEXT}] text-[${COLOR_LIGHT_TEXT}]` : `dark bg-[${COLOR_DARK_BG}] hover:bg-[${COLOR_HOVER_GRAY}] text-[${COLOR_DARK_TEXT}]`}`}
+                    className={`rounded-full p-3 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? '' : 'dark'}`}
+                    style={{
+                        backgroundColor: scrollTopHover
+                            ? (darkMode ? COLOR_DARK_TEXT : COLOR_HOVER_GRAY)
+                            : (darkMode ? COLOR_LIGHT_GRAY : COLOR_DARK_BG),
+                        color: darkMode ? COLOR_LIGHT_TEXT : COLOR_DARK_TEXT,
+                    }}
+                    onMouseEnter={() => setScrollTopHover(true)}
+                    onMouseLeave={() => setScrollTopHover(false)}
                     aria-label="Scroll to top"
                 >
                     <FaArrowUp className="size-5" />
