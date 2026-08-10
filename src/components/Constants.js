@@ -95,10 +95,6 @@ export const FAQS = [
         answer: "I have some flexibility in my working hours and can adjust to different time zones when required, subject to prior discussion."
     },
     {
-        question: "Whats your Hobbies and Free time activities?",
-        answer: "3D printing, Book reading, gaming, and exploring new technologies or even some new hobbies. I also enjoy contributing to open-source projects in my free time."
-    },
-    {
         question: "Where are you currently located?",
         answer: "📍Bangalore, India."
     },
@@ -109,6 +105,26 @@ export const FAQS = [
     {
         question: "Chai or Coffee?",
         answer: "☕️ Coffee :)"
+    }
+];
+
+// Tabs for About section
+export const ONLINE = "Online";
+export const OFFLINE = "Offline";
+
+// Life away from the keyboard, rendered in the About "Offline" tab
+export const OFFLINE_CARDS = [
+    {
+        title: "3D Printing",
+        subtitle: "Modelling and printing my own parts, from functional fixes to desk toys."
+    },
+    {
+        title: "Book Reading",
+        subtitle: "Mostly non-fiction and tech; I track everything I read in MyReads."
+    },
+    {
+        title: "Gaming",
+        subtitle: "Unwinding with story-driven titles and the occasional competitive run."
     }
 ];
 
@@ -247,8 +263,6 @@ export const ABOUT_CARDS = [
         description: "I adapt quickly to new tools, stacks, and project needs. Whether joining an existing codebase or pioneering a greenfield build, I stay flexible—choosing technologies based on context, not comfort. This allows me to contribute meaningfully across varied technical environments."
     }
 ];
-
-
 
 // Experience Cards
 export const EXPERIENCES = [
