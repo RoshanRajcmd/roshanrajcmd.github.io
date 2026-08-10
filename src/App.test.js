@@ -38,9 +38,7 @@ test('Navbar has Resume download link', () => {
     soundOn={false}
     setSoundOn={() => { }}
   />);
-  const resumeLink = screen.getByText(/Resume/i);
-  expect(resumeLink).toBeInTheDocument();
-  // Check that it's a link with the 'download' attribute
-  expect(resumeLink.closest('a')).toHaveAttribute('href', expect.stringContaining('resume.pdf'));
-  expect(resumeLink.closest('a')).toHaveAttribute('download');
+  const resumeLink = screen.getByRole('link', { name: /Resume/i });
+  expect(resumeLink).toHaveAttribute('href', expect.stringContaining('resume.pdf'));
+  expect(resumeLink).toHaveAttribute('download');
 });
