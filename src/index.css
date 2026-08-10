@@ -68,48 +68,80 @@
   animation: spin-slot 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-@keyframes border-gradient {
+/* Silver shine that sweeps across the Nerd View button on a loop. */
+@keyframes nerd-shine {
   0% {
-    background-position: 0% 50%;
+    transform: translateX(-180%) skewX(-20deg);
   }
 
-  50% {
-    background-position: 100% 50%;
-  }
-
+  55%,
   100% {
-    background-position: 0% 50%;
+    transform: translateX(340%) skewX(-20deg);
   }
 }
 
-.highlight-card {
+/* Positioning comes from the caller's utility classes (e.g. `fixed`). */
+.nerd-view-btn {
   isolation: isolate;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
 }
 
-.highlight-card::before {
+/* Green gradient glow fill — hidden until hover. */
+.nerd-view-btn::before {
   content: "";
   position: absolute;
   inset: 0;
-  padding: 3px;
+  z-index: 0;
   border-radius: inherit;
-  background: linear-gradient(45deg,
-      #00b919,
-      #00ff22,
-      #fcfcfc);
-  background-size: 300% 300%;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  background:
+    radial-gradient(130% 150% at 50% 125%, #4dff6d 0%, #00e02a 30%, #00891a 60%, transparent 82%),
+    linear-gradient(180deg, #0d2c14, #061a0a);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
 }
 
-.highlight-card:hover::before {
+.nerd-view-btn::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  bottom: -60%;
+  left: 0;
+  z-index: 1;
+  width: 40%;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.06) 30%,
+      rgba(255, 255, 255, 0.55) 50%,
+      rgba(255, 255, 255, 0.06) 70%,
+      transparent);
+  filter: blur(1px);
+  animation: nerd-shine 3.4s ease-in-out infinite;
+}
+
+.nerd-view-btn:hover,
+.nerd-view-btn:focus-visible {
+  transform: scale(1.07);
+  box-shadow:
+    0 0 0 1px rgba(120, 255, 150, 0.35),
+    0 0 22px rgba(0, 255, 60, 0.45),
+    0 10px 34px rgba(0, 185, 25, 0.35);
+}
+
+.nerd-view-btn:hover::before,
+.nerd-view-btn:focus-visible::before {
   opacity: 1;
-  animation: border-gradient 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nerd-view-btn::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .nerd-view-btn:hover,
+  .nerd-view-btn:focus-visible {
+    transform: none;
+  }
 }
