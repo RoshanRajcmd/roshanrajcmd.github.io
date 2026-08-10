@@ -70,7 +70,6 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
         function updateDuration() {
             if (marqueeRef.current && containerRef.current) {
                 const marqueeWidth = marqueeRef.current.scrollWidth;
-                const containerWidth = containerRef.current.offsetWidth;
                 // Set speed: e.g., 100px/sec
                 const speed = 100; // px per second
                 const distance = marqueeWidth / 2; // since translateX(-50%)

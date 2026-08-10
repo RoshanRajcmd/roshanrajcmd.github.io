@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DEVELOPMENT, OTHERS, PROJECTS } from './Constants';
-import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_MEDIUM_GRAY, COLOR_LIGHT_GRAY_TEXT } from './ColorConstants';
+import { COLOR_DARK_BG, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_MEDIUM_GRAY, COLOR_LIGHT_GRAY_TEXT } from './ColorConstants';
 
 // Utility to get a random contrasting color
 function getRandomContrastColor() {

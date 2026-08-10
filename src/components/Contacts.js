@@ -48,10 +48,10 @@ const Contacts = ({ darkMode = false, playClickSound = () => { } }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 group"
-                aria-label="LinkedIn"
+                aria-label="Behance"
                 onClick={playClickSound}
             >
-                <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? `dark bg-gray-600 text-[${COLOR_LIGHT_GRAY}]` : `bg-[${COLOR_LIGHT_GRAY}] text-gray-600`}`} data-icon="LinkedinLogo" data-size="20px" data-weight="regular">
+                <div className={`rounded-md transition-transform duration-200 group-hover:-translate-y-1 group-hover:scale-110 ${darkMode ? `dark bg-gray-600 text-[${COLOR_LIGHT_GRAY}]` : `bg-[${COLOR_LIGHT_GRAY}] text-gray-600`}`} data-icon="BehanceLogo" data-size="20px" data-weight="regular">
                     <FaBehanceSquare className="size-8" />
                 </div>
             </a>

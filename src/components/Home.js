@@ -1,7 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { FaGithubSquare } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { IoMailUnread } from "react-icons/io5";
 import { FaArrowUp } from "react-icons/fa";
 import Navbar from './Navbar';
 import Work from './Work';
@@ -9,16 +6,13 @@ import About from './About';
 import FAQ from './FAQ';
 import doublePopup from '../assets/double_popup.mp3';
 import mouseClickAudio from '../assets/mouse_click.mov';
-import { GITHUB_URL, LINKEDIN_URL, EMAIL_URL, BEHANCE_URL, SECTIONS } from './Constants';
-import { BsFillChatLeftTextFill } from "react-icons/bs";
-import { FaBehanceSquare } from "react-icons/fa";
+import { SECTIONS } from './Constants';
 import train_img_1 from '../assets/train_img_1.png';
 import train_img_2 from '../assets/train_img_2.png';
 import train_img_3 from '../assets/train_img_3.png';
 import train_img_4 from '../assets/train_img_4.png';
 import train_img_5 from '../assets/train_img_5.png';
 import train_img_6 from '../assets/train_img_6.png';
-import Chat from './Chat';
 import Contacts from './Contacts';
 import { COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_BG, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_HOVER_GRAY } from './ColorConstants';
 
@@ -27,7 +21,6 @@ import HeroTitle from './HeroTitle';
 import HeroSubtitle from './HeroSubtitle';
 import ScrollHint from './ScrollHint';
 import SlotMachine from './SlotMachine';
-import NerdTerminal from './NerdTerminal';
 
 const TRAIN_IMAGES = [train_img_1, train_img_2, train_img_3, train_img_4, train_img_5, train_img_6];
 
@@ -50,18 +43,6 @@ const Home = () => {
             mouseClickAudioRef.current.play();
         }
     }, [soundOn]);
-
-    // Note: we avoid creating inline wrapper components here to keep
-    // component references stable across renders. This helps prevent
-    // unnecessary re-renders of heavy children components when
-    // unrelated state (like AI chat input) changes.
-    const sectionComponents = {
-        Work,
-        About,
-        FAQ,
-    };
-    const [openChat, setOpenChat] = useState(false);
-
 
     const scrollToSection = (section) => {
         //get the section as element that is useref-ed
@@ -116,11 +97,6 @@ const Home = () => {
     }, []);
 
 
-    // AI chat box 
-    const handleOpenChat = () => {
-        setOpenChat((prev) => !prev);
-    };
-
     const [scrollY, setScrollY] = useState(0);
 
     useEffect(() => {
@@ -166,7 +142,6 @@ const Home = () => {
 
                 {/* Other Sections */}
                 {SECTIONS.map((sec, idx) => {
-                    const SectionComponent = sectionComponents[sec];
                     return (
                         <React.Fragment key={sec}>
                             {idx !== 0 && (
@@ -254,22 +229,8 @@ const Home = () => {
                 </button>
             </div>
 
-            {/* AI chat button */}
-            {/* <div className="fixed left-4 bottom-4 z-40">
-                <button
-                    onClick={handleOpenChat}
-                    className={`highlight-card relative px-4 py-2 rounded-full shadow-lg ${darkMode ? `bg-[${COLOR_LIGHT_GRAY}] text-[${COLOR_LIGHT_TEXT}]` : `bg-[${COLOR_DARK_BG}] text-[${COLOR_DARK_TEXT}]`}`}
-                >
-                    <div className={`flex items-center justify-center text-center gap-1 `}>
-                        <BsFillChatLeftTextFill />
-                        <span>AI Chat</span>
-                    </div>
-                </button>
-            </div> */}
-            {/* AI chat Model overlay */}
-            {openChat && (
-                <Chat onClose={() => setOpenChat(false)} />
-            )}
+            {/* The AI assistant (Ari) now lives in the Nerd View terminal
+                behind the /ask-ari command — see components/terminal. */}
         </div >
     );
 };
@@ -315,41 +276,5 @@ function HeartBurst({ show, originRef }) {
         </>
     );
 }
-
-// Add StarBurst animation component
-function StarBurst() {
-    const [show, setShow] = useState(true);
-    React.useEffect(() => {
-        setShow(true);
-        const timeout = setTimeout(() => setShow(false), 1200);
-        return () => clearTimeout(timeout);
-    }, []);
-    if (!show) return null;
-    return (
-        <div className="pointer-events-none absolute inset-0 flex justify-center items-center z-10">
-            {[...Array(8)].map((_, i) => {
-                const angle = (i / 8) * 2 * Math.PI;
-                const distance = 180 + Math.random() * 40;
-                const x = Math.cos(angle) * distance;
-                const y = Math.sin(angle) * distance;
-                return (
-                    <span
-                        key={i}
-                        className="absolute text-yellow-300 text-4xl animate-star-burst"
-                        style={{
-                            left: `calc(50% + ${x}px)`,
-                            top: `calc(50% + ${y}px)`,
-                            animationDelay: `${Math.random() * 0.2}s`,
-                        }}
-                    >
-                        ★
-                    </span>
-                );
-            })}
-        </div>
-    );
-}
-
-
 
 export default Home;

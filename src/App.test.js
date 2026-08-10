@@ -2,10 +2,11 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import Navbar from './components/Navbar';
 
-// Test for main heading
-test('Renders main heading with Roshan Raj', () => {
+// Test for main heading. The hero splits the name across spans, so match on the
+// heading's combined text content rather than a single text node.
+test('Renders main heading with Roshan', () => {
   render(<App />);
-  expect(screen.getByText(/Roshan Raj./i)).toBeInTheDocument();//ignore case sensitivity and patterns after 'Roshan Raj'
+  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Roshan/i);
 });
 
 // Test for thank you message
@@ -16,12 +17,13 @@ test('Displays thank you message in the footer', () => {
   ).toBeInTheDocument();
 });
 
-// Test for social links
-test('Has social links for GitHub, LinkedIn, and Email', () => {
+// Test for social links. Contacts renders in both the navbar and the footer,
+// so each label legitimately appears more than once.
+test('Has social links for GitHub, LinkedIn, Behance and Email', () => {
   render(<App />);
-  expect(screen.getByLabelText(/GitHub/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/LinkedIn/i)).toBeInTheDocument();
-  expect(screen.getByLabelText(/Email/i)).toBeInTheDocument();
+  ['GitHub', 'LinkedIn', 'Behance', 'Email'].forEach((label) => {
+    expect(screen.getAllByLabelText(new RegExp(`^${label}$`, 'i')).length).toBeGreaterThan(0);
+  });
 });
 
 // Test for Resume download link in Navbar

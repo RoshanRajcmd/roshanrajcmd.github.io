@@ -22,6 +22,22 @@ export const COLOR_HOVER_GRAY = '#4e4d4d';   // hover:bg-[#4e4d4d]
 export const COLOR_CHAT_MODAL_OVERLAY = 'bg-[#141414]/50'; // Overlay with opacity
 export const COLOR_CHAT_GREEN = '#00ff22';   // Chat send button
 
+// Terminal ("Nerd View") palette — mirrors the Claude Code CLI theme.
+// Used via inline styles so Tailwind's JIT scanner is not a factor.
+export const TERMINAL_COLORS = {
+  bg: '#161618',        // terminal canvas
+  panel: '#1c1c1f',     // input box / result panels
+  border: '#2e2e33',    // panel borders
+  accent: '#d97757',    // Claude orange — prompts, banner, selection
+  text: '#e8e6e3',      // primary output
+  muted: '#8a8580',     // hints, descriptions
+  dim: '#5c5955',       // tree glyphs, placeholders
+  success: '#3fb950',
+  error: '#f0776c',
+  info: '#7aa2f7',
+  selectBg: '#2a2a2e',  // highlighted row background
+};
+
 // Color Objects for Dark/Light Mode Switching
 export const COLOR_SCHEMES = {
   // Main Background and Text

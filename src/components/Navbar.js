@@ -4,8 +4,7 @@ import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import { IoIosSunny, IoMdMoon } from "react-icons/io";
 import resumeFile from "../assets/resume.pdf";
 import Contacts from "./Contacts";
-import { BLOG_URL } from "./Constants";
-import { COLOR_NEON_GREEN, COLOR_DARK_BG, COLOR_DARK_TEXT, COLOR_LIGHT_TEXT } from "./ColorConstants";
+import { COLOR_NEON_GREEN, COLOR_DARK_TEXT, COLOR_LIGHT_TEXT } from "./ColorConstants";
 
 const Navbar = ({
     darkMode,
@@ -170,7 +169,7 @@ const Navbar = ({
                                 </button>
                             ))}
 
-                            {/* Blog section - will be enabled in future*/}
+                            {/* Blog section - will be enabled in future (re-import BLOG_URL from ./Constants) */}
                             {/* <a
                                 href={BLOG_URL}
                                 target="_blank"

@@ -72,6 +72,46 @@ export const ROLE_AI = 'ai';
 export const ROLE_USER = 'user';
 export const MLC_MODEL_ID = 'Llama-3.2-3B-Instruct-q4f16_1-MLC';
 
+export const EMAIL_ADDRESS = 'roshanraj5121999@gmail.com';
+
+// FAQ entries — shared by the FAQ section and the terminal's /faq command.
+// `link` is optional and renders as an anchor after the answer text.
+export const FAQS = [
+    {
+        question: "How can i contact you?",
+        answer: "The easiest way to contact me is through my email. Please feel free to",
+        link: { label: "mail me", url: EMAIL_URL }
+    },
+    {
+        question: "How quickly do you respond to recruitment inquiries?",
+        answer: "I usually respond within 24-48 hours. If you have an urgent request, please mention it in your message."
+    },
+    {
+        question: "Will you be able to work unfamiliar technologies?",
+        answer: "Yes, I see it as an opportunity to learn and adapt to different tech stack. I believe in continuous learning and growth."
+    },
+    {
+        question: "Will you be able to work in my timezone?",
+        answer: "I have some flexibility in my working hours and can adjust to different time zones when required, subject to prior discussion."
+    },
+    {
+        question: "Whats your Hobbies and Free time activities?",
+        answer: "3D printing, Book reading, gaming, and exploring new technologies or even some new hobbies. I also enjoy contributing to open-source projects in my free time."
+    },
+    {
+        question: "Where are you currently located?",
+        answer: "📍Bangalore, India."
+    },
+    {
+        question: "What other languages you can speak?",
+        answer: "I am fluent in English, Hindi, and Tamil. I also N5 certified in Japanese."
+    },
+    {
+        question: "Chai or Coffee?",
+        answer: "☕️ Coffee :)"
+    }
+];
+
 // Projects data for Work section
 export const DEVELOPMENT = "Development";
 export const OTHERS = "Others";
