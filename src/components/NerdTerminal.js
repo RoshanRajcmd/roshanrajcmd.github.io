@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BsStars } from 'react-icons/bs';
 import Home from './Home';
 import TerminalView from './terminal/TerminalView';
 import { TERMINAL_COLORS } from './ColorConstants';
@@ -33,7 +34,7 @@ export default function NerdTerminal() {
                     className="fixed left-4 bottom-4 z-40 highlight-card px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
                     style={{ background: TERMINAL_COLORS.bg, color: TERMINAL_COLORS.text }}
                 >
-                    <span aria-hidden="true">🧑‍💻</span>
+                    <BsStars aria-hidden="true" className="w-4 h-4" />
                     <span>Nerd View</span>
                 </button>
             )}
