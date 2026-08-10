@@ -1,6 +1,3 @@
-// File renamed from constants.js to Constants.js for consistency
-// This file will be deleted after renaming. Please manually delete constants.js and use Constants.js instead.
-
 import Project2 from '../assets/Project2.jpg';
 import Project3 from '../assets/Project3.png';
 import Project4 from '../assets/Project4.png';
@@ -14,7 +11,6 @@ import { getYearsAndMonthsSinceInWords } from './Utility';
 export const CAREER_EXPERIENCE_START_DATE = "2021-09-07"; // yyyy-mm-dd
 export const CURRENT_EXPERIENCE_JOIN_DATE = "2025-09-08";
 
-// Skills for About section
 export const SKILLS = [
     "Java",
     "SpringBoot",
@@ -53,28 +49,22 @@ export const SKILLS = [
     "TMUX"
 ];
 
-// Initial visible count for About section
 export const INITIAL_VISIBLE_SKILLS = 12;
 
-// URLs and other shared constants
 export const BLOG_URL = 'https://medium.com/@roshanrajpersonal55';
 export const GITHUB_URL = "https://github.com/roshanrajcmd";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/roshanraj1999/";
 export const BEHANCE_URL = "https://www.behance.net/RoshanRaj512";
 export const EMAIL_URL = "mailto:roshanraj5121999@gmail.com";
 
-// Add more shared constants as needed
-
 export const SECTIONS = ['Work', 'About', 'FAQ'];
 
-// Chat / AI related constants
 export const ROLE_AI = 'ai';
 export const ROLE_USER = 'user';
 export const MLC_MODEL_ID = 'Llama-3.2-3B-Instruct-q4f16_1-MLC';
 
 export const EMAIL_ADDRESS = 'roshanraj5121999@gmail.com';
 
-// FAQ entries — shared by the FAQ section and the terminal's /faq command.
 // `link` is optional and renders as an anchor after the answer text.
 export const FAQS = [
     {
@@ -108,11 +98,9 @@ export const FAQS = [
     }
 ];
 
-// Tabs for About section
 export const ONLINE = "Online";
 export const OFFLINE = "Offline";
 
-// Life away from the keyboard, rendered in the About "Offline" tab
 export const OFFLINE_CARDS = [
     {
         title: "3D Printing",
@@ -128,7 +116,6 @@ export const OFFLINE_CARDS = [
     }
 ];
 
-// Projects data for Work section
 export const DEVELOPMENT = "Development";
 export const OTHERS = "Others";
 export const PROJECTS = [
@@ -222,7 +209,6 @@ export const PROJECTS = [
     },
 ];
 
-// Testimonials for About section
 export const TESTIMONIALS = [
     {
         text: "Roshan is a highly skilled developer who always delivers quality work on time. His attention to detail and problem-solving skills are exceptional.",
@@ -244,7 +230,6 @@ export const TESTIMONIALS = [
     }
 ];
 
-// About Me cards for carousel
 export const ABOUT_CARDS = [
     {
         title: "♠️ A Jack of All Trades",
@@ -264,7 +249,6 @@ export const ABOUT_CARDS = [
     }
 ];
 
-// Experience Cards
 export const EXPERIENCES = [
     {
         compName: "Amazon India",
@@ -292,7 +276,6 @@ export const EXPERIENCES = [
     }
 ]
 
-// Certificates Cards
 export const CERTIFICATES = [
     {
         certifiName: "AWS Cloud Computing",

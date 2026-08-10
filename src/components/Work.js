@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { DEVELOPMENT, OTHERS, PROJECTS } from './Constants';
 import { COLOR_DARK_BG, COLOR_LIGHT_TEXT, COLOR_LIGHT_GRAY, COLOR_MEDIUM_GRAY, COLOR_LIGHT_GRAY_TEXT } from './ColorConstants';
 
-// Utility to get a random contrasting color
 function getRandomContrastColor() {
     const colors = ['#FFB300', '#FF7043', '#66BB6A', '#29B6F6', '#FFD600', '#FF4081', '#00838F', '#AB47BC'];
     return colors[Math.floor(Math.random() * colors.length)];
@@ -32,8 +31,8 @@ const Work = ({ darkMode, playClickSound }) => {
         if (item.url) window.open(item.url, '_blank', 'noopener,noreferrer');
     };
 
-    // Colours live in JS constants, so they are applied inline — Tailwind's
-    // scanner cannot generate arbitrary values built from template literals.
+    // Colours inline: Tailwind's scanner cannot generate arbitrary values built
+    // from template literals.
     const cardStyle = {
         backgroundColor: darkMode ? COLOR_LIGHT_GRAY : COLOR_DARK_BG,
         color: darkMode ? COLOR_LIGHT_TEXT : COLOR_LIGHT_GRAY,

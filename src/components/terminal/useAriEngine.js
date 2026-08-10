@@ -22,12 +22,9 @@ function toPercent(raw) {
 }
 
 /**
- * Owns the on-device web-llm engine for Ari.
- *
  * The engine is created lazily — `load()` is only called once the visitor
  * actually runs /ask-ari, so the multi-hundred-MB model download never happens
- * for people who just browse the terminal. `ask()` streams tokens back through
- * the `onToken` callback so the terminal can render them as they arrive.
+ * for people who just browse the terminal.
  */
 export default function useAriEngine() {
     const [status, setStatus] = useState(ARI_IDLE);
@@ -90,10 +87,7 @@ export default function useAriEngine() {
         return loadPromiseRef.current;
     }, []);
 
-    /**
-     * Send a question to Ari. Resolves with the full reply text.
-     * `onToken(chunk)` fires for each streamed delta.
-     */
+    /** `onToken(chunk)` fires for each streamed delta. */
     const ask = useCallback(
         async (question, onToken) => {
             const engine = engineRef.current || (await load());

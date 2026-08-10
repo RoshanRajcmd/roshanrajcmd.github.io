@@ -14,8 +14,8 @@ const LINKS = [
 ];
 
 const Contacts = ({ darkMode = false, playClickSound = () => { } }) => {
-    // Colours come from JS constants, so they are applied inline — Tailwind's
-    // scanner cannot see arbitrary values built from template literals.
+    // Colours inline: Tailwind's scanner cannot see arbitrary values built from
+    // template literals.
     const iconStyle = {
         backgroundColor: darkMode ? COLOR_GRAY_600 : COLOR_LIGHT_GRAY,
         color: darkMode ? COLOR_LIGHT_GRAY : COLOR_GRAY_600,

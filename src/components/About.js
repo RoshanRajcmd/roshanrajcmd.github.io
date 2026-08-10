@@ -9,16 +9,15 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
     const [activeTab, setActiveTab] = useState(0);
     const marqueeRef = useRef(null);
     const containerRef = useRef(null);
-    const [marqueeDuration, setMarqueeDuration] = useState(24); // fallback default
+    const [marqueeDuration, setMarqueeDuration] = useState(24);
     const aboutTabs = [{ label: ONLINE }, { label: OFFLINE }];
 
     useEffect(() => {
         function updateDuration() {
             if (marqueeRef.current && containerRef.current) {
                 const marqueeWidth = marqueeRef.current.scrollWidth;
-                // Set speed: e.g., 100px/sec
                 const speed = 100; // px per second
-                const distance = marqueeWidth / 2; // since translateX(-50%)
+                const distance = marqueeWidth / 2; // the track is duplicated, so translateX(-50%)
                 const duration = distance / speed;
                 setMarqueeDuration(duration);
             }
@@ -50,7 +49,6 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                         </div>
                     </div>
 
-                    {/* Online / Offline tabs */}
                     <div className="relative mx-auto flex w-full max-w-md rounded-full bg-gray-200 p-1 mt-6 mb-2">
                         <div
                             className="absolute top-1 left-1 h-[calc(100%-0.5rem)] bg-white rounded-full shadow-sm transition-all duration-300 ease-out"
@@ -75,10 +73,8 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                         ? <Online soundOn={soundOn} playClickSound={playClickSound} />
                         : <Offline />}
 
-                    {/* MyPics Stream Section */}
                     <div className="w-full py-12 flex flex-col items-center">
                         <div className="relative w-full max-w-5xl overflow-x-hidden" ref={containerRef}>
-                            {/* Auto-scroll on all devices */}
                             <div
                                 className="flex flex-row flex-nowrap w-max sm:w-full gap-6 auto-marquee"
                                 ref={marqueeRef}
@@ -87,7 +83,7 @@ const About = ({ soundOn, darkMode, playClickSound }) => {
                                     animationPlayState: 'running',
                                 }}
                             >
-                                {/* Duplicate images for seamless loop */}
+                                {/* Duplicated for a seamless loop */}
                                 {[1, 2].map((_, i) => (
                                     <React.Fragment key={i}>
                                         <img src={require('../assets/myPics/myPic6.jpg')} alt="myPic6" className="rounded-lg object-cover mx-2" style={{ aspectRatio: '1/1', width: '70vw', maxWidth: 320, minWidth: 160 }} />

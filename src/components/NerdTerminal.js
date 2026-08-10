@@ -5,9 +5,8 @@ import TerminalView from './terminal/TerminalView';
 import { TERMINAL_COLORS } from './ColorConstants';
 
 /**
- * Top-level route shell: toggles between the recruiter-friendly site (Home)
- * and the Claude Code-style terminal ("Nerd View"). All terminal behaviour
- * lives in ./terminal — this component only owns the toggle.
+ * Toggles between the recruiter-friendly site (Home) and the terminal
+ * ("Nerd View"). All terminal behaviour lives in ./terminal.
  */
 export default function NerdTerminal() {
     const [isNerdMode, setIsNerdMode] = useState(false);

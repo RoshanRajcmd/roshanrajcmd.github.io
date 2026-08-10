@@ -33,11 +33,9 @@ const Home = () => {
     const audioRef = useRef(null);
     const mouseClickAudioRef = useRef(null);
     const [soundOn, setSoundOn] = useState(true);
-    // State to track scroll position
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("Home");
     const [scrollTopHover, setScrollTopHover] = useState(false);
-    // Utility: play mouse click sound if soundOn is enabled
     const playClickSound = React.useCallback(() => {
         if (soundOn && mouseClickAudioRef.current) {
             mouseClickAudioRef.current.currentTime = 0;
@@ -46,15 +44,11 @@ const Home = () => {
     }, [soundOn]);
 
     const scrollToSection = (section) => {
-        //get the section as element that is useref-ed
         const element = sectionRefs.current[section];
         if (element) {
-            //Top of the main <body> relative to the viewport (screen)
             const bodyRect = document.body.getBoundingClientRect().top;
-            //Top of the target section relative to the viewport
-            //The below tell as how far from the top of the screen the element is right now
             const elementRect = element.getBoundingClientRect().top;
-            //110 is the offset height of navbar without this the section headers will be behind navbar
+            // 110 offsets the navbar height, otherwise section headers sit behind it.
             const offsetPosition = elementRect - bodyRect - 110;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
@@ -133,16 +127,14 @@ const Home = () => {
                 playClickSound={playClickSound}
             />
 
-            {/* Hero Section - Outside main to avoid padding */}
+            {/* Outside <main> to avoid its padding */}
             <section
                 ref={(el) => (sectionRefs.current["Home"] = el)}
                 className="relative w-full overflow-hidden"
                 style={{ height: '100vh' }}
             >
-                {/* Background */}
                 <HeroBackground scrollY={scrollY} />
 
-                {/* Foreground */}
                 <div className="relative z-10 flex flex-col items-center justify-center h-full">
                     <HeroTitle scrollY={scrollY} />
                     <SlotMachine scrollY={scrollY} />
@@ -152,9 +144,6 @@ const Home = () => {
             </section>
 
             <main className="pt-24 container mx-auto px-2 sm:px-8">
-
-
-                {/* Other Sections */}
                 {SECTIONS.map((sec, idx) => {
                     return (
                         <React.Fragment key={sec}>
@@ -189,7 +178,6 @@ const Home = () => {
                 <audio ref={mouseClickAudioRef} src={mouseClickAudio} preload="auto" />
                 <HeartBurst show={showHearts} originRef={heartBtnRef} />
 
-                {/* Train of static images (train_img_1 .. train_img_6) */}
                 <div className="flex justify-center pb-9 width">
                     <div className="flex gap-4 overflow-x-auto px-4">
                         {TRAIN_IMAGES.map((src, idx) => (
@@ -238,11 +226,9 @@ const Home = () => {
                 </div>
             </footer>
 
-            {/* Scroll to Top Button */}
+            {/* Colours (including the hover swap) are applied inline because
+                Tailwind cannot generate arbitrary values built from template literals. */}
             <div className="fixed right-4 bottom-4 z-40">
-                {/* Colours (including the hover swap) are applied inline because
-                    Tailwind cannot generate arbitrary values built from template
-                    literals. */}
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     className={`rounded-full p-3 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 active:scale-95 ${scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'} ${darkMode ? '' : 'dark'}`}

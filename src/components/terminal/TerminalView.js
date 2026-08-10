@@ -33,10 +33,6 @@ const INITIAL_BLOCKS = () =>
         { type: BLOCK_NOTICE, text: WELCOME_TIP },
     ]);
 
-// ---------------------------------------------------------------------------
-// Presentational pieces
-// ---------------------------------------------------------------------------
-
 const Banner = () => (
     <div
         className="rounded-lg px-4 py-3 mb-1"
@@ -124,7 +120,6 @@ const SelectBlock = ({ block, active, selectedIndex, onPick }) => {
                     );
                 })}
             </div>
-            {/* Description of the row under the cursor, or of the resolved choice. */}
             {(() => {
                 const shown = active ? selectedIndex : chosen;
                 const detail = shown != null ? options[shown]?.detail : null;
@@ -161,14 +156,9 @@ const AiBlock = ({ block }) => (
     </div>
 );
 
-// ---------------------------------------------------------------------------
-// Terminal
-// ---------------------------------------------------------------------------
-
 export default function TerminalView({ onExit }) {
     const [blocks, setBlocks] = useState(INITIAL_BLOCKS);
     const [input, setInput] = useState('');
-    // id of the select block accepting keyboard input, or null
     const [activeSelectId, setActiveSelectId] = useState(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [ariActive, setAriActive] = useState(false);
@@ -187,7 +177,6 @@ export default function TerminalView({ onExit }) {
         setBlocks((prev) => [...prev, ...withIds(newBlocks)]);
     }, []);
 
-    // Keep the newest output in view.
     useEffect(() => {
         const el = scrollRef.current;
         if (el) el.scrollTop = el.scrollHeight;
@@ -202,7 +191,6 @@ export default function TerminalView({ onExit }) {
         [blocks, activeSelectId]
     );
 
-    // Slash-command autocomplete menu, shown while typing "/...".
     // Stays available inside an Ari session, where slash input is still a command.
     const suggestions = useMemo(() => {
         if (activeSelectId) return [];
@@ -355,7 +343,7 @@ export default function TerminalView({ onExit }) {
     }, []);
 
     const handleKeyDown = (e) => {
-        // 1. An open select list owns the arrow keys.
+        // An open select list owns the arrow keys.
         if (activeSelect) {
             const count = activeSelect.options.length;
             if (e.key === 'ArrowDown') {
@@ -374,7 +362,7 @@ export default function TerminalView({ onExit }) {
             return;
         }
 
-        // 2. The autocomplete menu owns them next.
+        // The autocomplete menu owns them next.
         if (suggestions.length) {
             if (e.key === 'ArrowDown') {
                 e.preventDefault();
@@ -403,7 +391,7 @@ export default function TerminalView({ onExit }) {
             }
         }
 
-        // 3. Otherwise: plain line editing.
+        // Otherwise: plain line editing.
         if (e.key === 'Enter') {
             e.preventDefault();
             if (!busy) submit(input);
@@ -441,7 +429,6 @@ export default function TerminalView({ onExit }) {
             style={{ background: C.bg, fontFamily: FONT_STACK }}
             onClick={() => inputRef.current?.focus()}
         >
-            {/* Output */}
             <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 pt-4 sm:px-8 sm:pt-6">
                 <div className="mx-auto max-w-3xl space-y-3 pb-4">
                     {blocks.map((block) => {
@@ -496,10 +483,8 @@ export default function TerminalView({ onExit }) {
                 </div>
             </div>
 
-            {/* Composer */}
             <div className="px-4 pb-4 sm:px-8 sm:pb-6">
                 <div className="mx-auto max-w-3xl">
-                    {/* Autocomplete menu */}
                     {suggestions.length > 0 && (
                         <div
                             className="mb-2 rounded-lg overflow-hidden"

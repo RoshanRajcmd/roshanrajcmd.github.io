@@ -28,7 +28,6 @@ const Navbar = ({
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    // Prevent background scroll when menu is open
     useEffect(() => {
         document.body.style.overflow = open ? "hidden" : "";
     }, [open]);
@@ -45,7 +44,6 @@ const Navbar = ({
                         <HiMenuAlt2 className="w-10 h-10" />
                     </button>
 
-                    {/* FULLSCREEN MENU */}
                     <div
                         className={`
               fixed inset-0 z-40 flex flex-col
@@ -60,7 +58,6 @@ const Navbar = ({
                             color: darkMode ? COLOR_DARK_TEXT : COLOR_LIGHT_TEXT,
                         }}
                     >
-                        {/* HEADER */}
                         <div className="flex justify-between items-center px-8 pt-6">
                             <div className="text-2xl leading-[0.9] tracking-tight select-none font-nunito font-bold lowercase">
                                 ROSHAN
@@ -81,7 +78,6 @@ const Navbar = ({
                             </div>
                         </div>
 
-                        {/* Navigation */}
                         <div className="w-full text-center mt-auto">
                             {sections.map((sec) => (
                                 <button
@@ -110,7 +106,6 @@ const Navbar = ({
                             ))}
                         </div>
 
-                        {/* Resume */}
                         <div className="flex justify-center mt-auto">
                             <a
                                 href={resumeFile}
@@ -122,7 +117,6 @@ const Navbar = ({
                             </a>
                         </div>
 
-                        {/* FOOTER */}
                         <div className="text-center mt-auto mb-6 gap-2 text-sm text-gray-500">
                             <div>Connect with me</div>
                             <Contacts darkMode={darkMode} playClickSound={playClickSound} />
@@ -130,7 +124,6 @@ const Navbar = ({
                     </div >
                 </nav >
             ) : (
-                /* DESKTOP NAV (UNCHANGED LOGIC, CLEANED) */
                 <nav className="fixed inset-x-0 top-2 sm:top-4 md:top-7 z-50 flex justify-center items-center">
                     <div
                         className={`flex items-center justify-between w-full rounded-full backdrop-blur-sm transition-all duration-300 px-4 py-4 shadow-lg ${scrolled
@@ -138,7 +131,6 @@ const Navbar = ({
                             : "max-w-7xl"
                             } ${darkMode ? "shadow-white/10" : "shadow-black/10"}`}
                     >
-                        {/* Resume */}
                         <a
                             href={resumeFile}
                             download
@@ -149,7 +141,6 @@ const Navbar = ({
                             <span className="text-sm font-semibold">Resume</span>
                         </a>
 
-                        {/* Sections */}
                         <div className="flex gap-4 items-center">
                             {sections.map((sec) => (
                                 <button
@@ -188,7 +179,6 @@ const Navbar = ({
                             </a> */}
                         </div>
 
-                        {/* Controls */}
                         <div className="flex items-center gap-4 px-9 py-2 ">
                             <div className="relative group">
                                 <button onClick={() => setSoundOn((p) => !p)}>

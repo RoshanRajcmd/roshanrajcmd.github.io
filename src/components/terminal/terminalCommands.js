@@ -1,9 +1,6 @@
-// Pure command registry for the Nerd View terminal.
-//
 // Nothing in this module performs I/O — every command is a pure function of the
 // app's constant data that returns descriptor objects. The UI layer (TerminalView)
 // decides how to render them and which side effects (window.open, clear, exit) to run.
-// This keeps the command surface trivially testable and easy to extend.
 
 import {
     PROJECTS,
@@ -22,27 +19,20 @@ import {
 } from '../Constants';
 import { getYearsAndMonthsSinceInWords } from '../Utility';
 
-// ---------------------------------------------------------------------------
-// Block types produced by commands
-// ---------------------------------------------------------------------------
-export const BLOCK_BANNER = 'banner';   // startup splash
-export const BLOCK_PROMPT = 'prompt';   // echo of what the user typed
-export const BLOCK_TEXT = 'text';       // plain assistant-style output
-export const BLOCK_TREE = 'tree';       // labelled key/value lines
-export const BLOCK_SELECT = 'select';   // interactive ↑/↓ + Enter list
+export const BLOCK_BANNER = 'banner';
+export const BLOCK_PROMPT = 'prompt';
+export const BLOCK_TEXT = 'text';
+export const BLOCK_TREE = 'tree';
+export const BLOCK_SELECT = 'select';
 export const BLOCK_ERROR = 'error';
-export const BLOCK_NOTICE = 'notice';   // dim status line
-export const BLOCK_AI = 'ai';           // streamed Ari answer
+export const BLOCK_NOTICE = 'notice';
+export const BLOCK_AI = 'ai';
 
-// Side effects the shell may be asked to perform after a command resolves.
 export const ACTION_CLEAR = 'clear';
 export const ACTION_EXIT = 'exit';
 export const ACTION_ASK_ARI = 'ask-ari';
 export const ACTION_EXIT_ARI = 'exit-ari';
 
-// ---------------------------------------------------------------------------
-// Option lists
-// ---------------------------------------------------------------------------
 const workOptions = () =>
     PROJECTS.filter((p) => p.category === DEVELOPMENT).map((p) => ({
         label: p.title,
@@ -71,9 +61,6 @@ const faqOptions = () =>
         url: f.link?.url,
     }));
 
-// ---------------------------------------------------------------------------
-// Command registry
-// ---------------------------------------------------------------------------
 export const COMMANDS = [
     {
         name: '/work',

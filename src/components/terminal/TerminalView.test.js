@@ -43,7 +43,6 @@ describe('TerminalView', () => {
         render(<TerminalView />);
 
         await type('/social{Enter}');
-        // First row starts selected; ArrowDown moves to LinkedIn.
         await type('{ArrowDown}{Enter}');
 
         expect(open).toHaveBeenCalledWith(

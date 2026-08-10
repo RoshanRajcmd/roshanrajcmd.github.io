@@ -36,7 +36,6 @@ function SlotMachine({ scrollY = 0 }) {
     const [showGift, setShowGift] = useState(false);
     const [giftStarHover, setGiftStarHover] = useState(false);
     const clover = '🍀';
-    // Determine if this page load is a 'lucky' one (increase chance: 1 in 2)
     const luckyPage = React.useMemo(() => Math.floor(Math.random() * 2) === 0, []);
 
     const progress = Math.min(scrollY / 300, 1);
@@ -46,7 +45,6 @@ function SlotMachine({ scrollY = 0 }) {
         let count = 0;
         setSpinning(true);
         interval = setInterval(() => {
-            // If lucky page, force 3 clovers at the end
             if (count > 15 && luckyPage) {
                 setSlots([clover, clover, clover]);
             } else {
@@ -57,7 +55,7 @@ function SlotMachine({ scrollY = 0 }) {
                 ]);
             }
             count++;
-            if (count > 15) { // spin for a short while
+            if (count > 15) {
                 clearInterval(interval);
                 setSpinning(false);
             }
@@ -103,8 +101,8 @@ function SlotMachine({ scrollY = 0 }) {
                             {giftStarHover && <GiftStarBurst />}
                             🎁 Claim Your Gift
                         </a>
-                        {/* Colours applied inline: Tailwind cannot generate arbitrary
-                            values built from template literals. */}
+                        {/* Colours inline: Tailwind cannot generate arbitrary values
+                            built from template literals. */}
                         <span
                             className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-2 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50 shadow-lg"
                             style={{ backgroundColor: COLOR_DARK_BG, color: COLOR_DARK_TEXT }}

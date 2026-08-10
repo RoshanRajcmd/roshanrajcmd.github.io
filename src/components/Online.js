@@ -12,7 +12,7 @@ export function Online({ soundOn, playClickSound }) {
     const audioRef = useRef(null);
     const [showMore, setShowMore] = useState(false);
     const [aboutIdx, setAboutIdx] = useState(0);
-    const [direction, setDirection] = useState('right'); // for animation
+    const [direction, setDirection] = useState('right');
     const visibleSkills = showMore ? SKILLS : SKILLS.slice(0, INITIAL_VISIBLE_SKILLS);
     const yoeInWords = getYearsAndMonthsSinceInWords(CAREER_EXPERIENCE_START_DATE, false);
 
@@ -24,7 +24,6 @@ export function Online({ soundOn, playClickSound }) {
         setShowMore((prev) => !prev);
     };
 
-    // About Me cards for carousel
     const handlePrevAbout = () => {
         setDirection('left');
         setAboutIdx((prev) => (prev === 0 ? ABOUT_CARDS.length - 1 : prev - 1));
@@ -34,7 +33,6 @@ export function Online({ soundOn, playClickSound }) {
         setAboutIdx((prev) => (prev === ABOUT_CARDS.length - 1 ? 0 : prev + 1));
     };
 
-    // Add slide-in animations for About Me card carousel
     const style = document.createElement('style');
     style.innerHTML = `
     @keyframes slide-right {
@@ -66,7 +64,6 @@ export function Online({ soundOn, playClickSound }) {
         <>
             <audio ref={audioRef} src={doublePopup} preload="auto" />
 
-            {/* About Me Card Carousel */}
             <div className="flex justify-center items-center w-full px-2 sm:px-4 pb-3 pt-10">
                 <button
                     aria-label="Previous"
@@ -92,7 +89,6 @@ export function Online({ soundOn, playClickSound }) {
                 </button>
             </div>
 
-            {/* Skills */}
             <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-3 pt-10">Skills</h2>
             <div className="flex gap-3 p-2 sm:p-3 flex-wrap pr-2 sm:pr-4">
                 {visibleSkills.map((skill) => (
@@ -121,7 +117,6 @@ export function Online({ soundOn, playClickSound }) {
                 )}
             </div>
 
-            {/* Educations */}
             <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-10">Education</h2>
             <div className="flex items-center justify-center">
                 <div className="w-72 gap-x-2 rounded-lg p-4 bg-[#ededed]">
@@ -131,7 +126,6 @@ export function Online({ soundOn, playClickSound }) {
                 </div>
             </div>
 
-            {/* Certifications - will be enabled in future*/}
             <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-16">Certifications</h2>
             <div className="grid md:grid-cols-3 gap-6">
                 {CERTIFICATES.map((item, idx) => (
@@ -149,39 +143,30 @@ export function Online({ soundOn, playClickSound }) {
                 ))}
             </div>
 
-            {/* Experience Section (Responsive Timeline) */}
             <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pt-16">Experience</h2>
             <h3 className="text-center text-[18px] font-medium text-neutral-500 leading-normal tracking-[-0.015em] px-2 sm:px-4 pt-2">{yoeInWords}</h3>
             <div className="w-full flex flex-col items-center pb-4">
                 <div className="overflow-x-auto w-full whitespace-nowrap py-4">
                     <div className="relative w-full flex flex-col sm:flex-row items-center sm:items-stretch gap-8 sm:gap-0">
-                        {/* Timeline vertical line */}
                         <div className="hidden sm:block absolute left-1/2 right-1/2 top-1.5 h-1 w-full bg-[#ededed] -translate-x-1/2" aria-hidden="true"></div>
-                        {/* Timeline vertical line for mobile */}
                         <div className="block sm:hidden absolute left-1.5 top-0 h-full w-1 bg-[#ededed]" aria-hidden="true"></div>
-                        {/* Experience Items */}
                         <div className="relative w-full flex flex-col sm:flex-row sm:justify-between gap-8">
                             {EXPERIENCES.map((experience, idx) => (
                                 <div key={idx} className="flex flex-row sm:flex-col items-center sm:items-end w-full sm:w-1/2">
 
-                                    {/* Dot */}
                                     <div className="relative w-4 h-4 flex items-center justify-center">
-                                        {/* Outer static green circle for current experience */}
                                         {experience.current && (
                                             <span className={"absolute inline-flex h-full w-full rounded-full bg-[#00ff22]"}></span>
                                         )}
-                                        {/* Live green dot */}
                                         <span
                                             className={`absolute inline-flex  rounded-full ${experience.current
                                                 ? "h-5 w-5 bg-[#00ff22] opacity-75 animate-ping"
                                                 : "h-full w-full bg-[#ededed]"
                                                 }`}
                                         ></span>
-                                        {/* Inner solid circle */}
                                         <span className="relative inline-flex rounded-full w-2 h-2 bg-[#141414]"></span>
                                     </div>
 
-                                    {/* Experience Card */}
                                     <div className="rounded-2xl bg-[#ededed] text-[#141414] p-4 flex flex-col min-w-[180px] max-w-xs w-full">
                                         <span className="font-bold">{experience.compName}</span>
                                         <span className="text-xs font-normal">{experience.role}</span>
@@ -200,7 +185,6 @@ export function Online({ soundOn, playClickSound }) {
                 </div>
             </div>
 
-            {/* Testimonials */}
             <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-10">Hear from others</h2>
             <div className="flex flex-wrap gap-4 px-2 sm:px-4 pb-8 justify-center">
                 {TESTIMONIALS.map((testimonial, idx) => (

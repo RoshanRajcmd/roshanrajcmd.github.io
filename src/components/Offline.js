@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import { OFFLINE_CARDS } from './Constants';
 
 export function Offline() {
-
     return (
         <>
-            {/* Beyond Work */}
             <h2 className="text-center text-[22px] font-bold leading-tight tracking-[-0.015em] px-2 sm:px-4 pb-5 pt-10">Beyond Work</h2>
             <div className="grid md:grid-cols-3 gap-6 px-2 sm:px-4">
                 {OFFLINE_CARDS.map((item, idx) => (

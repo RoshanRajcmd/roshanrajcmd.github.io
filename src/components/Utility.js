@@ -5,7 +5,6 @@ export function getYearsAndMonthsSince(dateString) {
     let years = now.getFullYear() - startDate.getFullYear();
     let months = now.getMonth() - startDate.getMonth();
 
-    // Adjust if current month is earlier than start month
     if (months < 0) {
         years--;
         months += 12;

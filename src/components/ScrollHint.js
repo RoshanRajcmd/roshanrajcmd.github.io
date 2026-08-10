@@ -14,7 +14,6 @@ function ScrollHint({ scrollY }) {
                 Scroll to explore
             </span>
 
-            {/* Vertical Line */}
             <span
                 className="w-px bg-current"
                 style={{
