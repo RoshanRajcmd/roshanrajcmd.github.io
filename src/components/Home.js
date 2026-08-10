@@ -259,9 +259,6 @@ const Home = () => {
                     <FaArrowUp className="size-5" />
                 </button>
             </div>
-
-            {/* The AI assistant (Ari) now lives in the Nerd View terminal
-                behind the /ask-ari command — see components/terminal. */}
         </div >
     );
 };
